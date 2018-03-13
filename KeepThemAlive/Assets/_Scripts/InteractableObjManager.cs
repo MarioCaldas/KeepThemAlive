@@ -14,7 +14,6 @@ public class InteractableObjManager : MonoBehaviour {
 
     }
 	
-
 	void Update ()
     {
 		

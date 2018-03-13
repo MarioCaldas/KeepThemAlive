@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+    public LayerMask layerMask;
+    private NavMeshAgent navMeshAgent;
+    string boxTag = "Boxes";
+    InteractableObjManager activeObject;
 
     private Vector3 moveVelocity;
     private Vector3 moveInput;
@@ -15,21 +21,25 @@ public class PlayerController : MonoBehaviour {
     public Camera mainCamera;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
+        mainCamera = Camera.main;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
         canMove = true;
         IsGrabed = false;
         rb = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (canMove)
         {
-            rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
-            MovementTopDown();
-            ConvertMoveInput();
+            //rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
+            //MovementTopDown();
+            //ConvertMoveInput();
+            PointClickMovement();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -37,6 +47,57 @@ public class PlayerController : MonoBehaviour {
             PushBoxes();
             SurvivalFollow();
         }
+    }
+
+    void PointClickMovement()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, 100, layerMask))
+            {
+                Debug.Log("Hit: " + hit.transform.name);
+                MoveToPoint(hit.point);
+            }                
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, layerMask))
+            {
+                Debug.Log("Hit: " + hit.transform.name);
+
+                InteractableObjManager interactableObject = hit.collider.GetComponent<InteractableObjManager>();
+                
+                if (interactableObject != null)
+                {
+                    SetActiveObject(interactableObject);
+                    PushBoxes();
+                }
+            }
+        }
+    }
+
+    void MoveToPoint(Vector3 destinationPoint)
+    {
+        navMeshAgent.SetDestination(destinationPoint);
+    }
+
+    void SetActiveObject(InteractableObjManager newActiveObject)
+    {
+        activeObject = newActiveObject;
+        MoveToPoint(newActiveObject.transform.position);
+        navMeshAgent.stoppingDistance = 2f;
+    }
+
+    void RemoveActiveObject()
+    {
+        activeObject = null;
     }
 
     void SurvivalFollow()
@@ -57,7 +118,6 @@ public class PlayerController : MonoBehaviour {
             }
             else
                 distance = 0.0f;
-
         }
     }
 
@@ -74,7 +134,7 @@ public class PlayerController : MonoBehaviour {
             {
                 distance = Vector3.Distance(transform.position, caixa.transform.position);
 
-                if (distance < 1.5f)
+                if (distance < 2.5f)
                 {
                     BoxGO = caixa;
                     IsGrabed = true;

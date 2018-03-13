@@ -6,21 +6,15 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public LayerMask layerMask;
-    private NavMeshAgent navMeshAgent;
+    NavMeshAgent navMeshAgent;
+    public InteractableObjManager activeObject;
     string boxTag = "Boxes";
-    InteractableObjManager activeObject;
 
-    private Vector3 moveVelocity;
-    private Vector3 moveInput;
-    private float forwardAmount;
-    public float turnAmount;
-    public float moveSpeed;
     bool canMove;
     bool IsGrabed;
     Rigidbody rb;
     public Camera mainCamera;
 
-    // Use this for initialization
     void Start()
     {
         mainCamera = Camera.main;
@@ -31,21 +25,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canMove)
         {
-            //rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
-            //MovementTopDown();
-            //ConvertMoveInput();
             PointClickMovement();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             PushBoxes();
-            SurvivalFollow();
+            //SurvivalFollow();
         }
     }
 
@@ -58,26 +48,24 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, 100, layerMask))
             {
-                Debug.Log("Hit: " + hit.transform.name);
                 MoveToPoint(hit.point);
+                RemoveActiveObject();
             }                
         }
 
-        if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100, layerMask))
             {
-                Debug.Log("Hit: " + hit.transform.name);
-
                 InteractableObjManager interactableObject = hit.collider.GetComponent<InteractableObjManager>();
                 
                 if (interactableObject != null)
                 {
                     SetActiveObject(interactableObject);
-                    PushBoxes();
+                    //PushBoxes();
                 }
             }
         }
@@ -90,14 +78,27 @@ public class PlayerController : MonoBehaviour
 
     void SetActiveObject(InteractableObjManager newActiveObject)
     {
-        activeObject = newActiveObject;
-        MoveToPoint(newActiveObject.transform.position);
-        navMeshAgent.stoppingDistance = 2f;
+        if(newActiveObject != activeObject)
+        {
+            if (activeObject != null)
+                activeObject.DeactivateObject();
+
+            activeObject = newActiveObject;
+
+            MoveToPoint(newActiveObject.transform.position);
+            navMeshAgent.stoppingDistance = newActiveObject.radius * 0.8f;
+        }
+
+        newActiveObject.SetActive(transform);   
     }
 
     void RemoveActiveObject()
     {
+        if (activeObject != null)
+            activeObject.DeactivateObject();
+
         activeObject = null;
+        navMeshAgent.stoppingDistance = 0f;
     }
 
     void SurvivalFollow()
@@ -154,37 +155,5 @@ public class PlayerController : MonoBehaviour
             IsGrabed = false;
         }
 
-    }
-
-    void ConvertMoveInput()
-    {
-        Vector3 localMove = transform.InverseTransformDirection(moveInput);
-        turnAmount = localMove.x;
-        forwardAmount = localMove.z;
-    }
-
-    void MovementTopDown()
-    {
-        {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-            moveInput = transform.TransformDirection(moveInput);
-
-            moveVelocity = moveInput * moveSpeed;
-
-            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-
-            float rayLenght;
-
-            if (groundPlane.Raycast(cameraRay, out rayLenght))
-            {
-                Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-                Debug.DrawLine(cameraRay.origin, pointToLook, Color.red);
-
-                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-            }
-        }
     }
 }

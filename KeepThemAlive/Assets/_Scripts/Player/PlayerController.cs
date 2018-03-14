@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 if (interactableObject != null)
                 {
                     SetActiveObject(interactableObject);
-                    //PushBoxes();
+                    PushBoxes();
                 }
             }
         }
@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
             MoveToPoint(newActiveObject.transform.position);
             navMeshAgent.stoppingDistance = newActiveObject.radius * 0.8f;
         }
+        Debug.Log("toyy");
 
         newActiveObject.SetActive(transform);   
     }
@@ -146,12 +147,12 @@ public class PlayerController : MonoBehaviour
                 
             }
 
-            if (BoxGO != null)
-                BoxGO.transform.parent = this.transform;
+            //if (BoxGO != null)
+                //BoxGO.transform.parent = this.transform;
         }
         else
         {
-            transform.GetChild(0).parent = null;
+            //transform.GetChild(0).parent = null;
             IsGrabed = false;
         }
 

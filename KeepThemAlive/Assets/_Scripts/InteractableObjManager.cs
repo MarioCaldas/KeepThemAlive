@@ -20,6 +20,7 @@ public class InteractableObjManager : MonoBehaviour
     public virtual void Interact()
     {
         Debug.Log("Interacting with " + transform.name);
+        
     }
 
 	void Update ()
@@ -28,7 +29,7 @@ public class InteractableObjManager : MonoBehaviour
         {
             float distance = Vector3.Distance(player.position, transform.position);
 
-            if(distance <= radius)
+            if (distance <= radius)
             {
                 Interact();
                 hasInteracted = true;

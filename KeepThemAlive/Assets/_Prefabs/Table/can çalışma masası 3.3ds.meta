@@ -1,0 +1,298 @@
+fileFormatVersion: 2
+guid: ae5db2fb7e09f8e4d8779e764b724798
+timeCreated: 1521478102
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Boole
+    100002: Boole1
+    100004: Boole2
+    100006: Boole3
+    100008: Boole4
+    100010: Boole_1
+    100012: Boole_2
+    100014: Boole_3
+    100016: //RootNode
+    100018: Cap_1
+    100020: Cap_11
+    100022: Cap_12
+    100024: Cap_13
+    100026: Cap_2
+    100028: Cap_21
+    100030: Cap_22
+    100032: Cap_23
+    100034: Cube
+    100036: Cube_
+    100038: Cube_1
+    100040: Cube_1 1
+    100042: Cube_10
+    100044: Cube_11
+    100046: Cube_12
+    100048: Cube_13
+    100050: Cube_2
+    100052: Cube_2 1
+    100054: Cube_3
+    100056: Cube_3 1
+    100058: Cube_4
+    100060: Cube_5
+    100062: Cube_6
+    100064: Cube_7
+    100066: Cube_8
+    100068: Cube_9
+    100070: Extru
+    100072: Extru1
+    100074: Extrude
+    100076: Extrude_1
+    100078: k__e
+    100080: k__e1
+    100082: k__e_
+    100084: k__e_1
+    100086: Light
+    100088: Light_1
+    100090: Null
+    100092: Null_1
+    100094: Plane
+    400000: Boole
+    400002: Boole1
+    400004: Boole2
+    400006: Boole3
+    400008: Boole4
+    400010: Boole_1
+    400012: Boole_2
+    400014: Boole_3
+    400016: //RootNode
+    400018: Cap_1
+    400020: Cap_11
+    400022: Cap_12
+    400024: Cap_13
+    400026: Cap_2
+    400028: Cap_21
+    400030: Cap_22
+    400032: Cap_23
+    400034: Cube
+    400036: Cube_
+    400038: Cube_1
+    400040: Cube_1 1
+    400042: Cube_10
+    400044: Cube_11
+    400046: Cube_12
+    400048: Cube_13
+    400050: Cube_2
+    400052: Cube_2 1
+    400054: Cube_3
+    400056: Cube_3 1
+    400058: Cube_4
+    400060: Cube_5
+    400062: Cube_6
+    400064: Cube_7
+    400066: Cube_8
+    400068: Cube_9
+    400070: Extru
+    400072: Extru1
+    400074: Extrude
+    400076: Extrude_1
+    400078: k__e
+    400080: k__e1
+    400082: k__e_
+    400084: k__e_1
+    400086: Light
+    400088: Light_1
+    400090: Null
+    400092: Null_1
+    400094: Plane
+    2300000: Boole
+    2300002: Boole1
+    2300004: Boole2
+    2300006: Boole3
+    2300008: Boole4
+    2300010: Boole_1
+    2300012: Boole_2
+    2300014: Boole_3
+    2300016: Cap_1
+    2300018: Cap_12
+    2300020: Cap_2
+    2300022: Cap_22
+    2300024: Cube
+    2300026: Cube_
+    2300028: Cube_1
+    2300030: Cube_1 1
+    2300032: Cube_10
+    2300034: Cube_11
+    2300036: Cube_12
+    2300038: Cube_13
+    2300040: Cube_2
+    2300042: Cube_2 1
+    2300044: Cube_3
+    2300046: Cube_3 1
+    2300048: Cube_4
+    2300050: Cube_5
+    2300052: Cube_6
+    2300054: Cube_7
+    2300056: Cube_8
+    2300058: Cube_9
+    2300060: Extru
+    2300062: Extru1
+    2300064: Extrude
+    2300066: Extrude_1
+    2300068: k__e
+    2300070: k__e1
+    2300072: k__e_
+    2300074: k__e_1
+    2300076: Null
+    2300078: Null_1
+    2300080: Plane
+    3300000: Boole
+    3300002: Boole1
+    3300004: Boole2
+    3300006: Boole3
+    3300008: Boole4
+    3300010: Boole_1
+    3300012: Boole_2
+    3300014: Boole_3
+    3300016: Cap_1
+    3300018: Cap_12
+    3300020: Cap_2
+    3300022: Cap_22
+    3300024: Cube
+    3300026: Cube_
+    3300028: Cube_1
+    3300030: Cube_1 1
+    3300032: Cube_10
+    3300034: Cube_11
+    3300036: Cube_12
+    3300038: Cube_13
+    3300040: Cube_2
+    3300042: Cube_2 1
+    3300044: Cube_3
+    3300046: Cube_3 1
+    3300048: Cube_4
+    3300050: Cube_5
+    3300052: Cube_6
+    3300054: Cube_7
+    3300056: Cube_8
+    3300058: Cube_9
+    3300060: Extru
+    3300062: Extru1
+    3300064: Extrude
+    3300066: Extrude_1
+    3300068: k__e
+    3300070: k__e1
+    3300072: k__e_
+    3300074: k__e_1
+    3300076: Null
+    3300078: Null_1
+    3300080: Plane
+    4300000: Plane
+    4300002: Boole_3
+    4300004: Extru
+    4300006: Cap_1
+    4300008: Cap_2
+    4300010: Extru1
+    4300012: Boole_2
+    4300014: Extrude
+    4300016: Cap_12
+    4300018: Cap_22
+    4300020: Extrude_1
+    4300022: Boole1
+    4300024: Cube_9
+    4300026: Cube_3
+    4300028: Null_1
+    4300030: k__e_1
+    4300032: Boole4
+    4300034: Cube_4
+    4300036: Cube_2
+    4300038: Cube_6
+    4300040: k__e
+    4300042: Boole3
+    4300044: Cube_7
+    4300046: Cube_8
+    4300048: Null
+    4300050: k__e_
+    4300052: Boole2
+    4300054: Cube_10
+    4300056: Cube_11
+    4300058: k__e1
+    4300060: Boole_1
+    4300062: Cube_1
+    4300064: Cube_12
+    4300066: Cube_13
+    4300068: Cube_
+    4300070: Boole
+    4300072: Cube_5
+    4300074: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

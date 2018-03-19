@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Boxes
   - NPC
+  - Object
+  - Desk
+  - Window
   layers:
   - Default
   - TransparentFX

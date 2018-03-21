@@ -6,25 +6,59 @@ using UnityEngine.UI;
 public class ChangeObjects : MonoBehaviour
 {
     public Button substituteButton;
-    string objectTag = "Object";
+    GameObject subButtonGameObject;
+    GameObject objToSwitch, newObjectPrefab;
 
+    string objectTag = "Object";
     string deskTag = "Desk";
     string windowTag = "Window";
+    string metalDeskTag = "MetalDesk";
 
     public Camera mainCamera;
+    public RaycastHit hit;
 
-	void Start ()
+    bool canSwitch = false;
+
+    void Start ()
     {
         Button subButton = substituteButton.GetComponent<Button>();
-        subButton.onClick.AddListener(SubstituteObject);
+        subButton.onClick.AddListener(InstantiateNewObject);
+
+        subButtonGameObject = subButton.gameObject;
+        subButtonGameObject.SetActive(false);
 
         mainCamera = Camera.main;
 	}
 
-    void SubstituteObject()
+    void InstantiateNewObject ()
     {
-     
+        Debug.Log("You can switch ma friend");
+        
+        if(objToSwitch != null)
+        {
+            GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
+            Destroy(objToSwitch);
+        }    
+    }
 
+    public void SwitchObject(RaycastHit hit)
+    {
+        subButtonGameObject.SetActive(true);
+
+        switch (hit.transform.tag)
+        {
+            case "Desk":
+                objToSwitch = hit.transform.gameObject;
+                newObjectPrefab = Resources.Load("DeskMetal") as GameObject;
+                break;
+
+            case "Window": Debug.Log("windooooh");
+                objToSwitch = hit.transform.gameObject;
+
+                break;
+            default:
+                break;
+        }
     }
 
     void Update ()
@@ -32,25 +66,11 @@ public class ChangeObjects : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                ObjectClicked(hit);
+                SwitchObject(hit);
             }
-        }
-    }
-
-    void ObjectClicked(RaycastHit hit)
-    {
-        if(hit.transform.tag == deskTag)
-        {
-            Debug.Log("Desk seu fffffffilho da puta");
-        }
-
-        else if(hit.transform.tag == windowTag)
-        {
-            Debug.Log("Windoooooooooh");
         }
     }
 }

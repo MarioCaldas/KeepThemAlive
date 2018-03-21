@@ -9,6 +9,7 @@ TagManager:
   - Object
   - Desk
   - Window
+  - MetalDesk
   layers:
   - Default
   - TransparentFX

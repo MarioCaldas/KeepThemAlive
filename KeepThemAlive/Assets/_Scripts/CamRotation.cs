@@ -52,14 +52,19 @@ public class CamRotation : MonoBehaviour {
 
     public bool isOnTop = false;
 
-    public bool front, left, back, right;
+    private float camYinitPos;
+
+    private bool diffY = false;
+
+    private Vector3 firstCamPos;
+
+    public Vector3 pos;
+
+    public Quaternion originalRotationValue;
+
+    private bool mouseWhellUp = false;
 
     void Start () {
-
-        front = false;
-        left = false;
-        back = false;
-        right = false;
 
         cam = this.gameObject;
 
@@ -67,7 +72,14 @@ public class CamRotation : MonoBehaviour {
         cam.transform.rotation = Quaternion.Euler(schoolrotInitX, schoolrotInitY, schoolrotInitZ);
 
         changeObjScript = gameManagerObj.GetComponent<ChangeObjects>();
-	}
+
+        camYinitPos = 210f;
+
+        firstCamPos = transform.position;
+
+        originalRotationValue = transform.rotation;
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -130,152 +142,148 @@ public class CamRotation : MonoBehaviour {
         #endregion
 
 
-        Debug.Log(isOnTop);
-
         #region ZOOM
 
-        Vector3 pos = transform.position;
+        pos = transform.position;
         if (isOnTop)
         {
             if (pos.y < 136)
             {
+
+                //diffY = true;
+
                 if (Input.mousePosition.y >= Screen.height - panBorderSpace)
                 {
-                    pos.z -= panSpeed * Time.deltaTime;
+
+                    pos += this.transform.up * Time.deltaTime * panSpeed;
                 }
 
                 if (Input.mousePosition.y <= panBorderSpace)
                 {
-                    pos.z += panSpeed * Time.deltaTime;
+                    pos -= this.transform.up * Time.deltaTime * panSpeed;
+
                 }
 
                 if (Input.mousePosition.x <= panBorderSpace)
                 {
-                    pos.x += panSpeed * Time.deltaTime;
-                }
+                    pos -= this.transform.right * Time.deltaTime * panSpeed;
 
+                }
 
                 if (Input.mousePosition.x >= Screen.width - panBorderSpace)
                 {
-                    pos.x -= panSpeed * Time.deltaTime;
+
+                    pos += this.transform.right * Time.deltaTime * panSpeed;
+
                 }
             }
-            else
+            else if(isOnTop)
             {
+                
+                
                 pos = Vector3.Lerp(transform.position, new Vector3(255, transform.position.y, transform.position.z), 0.02f);
                 pos = Vector3.Lerp(transform.position, new Vector3(255, transform.position.y, 231), 0.02f);
 
+                //cam.y = 210
             }
+
+            if(pos.y > 215)
+            {
+                transform.position = new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z);
+                transform.rotation = originalRotationValue;
+                //voltar a posição inicial
+            }
+ 
+
+
+            Debug.Log(isOnTop);
+            
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
 
             pos.y -= scroll * scrollSpeed * 100 * Time.deltaTime;
 
+
+            Debug.Log("scrool: " + scroll);
+            if(scroll < 0)
+            {
+                mouseWhellUp = true;
+            }
+            else
+            {
+                mouseWhellUp = false;
+            }
             //limites
 
             //pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
             //pos.y = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
-            transform.position = pos;
+            //transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
 
         }
+
         #endregion
 
-        camYpos(pos);
 
 
         if (targetAngleX == -1.5f || targetAngleX == 1.5f)
         {
             isRotatingX = false;
             targetAngleX = 0;
+
         }
 
         if (targetAngleY == 1.5f || targetAngleY == -1.5f)
         {
+            diffY = true;
             isOnTop = true;
+
             isRotatingY = false;
             targetAngleY = 0;
         }
 
+        if(firstCamPos != new Vector3(transform.position.x, transform.position.y, transform.position.z))
+        {
+            diffY = false;
+        }
+
+
+        //if(isOnTop)
+        //{
+        //    diffVector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        //}
+
+
         
         if (targetAngleX != 0 || targetAngleY != 0)
         {
+            //isOnTop = false;
             if (isRotatingX)
             {
                 Rotate(targetObject.transform);
+
             }
             else if (isRotatingY)
             {
+
                 Rotate(targetObject.transform);
+
             }
         }
 
-        //Debug.Log("cam rot" + cam.transform.localEulerAngles.y);
+        Debug.Log("cam pos :" + firstCamPos);
 
-    }
-
-    private void RTScam(Vector3 pos)
-    {
-        //if(front)
+        //if(ChangeView.extButtonPressed)
         //{
-        //    pos.z -= panSpeed * Time.deltaTime;
+        //    transform.position = Vector3.Lerp(transform.position, new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z), 0.02f);
+        //    transform.LookAt(target);
         //}
- 
-
-
-    }
-
-
-    void camYpos(Vector3 pos)
-    {
-        if (cam.transform.eulerAngles.y >= 180 && cam.transform.eulerAngles.y <= 181)
-        {
-            front = true;
-            left = false;
-            back = false;
-            right = false;
-
-
-            Debug.Log("front: " + front);
-        }
-
-        else if (cam.transform.eulerAngles.y >= 90 && cam.transform.eulerAngles.y <= 91)
-        {
-            front = false;
-            left = false;
-            back = false;
-            right = true;
-
-            Debug.Log("right: " + right);
-
-
-        }
-
-        else if (cam.transform.eulerAngles.y >= 0 && cam.transform.eulerAngles.y <= 1)
-        {
-            front = false;
-            left = false;
-            back = true;
-            right = false;
-
-
-            Debug.Log("back: " + back);
-
-        }
-
-        else if (cam.transform.eulerAngles.y >= 270 && cam.transform.eulerAngles.y <= 271)
-        {
-            front = false;
-            left = true;
-            back = false;
-            right = false;
-
-            Debug.Log("left: " + left);
-
-
-        }
-
-
+        transform.position = pos;
+        //if (pos.y < 215)
+        //{
+        //    transform.position = pos;
+        //}
     }
 
 
@@ -296,10 +304,23 @@ public class CamRotation : MonoBehaviour {
             transform.RotateAround(target.transform.position, transform.right, rotationAmountY);
             targetAngleY += rotationAmountY;
         }
-        else if(targetAngleY >= 0)
+        //button ext pressed
+        else if (targetAngleY >= 0)
         {
-            transform.RotateAround(target.transform.position, transform.right, -rotationAmountY);
+
+
+            //colocar camera no ponto Y original
+            //transform.position = Vector3.Lerp(transform.position, new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z), 0.02f);
+
+            if (diffY)
+            {
+                transform.RotateAround(target.transform.position, transform.right, -rotationAmountY);
+            }
+
+
             targetAngleY -= rotationAmountY;
+
+            Debug.Log("este");
         }
     }
 

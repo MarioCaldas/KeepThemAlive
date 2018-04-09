@@ -50,7 +50,7 @@ public class CamRotation : MonoBehaviour {
 
     public float scrollSpeed = 20f;
 
-    public bool isOnTop = false;
+    public static bool isOnTop = false;
 
     private float camYinitPos;
 
@@ -187,12 +187,6 @@ public class CamRotation : MonoBehaviour {
                 //cam.y = 210
             }
 
-            if(pos.y > 215)
-            {
-                transform.position = new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z);
-                transform.rotation = originalRotationValue;
-                //voltar a posição inicial
-            }
  
 
 
@@ -219,6 +213,7 @@ public class CamRotation : MonoBehaviour {
             //pos.y = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
             //transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
+            transform.position = pos;
 
         }
 
@@ -248,12 +243,6 @@ public class CamRotation : MonoBehaviour {
         }
 
 
-        //if(isOnTop)
-        //{
-        //    diffVector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-        //}
-
 
         
         if (targetAngleX != 0 || targetAngleY != 0)
@@ -272,18 +261,17 @@ public class CamRotation : MonoBehaviour {
             }
         }
 
-        Debug.Log("cam pos :" + firstCamPos);
 
-        //if(ChangeView.extButtonPressed)
-        //{
-        //    transform.position = Vector3.Lerp(transform.position, new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z), 0.02f);
-        //    transform.LookAt(target);
-        //}
-        transform.position = pos;
-        //if (pos.y < 215)
-        //{
-        //    transform.position = pos;
-        //}
+        if(isOnTop && ChangeView.extButtonPressed)
+        {
+            transform.position = firstCamPos;
+            transform.rotation = originalRotationValue;
+
+            Debug.Log("cWEWEAFASD");
+
+        }
+
+
     }
 
 
@@ -320,7 +308,7 @@ public class CamRotation : MonoBehaviour {
 
             targetAngleY -= rotationAmountY;
 
-            Debug.Log("este");
+
         }
     }
 

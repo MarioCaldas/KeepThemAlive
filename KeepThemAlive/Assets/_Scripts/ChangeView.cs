@@ -45,6 +45,7 @@ public class ChangeView : MonoBehaviour {
 
         intButtonPressed = true;
 
+        extButtonPressed = false;
 
     }
 
@@ -60,7 +61,7 @@ public class ChangeView : MonoBehaviour {
         camRotScript.isRotatingY = true;
         camRotScript.UpDownMode--;
 
-       
+
 
 
     }

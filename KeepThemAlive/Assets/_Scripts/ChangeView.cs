@@ -39,8 +39,11 @@ public class ChangeView : MonoBehaviour {
         roof.SetActive(false);
 
         camRotScript.targetAngleY -= 91.5f;
+
         //camRotScript.Zooming = 70;
+
         camRotScript.isRotatingY = true;
+
         camRotScript.UpDownMode++;
 
         intButtonPressed = true;
@@ -58,12 +61,10 @@ public class ChangeView : MonoBehaviour {
         camRotScript.targetAngleY += 91.5f;
 
         //camRotScript.Zooming = -70;
-        camRotScript.isRotatingY = true;
+
+        //camRotScript.isRotatingY = true;
+
         camRotScript.UpDownMode--;
-
-
-
-
     }
 
 

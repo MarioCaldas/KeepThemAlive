@@ -142,6 +142,11 @@ public class CamRotation : MonoBehaviour {
         #endregion
 
 
+        Debug.Log("isRotatingY " + isRotatingY);
+
+        Debug.Log("isRotatingX " + isRotatingX);
+
+
         #region ZOOM
 
         pos = transform.position;
@@ -186,9 +191,6 @@ public class CamRotation : MonoBehaviour {
 
                 //cam.y = 210
             }
-
- 
-
 
             Debug.Log(isOnTop);
             
@@ -264,11 +266,9 @@ public class CamRotation : MonoBehaviour {
 
         if(isOnTop && ChangeView.extButtonPressed)
         {
+            isRotatingY = false;
             transform.position = firstCamPos;
             transform.rotation = originalRotationValue;
-
-            Debug.Log("cWEWEAFASD");
-
         }
 
 

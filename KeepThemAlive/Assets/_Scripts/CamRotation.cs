@@ -89,26 +89,27 @@ public class CamRotation : MonoBehaviour {
         #region INPUTS
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotatingX && !isRotatingY)
             {
-                Debug.Log("ESQUERDA");
 
-                if (transform.forward != -Vector3.up)
-                {
+                //if (transform.forward != -Vector3.up)
+                //{
+                    Debug.Log("ESQUERDA");
+
                     targetAngleX += 91.5f;
                     isRotatingX = true;
-
                 
-                }
+                //}
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY)
             {
-                Debug.Log("DIREITA");
 
-                if (transform.forward != -Vector3.up)
-                {
+                //if (transform.forward != -Vector3.up)
+                //{
+                    Debug.Log("DIREITA");
+
                     targetAngleX -= 91.5f;
                     isRotatingX = true;
                 
-                }
+                //}
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX)
             {
@@ -142,9 +143,9 @@ public class CamRotation : MonoBehaviour {
         #endregion
 
 
-        Debug.Log("isRotatingY " + isRotatingY);
+        //Debug.Log("isRotatingY " + isRotatingY);
 
-        Debug.Log("isRotatingX " + isRotatingX);
+        //Debug.Log("isRotatingX " + isRotatingX);
 
 
         #region ZOOM
@@ -200,7 +201,7 @@ public class CamRotation : MonoBehaviour {
             pos.y -= scroll * scrollSpeed * 100 * Time.deltaTime;
 
 
-            Debug.Log("scrool: " + scroll);
+
             if(scroll < 0)
             {
                 mouseWhellUp = true;
@@ -245,13 +246,16 @@ public class CamRotation : MonoBehaviour {
         }
 
 
+        Debug.Log("isRotatingX: " + isRotatingX);
 
-        
+
         if (targetAngleX != 0 || targetAngleY != 0)
         {
+
             //isOnTop = false;
             if (isRotatingX)
             {
+                Debug.Log("ola");
                 Rotate(targetObject.transform);
 
             }
@@ -279,16 +283,21 @@ public class CamRotation : MonoBehaviour {
     {
         if (targetAngleX > 0)
         {
+            Debug.Log("1");
             transform.RotateAround(target.transform.position, transform.up, rotationAmount);
             targetAngleX -= rotationAmount;
         }
         else if (targetAngleX < 0)
         {
+            Debug.Log("2");
+
             transform.RotateAround(target.transform.position, transform.up, -rotationAmount);
             targetAngleX += rotationAmount;
         }
         else if (targetAngleY < 0)
         {
+            Debug.Log("3");
+
             transform.RotateAround(target.transform.position, transform.right, rotationAmountY);
             targetAngleY += rotationAmountY;
         }
@@ -296,6 +305,7 @@ public class CamRotation : MonoBehaviour {
         else if (targetAngleY >= 0)
         {
 
+            Debug.Log("4");
 
             //colocar camera no ponto Y original
             //transform.position = Vector3.Lerp(transform.position, new Vector3(firstCamPos.x, firstCamPos.y, firstCamPos.z), 0.02f);

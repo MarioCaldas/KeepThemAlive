@@ -10,18 +10,32 @@ public class ChangeView : MonoBehaviour {
     public Button resetViewButton;
     
     public GameObject roof;
-
     public GameObject Cam;
+    Vector3 ResetedCamPos;
+    Quaternion ResetedCamRot;
 
-    private CamRotation camRotScript;
+    //private CamRotation camRotScript;
     private CameraRotation CameraRotation;
 
-    public static bool intButtonPressed = false;
+    bool TurnOffRoof;
+    bool TurnOnRoof;
 
-    public static bool extButtonPressed = false;
+    Color cor;
 
-	void Start ()
+    //public static bool intButtonPressed = false;
+
+    //public static bool extButtonPressed = false;
+
+    void Start ()
     {
+        ResetedCamPos = Cam.transform.position;
+        ResetedCamRot = Cam.transform.rotation;
+
+        TurnOffRoof = false;
+        TurnOnRoof = false;
+
+        cor = roof.GetComponent<Renderer>().material.color;
+
         Button intButton = buttonIntView.GetComponent<Button>();
         Button extButton = buttonExtView.GetComponent<Button>();
         Button resetButton = resetViewButton.GetComponent<Button>();
@@ -30,20 +44,22 @@ public class ChangeView : MonoBehaviour {
         extButton.onClick.AddListener(ChangeExtView);
         resetButton.onClick.AddListener(ResetIntCamera);
 
-        camRotScript = Cam.GetComponent<CamRotation>();
+        //camRotScript = Cam.GetComponent<CamRotation>();
         CameraRotation = Cam.GetComponent<CameraRotation>();
 
     }
 	
     void ChangeIntView()
     {
-        //roof.SetActive(false);
-
         // LIMPEZA, DASS -.-'
-
-        //camRotScript.targetAngleY -= 91.5f;
         CameraRotation.setTargetAngleY(-91.5f);
-        SetMaterialTransparent();
+        TurnOffRoof = true;
+        
+        //roof.SetActive(false);
+        
+        //camRotScript.targetAngleY -= 91.5f;
+        
+        //SetMaterialTransparent();
 
         //camRotScript.Zooming = 70;
 
@@ -53,18 +69,21 @@ public class ChangeView : MonoBehaviour {
 
 
         // PARA QUE ISTO???
-        intButtonPressed = true;
+        //intButtonPressed = true;
 
-        extButtonPressed = false;
+        //extButtonPressed = false;
     }
 
     void ChangeExtView()
     {
+        CameraRotation.setTargetAngleY(91.5f);
+        roof.SetActive(true);
+        TurnOnRoof = true;
+
         //roof.SetActive(true);
 
         //camRotScript.targetAngleY += 91.5f;
-        CameraRotation.setTargetAngleY(91.5f);
-        SetMaterialOpaque();
+        
         //camRotScript.Zooming = -70;
 
         //camRotScript.isRotatingY = true;
@@ -72,52 +91,58 @@ public class ChangeView : MonoBehaviour {
         //camRotScript.UpDownMode--;
 
         // nao devia ter um "intButtonPressed = false;" ?????????????
-        extButtonPressed = true;
+        //extButtonPressed = true;
     }
 
 
     void ResetIntCamera()
     {
-
+        // Funciona!!!
+        Cam.transform.position = ResetedCamPos;
+        Cam.transform.rotation = ResetedCamRot;
+        CameraRotation.SetUpDownMode(0);
+        roof.SetActive(true);
+        // Algo errado não está certo
+        TurnOffRoof = false;
+        TurnOnRoof = true;
     }
 
     void Update ()
     {
-
+        if (TurnOffRoof)
+        {
+            SetMaterialTransparent();
+        }
+        else if (TurnOnRoof)
+        {
+            SetMaterialOpaque();
+        }
     }
 
-    
-
+    #region Transparecy
     private void SetMaterialTransparent()
     {
-        foreach (Material m in roof.GetComponent<Renderer>().materials)
+        // Desvanecer para desaparecer
+        cor.a -= 0.02f;
+        roof.transform.GetComponent<Renderer>().material.color = cor;
+
+        if (cor.a <= 0)
         {
-            // AQUI É SO FAZER UMA VARIAVEL DE SOMA DE X EM X TEMPO
-            Color cor = roof.GetComponent<Renderer>().material.color;
-            cor.a = 0;
-            roof.transform.GetComponent<Renderer>().material.color = cor;
+            TurnOffRoof = false;
+            roof.SetActive(false);
         }
     }
 
     private void SetMaterialOpaque()
     {
+        // Desvanecer para aparecer
+        cor.a += 0.02f;
+        roof.transform.GetComponent<Renderer>().material.color = cor;
 
-        foreach (Material m in roof.GetComponent<Renderer>().materials)
+        if (cor.a >= 1)
         {
-            m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-
-            m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-
-            m.SetInt("_ZWrite", 1);
-
-            m.DisableKeyword("_ALPHATEST_ON");
-
-            m.DisableKeyword("_ALPHABLEND_ON");
-
-            m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-
-            m.renderQueue = -1;
+            TurnOnRoof = false;
         }
     }
- 
+    #endregion
 }

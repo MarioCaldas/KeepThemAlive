@@ -247,12 +247,12 @@ public class CamRotation : MonoBehaviour {
         }
 
 
-        if(isOnTop && ChangeView.extButtonPressed)
-        {
-            isRotatingY = false;
-            transform.position = firstCamPos;
-            transform.rotation = originalRotationValue;
-        }
+        //if(isOnTop && ChangeView.extButtonPressed)
+        //{
+        //    isRotatingY = false;
+        //    transform.position = firstCamPos;
+        //    transform.rotation = originalRotationValue;
+        //}
 
 
     }

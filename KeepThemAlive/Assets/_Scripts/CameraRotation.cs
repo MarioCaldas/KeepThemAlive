@@ -22,7 +22,7 @@ public class CameraRotation : MonoBehaviour {
 	
 	void Update ()
     {
-        #region INPUTS
+        #region Inputs
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotatingX && !isRotatingY)
         {
             if (UpDownMode == 0)
@@ -115,18 +115,29 @@ public class CameraRotation : MonoBehaviour {
     #region SetValeusAngles
     public void setTargetAngleY(float valeu)
     {
-        if (valeu < 0)
+        if (valeu < 0 && UpDownMode == 0)
+        {
             UpDownMode++;
-        else
+            targetAngleY = valeu;
+            isRotatingY = true;
+        }
+        else if(valeu > 0 && UpDownMode == 1)
+        {
             UpDownMode--;
-
-        targetAngleY = valeu;
-        isRotatingY = true;
+            targetAngleY = valeu;
+            isRotatingY = true;
+        }
     }
+       
     public void setTargetAngleX(float valeu)
     {
         targetAngleX = valeu;
         isRotatingX = true;
+    }
+
+    public void SetUpDownMode(int valeu)
+    {
+        UpDownMode = valeu;
     }
     #endregion
 }

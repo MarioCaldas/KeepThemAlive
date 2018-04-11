@@ -8,13 +8,13 @@ public class ChangeView : MonoBehaviour {
     public Button buttonIntView;
     public Button buttonExtView;
     public Button resetViewButton;
-
-
+    
     public GameObject roof;
 
     public GameObject Cam;
 
     private CamRotation camRotScript;
+    private CameraRotation CameraRotation;
 
     public static bool intButtonPressed = false;
 
@@ -31,40 +31,48 @@ public class ChangeView : MonoBehaviour {
         resetButton.onClick.AddListener(ResetIntCamera);
 
         camRotScript = Cam.GetComponent<CamRotation>();
+        CameraRotation = Cam.GetComponent<CameraRotation>();
 
     }
 	
     void ChangeIntView()
     {
-        roof.SetActive(false);
+        //roof.SetActive(false);
 
-        camRotScript.targetAngleY -= 91.5f;
+        // LIMPEZA, DASS -.-'
+
+        //camRotScript.targetAngleY -= 91.5f;
+        CameraRotation.setTargetAngleY(-91.5f);
+        SetMaterialTransparent();
 
         //camRotScript.Zooming = 70;
 
-        camRotScript.isRotatingY = true;
+        //camRotScript.isRotatingY = true;
 
-        camRotScript.UpDownMode++;
+        //camRotScript.UpDownMode++;
 
+
+        // PARA QUE ISTO???
         intButtonPressed = true;
 
         extButtonPressed = false;
-
     }
 
     void ChangeExtView()
     {
-        roof.SetActive(true);
+        //roof.SetActive(true);
 
-        extButtonPressed = true;
-
-        camRotScript.targetAngleY += 91.5f;
-
+        //camRotScript.targetAngleY += 91.5f;
+        CameraRotation.setTargetAngleY(91.5f);
+        SetMaterialOpaque();
         //camRotScript.Zooming = -70;
 
         //camRotScript.isRotatingY = true;
 
-        camRotScript.UpDownMode--;
+        //camRotScript.UpDownMode--;
+
+        // nao devia ter um "intButtonPressed = false;" ?????????????
+        extButtonPressed = true;
     }
 
 
@@ -77,4 +85,39 @@ public class ChangeView : MonoBehaviour {
     {
 
     }
+
+    
+
+    private void SetMaterialTransparent()
+    {
+        foreach (Material m in roof.GetComponent<Renderer>().materials)
+        {
+            // AQUI É SO FAZER UMA VARIAVEL DE SOMA DE X EM X TEMPO
+            Color cor = roof.GetComponent<Renderer>().material.color;
+            cor.a = 0;
+            roof.transform.GetComponent<Renderer>().material.color = cor;
+        }
+    }
+
+    private void SetMaterialOpaque()
+    {
+
+        foreach (Material m in roof.GetComponent<Renderer>().materials)
+        {
+            m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+
+            m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+
+            m.SetInt("_ZWrite", 1);
+
+            m.DisableKeyword("_ALPHATEST_ON");
+
+            m.DisableKeyword("_ALPHABLEND_ON");
+
+            m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+
+            m.renderQueue = -1;
+        }
+    }
+ 
 }

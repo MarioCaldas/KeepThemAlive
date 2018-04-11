@@ -81,72 +81,53 @@ public class CamRotation : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
-
-
         #region INPUTS
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotatingX && !isRotatingY)
-            {
-
+        {
                 //if (transform.forward != -Vector3.up)
                 //{
                     Debug.Log("ESQUERDA");
 
                     targetAngleX += 91.5f;
                     isRotatingX = true;
-                
                 //}
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY)
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY)
+        {
+            //if (transform.forward != -Vector3.up)
+            //{
+                Debug.Log("DIREITA");
+
+                targetAngleX -= 91.5f;
+                isRotatingX = true;
+            //}
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX)
+        {
+            Debug.Log("UP");
+            
+            if (UpDownMode == 0)
             {
-
-                //if (transform.forward != -Vector3.up)
-                //{
-                    Debug.Log("DIREITA");
-
-                    targetAngleX -= 91.5f;
-                    isRotatingX = true;
-                
-                //}
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX)
+                targetAngleY -= 91.5f;
+                isRotatingY = true;
+                UpDownMode++;
+            }  
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX)
+        {
+            Debug.Log("DOWN");
+            
+            if (UpDownMode == 1)
             {
-                Debug.Log("UP");
-
-             
-                if (UpDownMode == 0)
-                {
-                    targetAngleY -= 91.5f;
-                    isRotatingY = true;
-                    UpDownMode++;
-
-
-                }
-                
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX)
-            {
-                Debug.Log("DOWN");
-
-                
-                if (UpDownMode == 1)
-                {
-                    targetAngleY += 91.5f;
-                    isRotatingY = true;
-                    UpDownMode--;
-                }
-                
-            }
+                targetAngleY += 91.5f;
+                isRotatingY = true;
+                UpDownMode--;
+            }  
+        }
 
         #endregion
-
-
-        //Debug.Log("isRotatingY " + isRotatingY);
-
-        //Debug.Log("isRotatingX " + isRotatingX);
-
 
         #region ZOOM
 
@@ -155,7 +136,6 @@ public class CamRotation : MonoBehaviour {
         {
             if (pos.y < 136)
             {
-
                 //diffY = true;
 
                 if (Input.mousePosition.y >= Screen.height - panBorderSpace)
@@ -217,18 +197,17 @@ public class CamRotation : MonoBehaviour {
 
             //transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
             transform.position = pos;
-
         }
 
         #endregion
 
-
-
+        //Debug.Log("isRotatingY " + isRotatingY);
+        //Debug.Log("isRotatingX " + isRotatingX);
+        
         if (targetAngleX == -1.5f || targetAngleX == 1.5f)
         {
             isRotatingX = false;
             targetAngleX = 0;
-
         }
 
         if (targetAngleY == 1.5f || targetAngleY == -1.5f)
@@ -278,7 +257,6 @@ public class CamRotation : MonoBehaviour {
 
     }
 
-
     protected void Rotate(Transform target)
     {
         if (targetAngleX > 0)
@@ -314,14 +292,8 @@ public class CamRotation : MonoBehaviour {
             {
                 transform.RotateAround(target.transform.position, transform.right, -rotationAmountY);
             }
-
-
+            
             targetAngleY -= rotationAmountY;
-
-
         }
     }
-
-    
-
 }

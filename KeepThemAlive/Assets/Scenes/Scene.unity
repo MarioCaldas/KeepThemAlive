@@ -24165,7 +24165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &767567181
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64396,6 +64396,7 @@ GameObject:
   - component: {fileID: 1917374043}
   - component: {fileID: 1917374044}
   - component: {fileID: 1917374045}
+  - component: {fileID: 1917374046}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -64466,13 +64467,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1917374037}
-  m_LocalRotation: {x: -0, y: -0.7687292, z: 0.6395744, w: 0}
-  m_LocalPosition: {x: 35.6, y: 18.5, z: 22.7}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 252.4, y: 18.5, z: 437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 79.520004, y: -180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1917374043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64503,7 +64504,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1917374037}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2d53f99d985b9044a299a20e64d7963, type: 3}
   m_Name: 
@@ -64527,6 +64528,18 @@ MonoBehaviour:
   scrollSpeed: 20
   pos: {x: 0, y: 0, z: 0}
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1917374046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917374037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45ad0add454754439efa0e400e7518c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  School: {fileID: 480880161}
 --- !u!1 &1918507976
 GameObject:
   m_ObjectHideFlags: 0

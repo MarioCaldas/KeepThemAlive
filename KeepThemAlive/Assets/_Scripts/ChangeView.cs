@@ -123,25 +123,31 @@ public class ChangeView : MonoBehaviour {
     private void SetMaterialTransparent()
     {
         // Desvanecer para desaparecer
-        cor.a -= 0.02f;
-        roof.transform.GetComponent<Renderer>().material.color = cor;
 
         if (cor.a <= 0)
         {
             TurnOffRoof = false;
             roof.SetActive(false);
         }
+        else
+        {
+            cor.a -= 0.02f;
+            roof.transform.GetComponent<Renderer>().material.color = cor;
+        }
     }
 
     private void SetMaterialOpaque()
     {
         // Desvanecer para aparecer
-        cor.a += 0.02f;
-        roof.transform.GetComponent<Renderer>().material.color = cor;
 
         if (cor.a >= 1)
         {
             TurnOnRoof = false;
+        }
+        else
+        {
+            cor.a += 0.02f;
+            roof.transform.GetComponent<Renderer>().material.color = cor;
         }
     }
     #endregion

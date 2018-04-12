@@ -166,7 +166,8 @@ public class CamRotation : MonoBehaviour {
             else if(isOnTop)
             {
                 
-                
+                // WTF????????????????????????????
+                // DOIS IF'S IGUAIS???
                 pos = Vector3.Lerp(transform.position, new Vector3(255, transform.position.y, transform.position.z), 0.02f);
                 pos = Vector3.Lerp(transform.position, new Vector3(255, transform.position.y, 231), 0.02f);
 

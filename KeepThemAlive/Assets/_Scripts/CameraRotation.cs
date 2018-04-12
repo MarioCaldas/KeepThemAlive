@@ -14,6 +14,9 @@ public class CameraRotation : MonoBehaviour {
     Transform cam;
     public Transform School;
 
+    private float Zooming = 0;
+    int ZoomMode = 0;
+
 
     void Start ()
     {
@@ -52,15 +55,43 @@ public class CameraRotation : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX)
         {
-            if (UpDownMode == 1)
+            if (UpDownMode == 1 && ZoomMode != 2)
             {
                 Debug.Log("DOWN");
 
                 setTargetAngleY(91.5f);
             }
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            if (ZoomMode == 0)
+            {
+                Zooming = 80;
+                ZoomMode++;
+            }
+            else if (ZoomMode == 1 && UpDownMode == 1 && Zooming == 0)
+            {
+                Zooming = 80;
+                ZoomMode++;
+            }
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            
+            if (ZoomMode == 2 && UpDownMode == 1)
+            {
+                Zooming = -80;
+                ZoomMode--;
+            }
+            else if (ZoomMode == 1 && Zooming == 0)
+            {
+                Zooming = -80;
+                ZoomMode--;
+            }
+        }
 
         #endregion
+        Debug.Log("Zoooom: " + ZoomMode);
 
         if (targetAngleX == -rotationAmountX || targetAngleX == rotationAmountX)
         {
@@ -84,6 +115,11 @@ public class CameraRotation : MonoBehaviour {
             {
                 Rotate(School.transform);
             }
+        }
+
+        if (Zooming != 0)
+        {
+            Zoom();
         }
     }
 
@@ -112,6 +148,22 @@ public class CameraRotation : MonoBehaviour {
         }
     }
 
+    protected void Zoom()
+    {
+        if (Zooming > 0)
+        {
+            // ZOOM IN
+            transform.position += transform.forward * 2;
+            Zooming -= 2f;
+        }
+        else if (Zooming < 0)
+        {
+            // ZOOM OUT
+            transform.position -= transform.forward * 2;
+            Zooming += 2f;
+        }
+    }
+
     #region SetValeusAngles
     public void setTargetAngleY(float valeu)
     {
@@ -121,7 +173,7 @@ public class CameraRotation : MonoBehaviour {
             targetAngleY = valeu;
             isRotatingY = true;
         }
-        else if(valeu > 0 && UpDownMode == 1)
+        else if(valeu > 0 && UpDownMode == 1 && Zooming != 2)
         {
             UpDownMode--;
             targetAngleY = valeu;

@@ -6,18 +6,20 @@ public class CameraRotation : MonoBehaviour {
 
     private float targetAngleX = 0;
     private float targetAngleY = 0;
+    private float Zooming = 0;
     bool isRotatingX = false;
     bool isRotatingY = false;
+    bool CenterCam = false;
     const float rotationAmountX = 1.5f;
     const float rotationAmountY = 1.5f;
+    const float panBorderSpace = 20f;
+    const float panSpeed = 35f;
     private int UpDownMode = 0;
-    Transform cam;
+    private int ZoomMode = 0;
+    private Vector3 CamCentered;
+    
     public Transform School;
-
-    private float Zooming = 0;
-    int ZoomMode = 0;
-
-
+    
     void Start ()
     {
 
@@ -73,25 +75,51 @@ public class CameraRotation : MonoBehaviour {
             {
                 Zooming = 80;
                 ZoomMode++;
+                CamCentered = transform.position;
+                CamCentered.y = 62.53441f;
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
+            // Aqui têm de checar se a camera esta centrada se nao recentra
             
-            if (ZoomMode == 2 && UpDownMode == 1)
+            if (ZoomMode == 2 && UpDownMode == 1 && transform.position == CamCentered)
             {
                 Zooming = -80;
                 ZoomMode--;
+            }
+            else if (ZoomMode == 2 && UpDownMode == 1 && transform.position != CamCentered)
+            {
+                // se nao tiver centrada!!!
+                CenterCam = true;
             }
             else if (ZoomMode == 1 && Zooming == 0)
             {
                 Zooming = -80;
                 ZoomMode--;
             }
+            
         }
-
+        if (ZoomMode == 2)
+        {
+            if (Input.mousePosition.y >= Screen.height - panBorderSpace)
+            {
+                transform.position += this.transform.up * Time.deltaTime * panSpeed;
+            }
+            else if (Input.mousePosition.y <= panBorderSpace)
+            {
+                transform.position -= this.transform.up * Time.deltaTime * panSpeed;
+            }
+            else if (Input.mousePosition.x <= panBorderSpace)
+            {
+                transform.position -= this.transform.right * Time.deltaTime * panSpeed;
+            }
+            else if (Input.mousePosition.x >= Screen.width - panBorderSpace)
+            {
+                transform.position += this.transform.right * Time.deltaTime * panSpeed;
+            }
+        }
         #endregion
-        Debug.Log("Zoooom: " + ZoomMode);
 
         if (targetAngleX == -rotationAmountX || targetAngleX == rotationAmountX)
         {
@@ -120,6 +148,11 @@ public class CameraRotation : MonoBehaviour {
         if (Zooming != 0)
         {
             Zoom();
+        }
+
+        if (CenterCam)
+        {
+            Center();
         }
     }
 
@@ -161,6 +194,20 @@ public class CameraRotation : MonoBehaviour {
             // ZOOM OUT
             transform.position -= transform.forward * 2;
             Zooming += 2f;
+        }
+    }
+
+    protected void Center()
+    {
+        if (transform.position != CamCentered)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.5f);
+        }
+        else
+        {
+            CenterCam = false;
+            Zooming = -80;
+            ZoomMode--;
         }
     }
 

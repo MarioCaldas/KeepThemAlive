@@ -10,6 +10,7 @@ public class CameraRotation : MonoBehaviour {
     bool isRotatingX = false;
     bool isRotatingY = false;
     bool CenterCam = false;
+    public bool IntView = false;
     const float rotationAmountX = 1.5f;
     const float rotationAmountY = 1.5f;
     const float panBorderSpace = 20f;
@@ -71,7 +72,7 @@ public class CameraRotation : MonoBehaviour {
                 Zooming = 80;
                 ZoomMode++;
             }
-            else if (ZoomMode == 1 && UpDownMode == 1 && Zooming == 0)
+            else if (ZoomMode == 1 && UpDownMode == 1 && Zooming == 0 && IntView)
             {
                 Zooming = 80;
                 ZoomMode++;
@@ -201,7 +202,7 @@ public class CameraRotation : MonoBehaviour {
     {
         if (transform.position != CamCentered)
         {
-            transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.5f);
+            transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.75f);
         }
         else
         {
@@ -237,6 +238,11 @@ public class CameraRotation : MonoBehaviour {
     public void SetUpDownMode(int valeu)
     {
         UpDownMode = valeu;
+    }
+
+    public void SetZoomMode(int valeu)
+    {
+        ZoomMode = valeu;
     }
     #endregion
 }

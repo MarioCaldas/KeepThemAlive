@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ChangeObjects : MonoBehaviour
 {
+    List<Objects> ListObj;
+    MoneyManager Money;
+    int CostAux = 0;
+
     public Button substituteButton;
     GameObject subButtonGameObject;
     GameObject objToSwitch, newObjectPrefab;
@@ -18,46 +22,67 @@ public class ChangeObjects : MonoBehaviour
     public RaycastHit hit;
 
     bool canSwitch = false;
+    
 
     void Start ()
     {
+        Money = transform.GetComponent<MoneyManager>();
+        ListObj = new List<Objects>();
+        AddList();
+
         Button subButton = substituteButton.GetComponent<Button>();
         subButton.onClick.AddListener(InstantiateNewObject);
 
         subButtonGameObject = subButton.gameObject;
-        subButtonGameObject.SetActive(false);
+        //subButtonGameObject.SetActive(false);
 
         mainCamera = Camera.main;
 	}
 
-    void InstantiateNewObject ()
+    void InstantiateNewObject()
     {
-        Debug.Log("You can switch ma friend");
-        
-        if(objToSwitch != null)
+        if (objToSwitch != null)
         {
-            GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
-            Destroy(objToSwitch);
-        }    
+            if (Money.CanBuy(CostAux))
+            {
+                Money.BuySomething(CostAux);
+                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
+                Destroy(objToSwitch);
+            }
+        }
     }
 
     public void SwitchObject(RaycastHit hit)
     {
-        subButtonGameObject.SetActive(true);
+        //subButtonGameObject.SetActive(true);
 
-        switch (hit.transform.tag)
+        //switch (hit.transform.tag)
+        //{
+        //    case "Desk":
+        //        objToSwitch = hit.transform.gameObject;
+        //        newObjectPrefab = Resources.Load("DeskMetal") as GameObject;
+        //        break;
+
+        //    case "Window": Debug.Log("windooooh");
+        //        objToSwitch = hit.transform.gameObject;
+
+        //        break;
+        //    default:
+        //        break;
+        //}
+
+
+        // Numa lista com todos os elementos pre-colocados procura-se o que tem a tag x
+        // este foreach funciona para todos....
+        foreach (Objects ScriptObj in ListObj)
         {
-            case "Desk":
+            if (ScriptObj.GetTag() == hit.transform.tag)
+            {
+                // ESTE É O NOSSO OBJECTO, AGORA ACEDO A TUDO DELE;
                 objToSwitch = hit.transform.gameObject;
-                newObjectPrefab = Resources.Load("DeskMetal") as GameObject;
-                break;
-
-            case "Window": Debug.Log("windooooh");
-                objToSwitch = hit.transform.gameObject;
-
-                break;
-            default:
-                break;
+                newObjectPrefab = ScriptObj.GetGO();
+                CostAux = ScriptObj.GetCost();
+            }
         }
     }
 
@@ -72,5 +97,21 @@ public class ChangeObjects : MonoBehaviour
                 SwitchObject(hit);
             }
         }
+    }
+
+    void AddList()
+    {
+        Objects objScript = new Objects();
+        objScript.SetCost(100);
+        objScript.SetGO(Resources.Load("DeskMetal") as GameObject);
+        objScript.SetTag("Desk");
+        ListObj.Add(objScript);
+
+        /*
+        objScript.SetCost(35);
+        objScript.SetGO(Resources.Load("DeskMetal") as GameObject);
+        objScript.SetTag("Window");
+        ListObj.Add(objScript);
+        */
     }
 }

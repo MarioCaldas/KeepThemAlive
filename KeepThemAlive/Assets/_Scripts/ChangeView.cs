@@ -13,18 +13,13 @@ public class ChangeView : MonoBehaviour {
     public GameObject Cam;
     Vector3 ResetedCamPos;
     Quaternion ResetedCamRot;
-
-    //private CamRotation camRotScript;
+    
     private CameraRotation CameraRotation;
 
     bool TurnOffRoof;
     bool TurnOnRoof;
 
     Color cor;
-
-    //public static bool intButtonPressed = false;
-
-    //public static bool extButtonPressed = false;
 
     void Start ()
     {
@@ -44,65 +39,34 @@ public class ChangeView : MonoBehaviour {
         extButton.onClick.AddListener(ChangeExtView);
         resetButton.onClick.AddListener(ResetIntCamera);
 
-        //camRotScript = Cam.GetComponent<CamRotation>();
         CameraRotation = Cam.GetComponent<CameraRotation>();
 
     }
 	
     void ChangeIntView()
     {
-        // LIMPEZA, DASS -.-'
         CameraRotation.setTargetAngleY(-91.5f);
+        CameraRotation.IntView = true;
         TurnOffRoof = true;
-        
-        //roof.SetActive(false);
-        
-        //camRotScript.targetAngleY -= 91.5f;
-        
-        //SetMaterialTransparent();
-
-        //camRotScript.Zooming = 70;
-
-        //camRotScript.isRotatingY = true;
-
-        //camRotScript.UpDownMode++;
-
-
-        // PARA QUE ISTO???
-        //intButtonPressed = true;
-
-        //extButtonPressed = false;
     }
 
     void ChangeExtView()
     {
         CameraRotation.setTargetAngleY(91.5f);
+        CameraRotation.IntView = false;
         roof.SetActive(true);
         TurnOnRoof = true;
-
-        //roof.SetActive(true);
-
-        //camRotScript.targetAngleY += 91.5f;
-        
-        //camRotScript.Zooming = -70;
-
-        //camRotScript.isRotatingY = true;
-
-        //camRotScript.UpDownMode--;
-
-        // nao devia ter um "intButtonPressed = false;" ?????????????
-        //extButtonPressed = true;
     }
 
 
     void ResetIntCamera()
     {
-        // Funciona!!!
         Cam.transform.position = ResetedCamPos;
         Cam.transform.rotation = ResetedCamRot;
         CameraRotation.SetUpDownMode(0);
+        CameraRotation.SetZoomMode(0);
+        CameraRotation.IntView = false;
         roof.SetActive(true);
-        // Algo errado não está certo
         TurnOffRoof = false;
         TurnOnRoof = true;
     }
@@ -123,7 +87,6 @@ public class ChangeView : MonoBehaviour {
     private void SetMaterialTransparent()
     {
         // Desvanecer para desaparecer
-
         if (cor.a <= 0)
         {
             TurnOffRoof = false;
@@ -139,7 +102,6 @@ public class ChangeView : MonoBehaviour {
     private void SetMaterialOpaque()
     {
         // Desvanecer para aparecer
-
         if (cor.a >= 1)
         {
             TurnOnRoof = false;

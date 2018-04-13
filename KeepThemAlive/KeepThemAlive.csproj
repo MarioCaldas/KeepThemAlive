@@ -91,6 +91,8 @@
     <Compile Include="Assets\_Scripts\ChangeObjects.cs" />
     <Compile Include="Assets\_Scripts\ChangeView.cs" />
     <Compile Include="Assets\_Scripts\InteractableObjManager.cs" />
+    <Compile Include="Assets\_Scripts\MoneyManager.cs" />
+    <Compile Include="Assets\_Scripts\Objects.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\tentativa.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />

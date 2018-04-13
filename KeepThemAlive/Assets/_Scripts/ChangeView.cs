@@ -16,18 +16,13 @@ public class ChangeView : MonoBehaviour {
     
     private CameraRotation CameraRotation;
 
-    bool TurnOffRoof;
-    bool TurnOnRoof;
-
     Color cor;
 
     void Start ()
     {
         ResetedCamPos = Cam.transform.position;
         ResetedCamRot = Cam.transform.rotation;
-
-        TurnOffRoof = false;
-        TurnOnRoof = false;
+        
 
         cor = roof.GetComponent<Renderer>().material.color;
 
@@ -45,17 +40,19 @@ public class ChangeView : MonoBehaviour {
 	
     void ChangeIntView()
     {
-        CameraRotation.setTargetAngleY(-91.5f);
+        //CameraRotation.setTargetAngleY(-91.5f);
+        StartCoroutine(SetMaterialTransparent());
+        StartCoroutine(CameraRotation.ZoomIn());
         CameraRotation.IntView = true;
-        TurnOffRoof = true;
     }
 
     void ChangeExtView()
     {
-        CameraRotation.setTargetAngleY(91.5f);
-        CameraRotation.IntView = false;
+        //CameraRotation.setTargetAngleY(91.5f);
         roof.SetActive(true);
-        TurnOnRoof = true;
+        StartCoroutine(SetMaterialOpaque());
+        StartCoroutine(CameraRotation.ZoomOut());
+        CameraRotation.IntView = false;
     }
 
 
@@ -67,49 +64,42 @@ public class ChangeView : MonoBehaviour {
         CameraRotation.SetZoomMode(0);
         CameraRotation.IntView = false;
         roof.SetActive(true);
-        TurnOffRoof = false;
-        TurnOnRoof = true;
     }
 
     void Update ()
     {
-        if (TurnOffRoof)
-        {
-            SetMaterialTransparent();
-        }
-        else if (TurnOnRoof)
-        {
-            SetMaterialOpaque();
-        }
+
     }
 
     #region Transparecy
-    private void SetMaterialTransparent()
+    IEnumerator SetMaterialTransparent()
     {
-        // Desvanecer para desaparecer
-        if (cor.a <= 0)
+        for (float f = 1f; f >= -0.1f; f -= 0.1f)
         {
-            TurnOffRoof = false;
-            roof.SetActive(false);
-        }
-        else
-        {
-            cor.a -= 0.02f;
+            if (f <= 0)
+            {
+                roof.SetActive(false);
+                StopCoroutine(SetMaterialTransparent());
+            }
+            cor.a = f;
             roof.transform.GetComponent<Renderer>().material.color = cor;
+            yield return null;
         }
     }
 
-    private void SetMaterialOpaque()
+
+    IEnumerator SetMaterialOpaque()
     {
         // Desvanecer para aparecer
-        if (cor.a >= 1)
+        for (float f = 0; f < 1.1f; f += 0.1f)
         {
-            TurnOnRoof = false;
-        }
-        else
-        {
-            cor.a += 0.02f;
+            if (f >= 1)
+            {
+                StopCoroutine(SetMaterialOpaque());
+            }
+            cor.a = f;
             roof.transform.GetComponent<Renderer>().material.color = cor;
+            yield return null;
         }
     }
     #endregion

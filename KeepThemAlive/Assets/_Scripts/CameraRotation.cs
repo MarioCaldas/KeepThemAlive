@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraRotation : MonoBehaviour {
-
-    private float targetAngleX = 0;
-    private float targetAngleY = 0;
-    private float Zooming = 0;
+    
     bool isRotatingX = false;
     bool isRotatingY = false;
-    bool CenterCam = false;
+    bool CoroutineOn = false;
     public bool IntView = false;
     const float rotationAmountX = 1.5f;
     const float rotationAmountY = 1.5f;
@@ -23,81 +20,78 @@ public class CameraRotation : MonoBehaviour {
     
     void Start ()
     {
-
+        CamCentered = new Vector3(252.4f, 58.53452f, 240.1655f);
     }
 	
 	void Update ()
     {
         #region Inputs
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotatingX && !isRotatingY)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotatingX && !isRotatingY && !CoroutineOn)
         {
             if (UpDownMode == 0)
             {
                 Debug.Log("ESQUERDA");
-
-                setTargetAngleX(91.5f);
+                StartCoroutine(Left());
+                //setTargetAngleX(91.5f);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY && !CoroutineOn)
         {
             if (UpDownMode == 0)
             {
                 Debug.Log("DIREITA");
-
-                setTargetAngleX(-91.5f);
+                StartCoroutine(Right());
+                //setTargetAngleX(-91.5f);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX)
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX && !CoroutineOn)
         {
             if (UpDownMode == 0)
             {
                 Debug.Log("UP");
-
-                setTargetAngleY(-91.5f);
+                StartCoroutine(Up());
+                //setTargetAngleY(-91.5f);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX && !CoroutineOn)
         {
             if (UpDownMode == 1 && ZoomMode != 2)
             {
                 Debug.Log("DOWN");
-
-                setTargetAngleY(91.5f);
+                StartCoroutine(Down());
+                //setTargetAngleY(91.5f);
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (ZoomMode == 0)
+            if (ZoomMode == 0 && !CoroutineOn)
             {
-                Zooming = 80;
-                ZoomMode++;
+                StartCoroutine(ZoomIn());
             }
-            else if (ZoomMode == 1 && UpDownMode == 1 && Zooming == 0 && IntView)
+            else if (ZoomMode == 1 && UpDownMode == 1 && !CoroutineOn && IntView)
             {
-                Zooming = 80;
-                ZoomMode++;
-                CamCentered = transform.position;
-                CamCentered.y = 62.53441f;
+                StartCoroutine(ZoomIn());
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             // Aqui têm de checar se a camera esta centrada se nao recentra
-            
-            if (ZoomMode == 2 && UpDownMode == 1 && transform.position == CamCentered)
+            if (ZoomMode == 2 && UpDownMode == 1 && transform.position == CamCentered && !CoroutineOn)
             {
-                Zooming = -80;
-                ZoomMode--;
+                Debug.Log("Normalidade!!");
+                StartCoroutine(ZoomOut());
+                //ZoomMode--;
             }
             else if (ZoomMode == 2 && UpDownMode == 1 && transform.position != CamCentered)
             {
+                Debug.Log("Centrando!");
                 // se nao tiver centrada!!!
-                CenterCam = true;
+                StartCoroutine(Center());
             }
-            else if (ZoomMode == 1 && Zooming == 0)
+            else if (ZoomMode == 1)
             {
-                Zooming = -80;
-                ZoomMode--;
+                StartCoroutine(ZoomOut());
+                //ZoomMode--;
             }
             
         }
@@ -121,120 +115,107 @@ public class CameraRotation : MonoBehaviour {
             }
         }
         #endregion
-
-        if (targetAngleX == -rotationAmountX || targetAngleX == rotationAmountX)
+        
+    }
+    
+    private IEnumerator Left()
+    {
+        CoroutineOn = true;
+        for (float f = 0; f < 90; f += 1.5f)
         {
-            isRotatingX = false;
-            targetAngleX = 0;
+            transform.RotateAround(School.transform.position, transform.up, rotationAmountX);
+            yield return null;
+            CoroutineOn = false;
         }
+    }
 
-        if (targetAngleY == -rotationAmountY || targetAngleY == rotationAmountY)
+    private IEnumerator Right()
+    {
+        CoroutineOn = true;
+        for (float f = 0; f < 90; f += 1.5f)
         {
-            isRotatingY = false;
-            targetAngleY = 0;
+            transform.RotateAround(School.transform.position, transform.up, -rotationAmountX);
+            yield return null;
+            CoroutineOn = false;
         }
+    }
 
-        if (targetAngleX != 0 || targetAngleY != 0)
+    private IEnumerator Up()
+    {
+        CoroutineOn = true;
+        for (float f = 0; f < 90; f += 1.5f)
         {
-            if (isRotatingX)
+            transform.RotateAround(School.transform.position, transform.right, rotationAmountX);
+            yield return null;
+            UpDownMode = 1;
+            CoroutineOn = false;
+        }
+    }
+
+    private IEnumerator Down()
+    {
+        CoroutineOn = true;
+        for (float f = 0; f < 90; f += 1.5f)
+        {
+            transform.RotateAround(School.transform.position, transform.right, -rotationAmountX);
+            yield return null;
+            UpDownMode = 0;
+            CoroutineOn = false;
+        }
+    }
+
+    public IEnumerator ZoomIn()
+    {
+        if (UpDownMode == 0 && ZoomMode == 0)
+        {
+            CoroutineOn = true;
+            ZoomMode++;
+            for (float f = 0; f < 82f; f += 2)
             {
-                Rotate(School.transform);
+                transform.position += transform.forward * 2;
+                yield return null;
+                CoroutineOn = false;
             }
-            else if (isRotatingY)
+        }
+        else if (UpDownMode == 1 && ZoomMode < 2)
+        {
+            CoroutineOn = true;
+            ZoomMode++;
+            for (float f = 0; f < 82f; f += 2)
             {
-                Rotate(School.transform);
+                transform.position += transform.forward * 2;
+                yield return null;
+
+                CoroutineOn = false;
             }
         }
-
-        if (Zooming != 0)
-        {
-            Zoom();
-        }
-
-        if (CenterCam)
-        {
-            Center();
-        }
     }
 
-    protected void Rotate(Transform target)
+    public IEnumerator ZoomOut()
     {
-        // CHAMADA PARA FAZER UMA ROTAÇÃO QUE FOI PREVIAMENTE DADO O VALOR
-        if (targetAngleX > 0)
+        if (ZoomMode > 0)
         {
-            transform.RotateAround(target.transform.position, transform.up, rotationAmountX);
-            targetAngleX -= rotationAmountX;
-        }
-        else if (targetAngleX < 0)
-        {
-            transform.RotateAround(target.transform.position, transform.up, -rotationAmountX);
-            targetAngleX += rotationAmountX;
-        }
-        else if (targetAngleY < 0)
-        {
-            transform.RotateAround(target.transform.position, transform.right, rotationAmountY);
-            targetAngleY += rotationAmountY;
-        }
-        else if (targetAngleY >= 0)
-        {
-            transform.RotateAround(target.transform.position, transform.right, -rotationAmountY);
-            targetAngleY -= rotationAmountY;
-        }
-    }
-
-    protected void Zoom()
-    {
-        if (Zooming > 0)
-        {
-            // ZOOM IN
-            transform.position += transform.forward * 2;
-            Zooming -= 2f;
-        }
-        else if (Zooming < 0)
-        {
-            // ZOOM OUT
-            transform.position -= transform.forward * 2;
-            Zooming += 2f;
-        }
-    }
-
-    protected void Center()
-    {
-        if (transform.position != CamCentered)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.75f);
-        }
-        else
-        {
-            CenterCam = false;
-            Zooming = -80;
+            CoroutineOn = true;
             ZoomMode--;
+            for (float f = 80; f >= 0; f -= 2)
+            {
+                transform.position -= transform.forward * 2;
+                yield return null;
+                CoroutineOn = false;
+            }
         }
+    }
+
+    private IEnumerator Center()
+    {
+        while(transform.position != CamCentered)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.02f);
+        }
+        yield return null;
     }
 
     #region SetValeusAngles
-    public void setTargetAngleY(float valeu)
-    {
-        if (valeu < 0 && UpDownMode == 0)
-        {
-            UpDownMode++;
-            targetAngleY = valeu;
-            isRotatingY = true;
-        }
-        else if(valeu > 0 && UpDownMode == 1 && Zooming != 2)
-        {
-            UpDownMode--;
-            targetAngleY = valeu;
-            isRotatingY = true;
-        }
-    }
-       
-    public void setTargetAngleX(float valeu)
-    {
-        targetAngleX = valeu;
-        isRotatingX = true;
-    }
-
     public void SetUpDownMode(int valeu)
     {
         UpDownMode = valeu;

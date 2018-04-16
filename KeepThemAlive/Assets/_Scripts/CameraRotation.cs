@@ -32,7 +32,6 @@ public class CameraRotation : MonoBehaviour {
             {
                 Debug.Log("ESQUERDA");
                 StartCoroutine(Left());
-                //setTargetAngleX(91.5f);
             }
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotatingX && !isRotatingY && !CoroutineOn)
@@ -41,7 +40,6 @@ public class CameraRotation : MonoBehaviour {
             {
                 Debug.Log("DIREITA");
                 StartCoroutine(Right());
-                //setTargetAngleX(-91.5f);
             }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !isRotatingY && !isRotatingX && !CoroutineOn)
@@ -50,7 +48,6 @@ public class CameraRotation : MonoBehaviour {
             {
                 Debug.Log("UP");
                 StartCoroutine(Up());
-                //setTargetAngleY(-91.5f);
             }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && !isRotatingY && !isRotatingX && !CoroutineOn)
@@ -59,7 +56,6 @@ public class CameraRotation : MonoBehaviour {
             {
                 Debug.Log("DOWN");
                 StartCoroutine(Down());
-                //setTargetAngleY(91.5f);
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
@@ -78,13 +74,11 @@ public class CameraRotation : MonoBehaviour {
             // Aqui têm de checar se a camera esta centrada se nao recentra
             if (ZoomMode == 2 && UpDownMode == 1 && transform.position == CamCentered && !CoroutineOn)
             {
-                Debug.Log("Normalidade!!");
                 StartCoroutine(ZoomOut());
                 //ZoomMode--;
             }
             else if (ZoomMode == 2 && UpDownMode == 1 && transform.position != CamCentered)
             {
-                Debug.Log("Centrando!");
                 // se nao tiver centrada!!!
                 StartCoroutine(Center());
             }
@@ -115,9 +109,9 @@ public class CameraRotation : MonoBehaviour {
             }
         }
         #endregion
-        
     }
-    
+
+    #region Coroutines
     private IEnumerator Left()
     {
         CoroutineOn = true;
@@ -140,15 +134,18 @@ public class CameraRotation : MonoBehaviour {
         }
     }
 
-    private IEnumerator Up()
+    public IEnumerator Up()
     {
-        CoroutineOn = true;
-        for (float f = 0; f < 90; f += 1.5f)
+        if (UpDownMode == 0)
         {
-            transform.RotateAround(School.transform.position, transform.right, rotationAmountX);
-            yield return null;
-            UpDownMode = 1;
-            CoroutineOn = false;
+            CoroutineOn = true;
+            for (float f = 0; f < 90; f += 1.5f)
+            {
+                transform.RotateAround(School.transform.position, transform.right, rotationAmountX);
+                UpDownMode = 1;
+                yield return null;
+                CoroutineOn = false;
+            }
         }
     }
 
@@ -164,7 +161,7 @@ public class CameraRotation : MonoBehaviour {
         }
     }
 
-    public IEnumerator ZoomIn()
+    private IEnumerator ZoomIn()
     {
         if (UpDownMode == 0 && ZoomMode == 0)
         {
@@ -213,7 +210,9 @@ public class CameraRotation : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, CamCentered, 0.02f);
         }
         yield return null;
+        StartCoroutine(ZoomOut());
     }
+    #endregion
 
     #region SetValeusAngles
     public void SetUpDownMode(int valeu)

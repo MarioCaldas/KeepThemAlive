@@ -42,7 +42,7 @@ public class ChangeView : MonoBehaviour {
     {
         //CameraRotation.setTargetAngleY(-91.5f);
         StartCoroutine(SetMaterialTransparent());
-        StartCoroutine(CameraRotation.ZoomIn());
+        StartCoroutine(CameraRotation.Up());
         CameraRotation.IntView = true;
     }
 
@@ -64,6 +64,7 @@ public class ChangeView : MonoBehaviour {
         CameraRotation.SetZoomMode(0);
         CameraRotation.IntView = false;
         roof.SetActive(true);
+        StartCoroutine(SetMaterialOpaque());
     }
 
     void Update ()
@@ -86,8 +87,7 @@ public class ChangeView : MonoBehaviour {
             yield return null;
         }
     }
-
-
+    
     IEnumerator SetMaterialOpaque()
     {
         // Desvanecer para aparecer

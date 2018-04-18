@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChangeObjects : MonoBehaviour
 {
+    public GameObject School;
     List<Objects> ListObj;
     MoneyManager Money;
     int CostAux = 0;
@@ -46,7 +47,7 @@ public class ChangeObjects : MonoBehaviour
             if (Money.CanBuy(CostAux))
             {
                 Money.BuySomething(CostAux);
-                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
+                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation, School.transform);
                 Destroy(objToSwitch);
             }
         }
@@ -107,11 +108,11 @@ public class ChangeObjects : MonoBehaviour
         objScript.SetTag("Desk");
         ListObj.Add(objScript);
 
-        /*
+        
         objScript.SetCost(35);
-        objScript.SetGO(Resources.Load("DeskMetal") as GameObject);
+        objScript.SetGO(Resources.Load("WindowMetal") as GameObject);
         objScript.SetTag("Window");
         ListObj.Add(objScript);
-        */
+        
     }
 }

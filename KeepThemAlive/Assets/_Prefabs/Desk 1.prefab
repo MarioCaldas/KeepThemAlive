@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23006880688913992}
   m_Layer: 0
   m_Name: Boole_2_Extrude
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 23284717286487432}
   m_Layer: 0
   m_Name: Boole_3_Extrude_11
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23668220760266848}
   m_Layer: 0
   m_Name: Boole_2_Extrude_1
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4771325949358090}
   m_Layer: 0
   m_Name: Desk 1
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 23997397418662000}
   m_Layer: 0
   m_Name: Boole_2_Extrude_Cap_12
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,9 +104,10 @@ GameObject:
   - component: {fileID: 4159393765790666}
   - component: {fileID: 33312715653651938}
   - component: {fileID: 23238760053607236}
+  - component: {fileID: 65268011284687826}
   m_Layer: 0
   m_Name: Cube_11
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +124,7 @@ GameObject:
   - component: {fileID: 23272302252878702}
   m_Layer: 0
   m_Name: Boole_3_Extrude1_Cap_2
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +141,7 @@ GameObject:
   - component: {fileID: 23058555446995390}
   m_Layer: 0
   m_Name: Boole_2_Extrude_Cap_22
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +158,7 @@ GameObject:
   - component: {fileID: 23596871059323202}
   m_Layer: 0
   m_Name: Boole_3_Extrude1
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +175,7 @@ GameObject:
   - component: {fileID: 23063970337309844}
   m_Layer: 0
   m_Name: Boole_3_Extrude1_Cap_1
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,9 +303,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1618927862964874}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 288.4, y: 3.9225, z: 440.5}
-  m_LocalScale: {x: 0.07932004, y: 0.079320036, z: 0.079320036}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.16647452, y: -0.078595944, z: 0.047002304}
+  m_LocalScale: {x: 0.00020007222, y: 0.00027105364, z: 0.00020007232}
   m_Children:
   - {fileID: 4388925660085956}
   - {fileID: 4307863552928572}
@@ -427,7 +428,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ad10619cd63f0914497652ec5e8f84af, type: 2}
+  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -669,3 +670,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586323854643382}
   m_Mesh: {fileID: 4300006, guid: 78a7b1e77b951104ca9c339dbbb85766, type: 3}
+--- !u!65 &65268011284687826
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703643828209884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160.00002, y: 3, z: 80}
+  m_Center: {x: 0, y: 28, z: 0}

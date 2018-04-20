@@ -23,7 +23,8 @@ public class ChangeObjects : MonoBehaviour
     public RaycastHit hit;
 
     bool canSwitch = false;
-    
+
+    public Material greenMaterial;
 
     void Start ()
     {
@@ -47,7 +48,7 @@ public class ChangeObjects : MonoBehaviour
             if (Money.CanBuy(CostAux))
             {
                 Money.BuySomething(CostAux);
-                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation, School.transform);
+                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
                 Destroy(objToSwitch);
             }
         }
@@ -96,7 +97,18 @@ public class ChangeObjects : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000))
             {
                 SwitchObject(hit);
+
+                int childCount = hit.collider.transform.childCount;
+
+   
+                for (int i = 0; i < childCount; i++)
+                {
+                    MeshRenderer mesh = hit.collider.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
+                    mesh.material = greenMaterial;
+                }
+              
             }
+            
         }
     }
 
@@ -108,7 +120,7 @@ public class ChangeObjects : MonoBehaviour
         objScript.SetTag("Desk");
         ListObj.Add(objScript);
 
-        
+        objScript = new Objects();
         objScript.SetCost(35);
         objScript.SetGO(Resources.Load("WindowMetal") as GameObject);
         objScript.SetTag("Window");

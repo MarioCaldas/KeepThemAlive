@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             PushBoxes();
-            //SurvivalFollow();
+            SurvivalFollow();
         }
     }
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             }                
         }
 
-        else if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -65,7 +65,9 @@ public class PlayerController : MonoBehaviour
                 if (interactableObject != null)
                 {
                     SetActiveObject(interactableObject);
-                    PushBoxes();
+                    GiveOrder(interactableObject);
+
+                    Debug.Log("Position to move " + hit.transform.position);
                 }
             }
         }
@@ -85,10 +87,9 @@ public class PlayerController : MonoBehaviour
 
             activeObject = newActiveObject;
 
-            MoveToPoint(newActiveObject.transform.position);
-            navMeshAgent.stoppingDistance = newActiveObject.radius * 0.8f;
+            //MoveToPoint(newActiveObject.transform.position);
+            //navMeshAgent.stoppingDistance = newActiveObject.radius * 0.5f;
         }
-        Debug.Log("toyy");
 
         newActiveObject.SetActive(transform);   
     }
@@ -99,13 +100,18 @@ public class PlayerController : MonoBehaviour
             activeObject.DeactivateObject();
 
         activeObject = null;
-        navMeshAgent.stoppingDistance = 0f;
+        //navMeshAgent.stoppingDistance = 0f;
+    }
+
+    void GiveOrder(InteractableObjManager interactableObj)
+    {
+        Debug.Log("Move there,  " + interactableObj.name);
     }
 
     void SurvivalFollow()
     {
         GameObject[] npcs = InteractableObjManager.NPCs;
-        GameObject NewNPC = null;
+        GameObject activeNpc = null;
         float distance;
 
         foreach (GameObject NPC in npcs)
@@ -114,9 +120,8 @@ public class PlayerController : MonoBehaviour
 
             if (distance < 1.5f)
             {
-                NewNPC = NPC;
-                Debug.Log("Este é o idiota: " + NewNPC.name);
-                break;
+                activeNpc = NPC;
+                Debug.Log("Npc to follow: " + activeNpc.name);
             }
             else
                 distance = 0.0f;
@@ -126,35 +131,73 @@ public class PlayerController : MonoBehaviour
     void PushBoxes()
     {
         float distance;
-        GameObject BoxGO = null;
-        GameObject[] box = InteractableObjManager.Boxes;
-        
+        GameObject activeBox = null;
+        GameObject[] boxes = InteractableObjManager.Boxes;
+
         if (!IsGrabed)
         {
-            // vê se tem alguma caixa perto
-            foreach (GameObject caixa in box)
+            foreach (GameObject box in boxes)
             {
-                distance = Vector3.Distance(transform.position, caixa.transform.position);
+                distance = Vector3.Distance(transform.position, box.transform.position);
 
-                if (distance < 2.5f)
+                Debug.Log("Distance " + distance);
+
+                if(distance <= 2f)
                 {
-                    BoxGO = caixa;
+                    activeBox = box;
                     IsGrabed = true;
-                    break;
                 }
-                else
-                    distance = 0.0f;
-                
-            }
 
-            //if (BoxGO != null)
-                //BoxGO.transform.parent = this.transform;
+                if (activeBox != null)
+                {
+                    activeBox.transform.parent = this.transform;
+                }
+            }
         }
+
         else
         {
-            //transform.GetChild(0).parent = null;
+            transform.GetChild(0).parent = null;
             IsGrabed = false;
         }
-
     }
+
+
+
+    //void PushBoxes()
+    //{
+    //    float distance;
+    //    GameObject BoxGO = null;
+    //    GameObject[] box = InteractableObjManager.Boxes;
+
+    //    if (!IsGrabed)
+    //    {
+    //        // vê se tem alguma caixa perto
+    //        foreach (GameObject caixa in box)
+    //        {
+    //            distance = Vector3.Distance(transform.position, caixa.transform.position);
+
+    //            if (distance < 2.5f)
+    //            {
+    //                BoxGO = caixa;
+    //                IsGrabed = true;
+    //                break;
+    //            }
+    //            else
+    //                distance = 0.0f;
+
+    //        }
+
+    //        //if (BoxGO != null)
+    //            //BoxGO.transform.parent = this.transform;
+    //    }
+    //    else
+    //    {
+    //        //transform.GetChild(0).parent = null;
+    //        IsGrabed = false;
+    //    }
+
+    //}
+
+
 }

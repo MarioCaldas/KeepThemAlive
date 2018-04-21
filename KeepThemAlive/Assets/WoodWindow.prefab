@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33137122772665282}
   - component: {fileID: 23361350608369002}
   - component: {fileID: 64331576469634812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4301651947358076}
   - component: {fileID: 33056194610471074}
   - component: {fileID: 23771459769191030}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4916427729977030}
   - component: {fileID: 33712665012695994}
   - component: {fileID: 23549581619678628}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4583459426118950}
   - component: {fileID: 65655019654553334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WoodWindow
   m_TagString: Window
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 33765051733001696}
   - component: {fileID: 23888496009493238}
   - component: {fileID: 64603184267445392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 33327229516696998}
   - component: {fileID: 23457641348791346}
   - component: {fileID: 64546778632607718}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445929444937762}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 172.65, y: 10, z: 199.0062}
+  m_LocalPosition: {x: 172.65, y: 10, z: 254.6}
   m_LocalScale: {x: 125.91691, y: 233.91858, z: 367.90195}
   m_Children:
   - {fileID: 4916427729977030}

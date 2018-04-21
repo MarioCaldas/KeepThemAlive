@@ -5635,6 +5635,8 @@ MonoBehaviour:
   substituteButton: {fileID: 935349144}
   mainCamera: {fileID: 1917374041}
   greenMaterial: {fileID: 2100000, guid: b4fecf47d4f08d54c992123ae38a3693, type: 2}
+  lista: []
+  saveObj: {fileID: 0}
 --- !u!4 &182697524
 Transform:
   m_ObjectHideFlags: 0
@@ -8833,6 +8835,46 @@ Prefab:
     - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.079320036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}

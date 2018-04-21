@@ -26,6 +26,10 @@ public class ChangeObjects : MonoBehaviour
 
     public Material greenMaterial;
 
+    public List<Material> lista = new List<Material>();
+
+    public GameObject saveObj;
+
     void Start ()
     {
         Money = transform.GetComponent<MoneyManager>();
@@ -39,7 +43,10 @@ public class ChangeObjects : MonoBehaviour
         //subButtonGameObject.SetActive(false);
 
         mainCamera = Camera.main;
-	}
+
+        saveObj = null;
+
+    }
 
     void InstantiateNewObject()
     {
@@ -94,13 +101,25 @@ public class ChangeObjects : MonoBehaviour
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 1000))
+            if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
                 SwitchObject(hit);
 
+
+
                 int childCount = hit.collider.transform.childCount;
 
-   
+                //NAO APAGAR CODIGO COMENTADO
+
+                //saveObj = hit.transform.gameObject;
+
+                //for (int i = 0; i < childCount; i++)
+                //{
+                //    lista.Add(hit.collider.transform.GetChild(i).GetComponent<MeshRenderer>().material);
+
+                //}
+
+
                 for (int i = 0; i < childCount; i++)
                 {
                     MeshRenderer mesh = hit.collider.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
@@ -108,6 +127,16 @@ public class ChangeObjects : MonoBehaviour
                 }
               
             }
+            //else
+            //{
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        Debug.Log("tre");
+            //        MeshRenderer originalMesh = saveObj.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
+            //        originalMesh.material = lista[i];
+            //    }
+
+            //}
             
         }
     }

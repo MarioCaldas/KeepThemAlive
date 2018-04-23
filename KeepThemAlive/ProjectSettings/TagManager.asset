@@ -10,6 +10,7 @@ TagManager:
   - Desk
   - Window
   - MetalDesk
+  - wall
   layers:
   - Default
   - TransparentFX

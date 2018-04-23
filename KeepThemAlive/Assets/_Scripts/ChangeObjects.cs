@@ -62,6 +62,7 @@ public class ChangeObjects : MonoBehaviour
                 {
                     Money.BuySomething(CostAux);
                     GameObject newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                    newObj.transform.localScale = selectedObjs[i].transform.localScale;
                     Destroy(selectedObjs[i]);
                 }
                 //Money.BuySomething(CostAux);
@@ -69,6 +70,8 @@ public class ChangeObjects : MonoBehaviour
                 //Destroy(objToSwitch);
 
                 selectedObjs.Clear();
+                ListMaterials.Clear();
+                objToSwitch = null;
             }
         }
     }
@@ -195,6 +198,13 @@ public class ChangeObjects : MonoBehaviour
         objScript.SetCost(35);
         objScript.SetGO(Resources.Load("WindowMetal") as GameObject);
         objScript.SetTag("Window");
+        ListObj.Add(objScript);
+
+
+        objScript = new Objects();
+        objScript.SetCost(200);
+        objScript.SetGO(Resources.Load("Wall") as GameObject);
+        objScript.SetTag("wall");
         ListObj.Add(objScript);
 
     }

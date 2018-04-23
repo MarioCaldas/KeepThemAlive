@@ -26,9 +26,13 @@ public class ChangeObjects : MonoBehaviour
 
     public Material greenMaterial;
 
-    public List<Material> lista = new List<Material>();
+    public List<Material> ListMaterials = new List<Material>();
+
+    public List<GameObject> selectedObjs = new List<GameObject>();
 
     public GameObject saveObj;
+
+    public int childCount;
 
     void Start ()
     {
@@ -54,9 +58,16 @@ public class ChangeObjects : MonoBehaviour
         {
             if (Money.CanBuy(CostAux))
             {
-                Money.BuySomething(CostAux);
-                GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
-                Destroy(objToSwitch);
+                for (int i = 0; i < selectedObjs.Count; i++)
+                {
+                    Money.BuySomething(CostAux);
+                    GameObject newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                    Destroy(selectedObjs[i]);
+                }
+                //Money.BuySomething(CostAux);
+                //GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
+                //Destroy(objToSwitch);
+                selectedObjs.Clear();
             }
         }
     }
@@ -91,6 +102,9 @@ public class ChangeObjects : MonoBehaviour
                 objToSwitch = hit.transform.gameObject;
                 newObjectPrefab = ScriptObj.GetGO();
                 CostAux = ScriptObj.GetCost();
+
+
+               
             }
         }
     }
@@ -106,39 +120,50 @@ public class ChangeObjects : MonoBehaviour
                 SwitchObject(hit);
 
 
+                //highlight objects
+                childCount = hit.collider.transform.childCount;
 
-                int childCount = hit.collider.transform.childCount;
-
-                //NAO APAGAR CODIGO COMENTADO
-
-                //saveObj = hit.transform.gameObject;
-
-                //for (int i = 0; i < childCount; i++)
-                //{
-                //    lista.Add(hit.collider.transform.GetChild(i).GetComponent<MeshRenderer>().material);
-
-                //}
+                saveObj = hit.transform.gameObject;
 
 
-                for (int i = 0; i < childCount; i++)
+                selectedObjs.Add(saveObj);
+
+
+                for (int i = 0; i < selectedObjs.Count; i++)
                 {
-                    MeshRenderer mesh = hit.collider.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
-                    mesh.material = greenMaterial;
-                }
-              
-            }
-            //else
-            //{
-            //    for (int i = 0; i < 5; i++)
-            //    {
-            //        Debug.Log("tre");
-            //        MeshRenderer originalMesh = saveObj.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>();
-            //        originalMesh.material = lista[i];
-            //    }
+                    for (int u = 0; u < childCount; u++)
+                    {
+                        ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
 
-            //}
-            
+                        MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+                        mesh.material = greenMaterial;
+                    }
+                }
+
+            }
+          
+
         }
+
+        //unhighligh objects
+        if (Input.GetMouseButtonDown(1))
+        {
+            
+            for (int i = 0; i < selectedObjs.Count; i++)
+            {
+                for (int u = 0; u < childCount; u++)
+                {
+                    MeshRenderer originalMesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+                    originalMesh.material = ListMaterials[u];
+                }
+            }
+
+            selectedObjs.Clear();
+            ListMaterials.Clear();
+        }
+
+        Debug.Log("list: " + selectedObjs.Count);
+       
     }
 
     void AddList()

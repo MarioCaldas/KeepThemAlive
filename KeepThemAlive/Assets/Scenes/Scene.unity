@@ -1097,78 +1097,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (19)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &37118117 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 37118116}
---- !u!65 &37118118
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 37118117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &41191148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,78 +2504,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &77878682 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 77878681}
---- !u!65 &77878683
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 77878682}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &78470338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,8 +5497,10 @@ MonoBehaviour:
   substituteButton: {fileID: 935349144}
   mainCamera: {fileID: 1917374041}
   greenMaterial: {fileID: 2100000, guid: b4fecf47d4f08d54c992123ae38a3693, type: 2}
-  lista: []
+  ListMaterials: []
+  selectedObjs: []
   saveObj: {fileID: 0}
+  childCount: 0
 --- !u!4 &182697524
 Transform:
   m_ObjectHideFlags: 0
@@ -6261,7 +6125,7 @@ GameObject:
   - component: {fileID: 197295758}
   - component: {fileID: 197295760}
   - component: {fileID: 197295759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8784,118 +8648,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &260737738 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 260737737}
---- !u!65 &260737739
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 260737738}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &260913285
 GameObject:
   m_ObjectHideFlags: 0
@@ -12204,78 +11959,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &373063257 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 373063256}
---- !u!65 &373063258
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373063257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &375552445
 GameObject:
   m_ObjectHideFlags: 0
@@ -13830,18 +13516,6 @@ Prefab:
     - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
       propertyPath: m_Name
       value: Desk (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
@@ -22954,7 +22628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &767567181
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31323,78 +30997,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1006906061 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1006906060}
---- !u!65 &1006906062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1006906061}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1007519966
 GameObject:
   m_ObjectHideFlags: 0
@@ -35681,78 +35286,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1129548268 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1129548267}
---- !u!65 &1129548269
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1129548268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1130826406
 GameObject:
   m_ObjectHideFlags: 0
@@ -37619,78 +37155,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1177066462 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1177066461}
---- !u!65 &1177066463
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1177066462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1179147397
 GameObject:
   m_ObjectHideFlags: 0
@@ -38905,78 +38372,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1219949519 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1219949518}
---- !u!65 &1219949520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1219949519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1226641274
 GameObject:
   m_ObjectHideFlags: 0
@@ -40997,78 +40395,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1302495969 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1302495968}
---- !u!65 &1302495970
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1302495969}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1303888969
 GameObject:
   m_ObjectHideFlags: 0
@@ -41897,78 +41226,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1315249440 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1315249439}
---- !u!65 &1315249441
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315249440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1322593142
 GameObject:
   m_ObjectHideFlags: 0
@@ -42371,78 +41631,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1330663633 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1330663632}
---- !u!65 &1330663634
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330663633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1001 &1333264345
 Prefab:
   m_ObjectHideFlags: 0
@@ -48300,78 +47491,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1509671764 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1509671763}
---- !u!65 &1509671765
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509671764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1001 &1514109432
 Prefab:
   m_ObjectHideFlags: 0
@@ -49351,78 +48473,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1533511736 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1533511735}
---- !u!65 &1533511737
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1533511736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1536934885
 GameObject:
   m_ObjectHideFlags: 0
@@ -55342,78 +54395,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (17)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1752808889 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1752808888}
---- !u!65 &1752808890
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1752808889}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1753821287
 GameObject:
   m_ObjectHideFlags: 0
@@ -55745,78 +54729,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1758171608 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1758171607}
---- !u!65 &1758171609
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1758171608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1767228488
 GameObject:
   m_ObjectHideFlags: 0
@@ -58394,78 +57309,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (15)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1837569980 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1837569979}
---- !u!65 &1837569981
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1837569980}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1844156448
 GameObject:
   m_ObjectHideFlags: 0
@@ -60799,78 +59645,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (18)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1900689895 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1900689894}
---- !u!65 &1900689896
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1900689895}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1901813752
 GameObject:
   m_ObjectHideFlags: 0
@@ -61129,78 +59906,9 @@ Prefab:
       propertyPath: m_Name
       value: Desk (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 1618927862964874, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636640499539632, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765578998790604, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799781759896552, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931885962168268, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100165790450982, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008709911996232, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586323854643382, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919039147321940, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_TagString
-      value: Desk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07932004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771325949358090, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.079320036
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c193388e5556cb445b334ca2f388ef90, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1906256717 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1703643828209884, guid: c193388e5556cb445b334ca2f388ef90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1906256716}
---- !u!65 &1906256718
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1906256717}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 160.00002, y: 3, z: 80}
-  m_Center: {x: 0, y: 28, z: 0}
 --- !u!1 &1910744395
 GameObject:
   m_ObjectHideFlags: 0

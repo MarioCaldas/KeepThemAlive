@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 136801900470699938}
   - component: {fileID: 23196135934301038}
   - component: {fileID: 114876180243761970}
+  - component: {fileID: 114896637711563654}
   m_Layer: 0
   m_Name: Npc
   m_TagString: NPC
@@ -96,6 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+--- !u!114 &114896637711563654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064446643144606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafd46be970ef9c4cafd55c55feda00f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  canFollow: 0
 --- !u!136 &136801900470699938
 CapsuleCollider:
   m_ObjectHideFlags: 1

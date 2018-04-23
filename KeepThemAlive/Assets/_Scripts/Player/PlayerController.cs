@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject[] npcs = InteractableObjManager.NPCs;
         GameObject activeNpc = null;
+
         float distance;
 
         foreach (GameObject NPC in npcs)
@@ -120,7 +121,8 @@ public class PlayerController : MonoBehaviour
 
             if (distance < 1.5f)
             {
-                activeNpc = NPC;
+                activeNpc = NPC;               
+                activeNpc.GetComponent<NpcController>().canFollow = true;
                 Debug.Log("Npc to follow: " + activeNpc.name);
             }
             else
@@ -139,8 +141,6 @@ public class PlayerController : MonoBehaviour
             foreach (GameObject box in boxes)
             {
                 distance = Vector3.Distance(transform.position, box.transform.position);
-
-                Debug.Log("Distance " + distance);
 
                 if(distance <= 2f)
                 {

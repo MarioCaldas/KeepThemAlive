@@ -34,7 +34,7 @@ public class ChangeObjects : MonoBehaviour
 
     public int childCount;
 
-    void Start ()
+    void Start()
     {
         Money = transform.GetComponent<MoneyManager>();
         ListObj = new List<Objects>();
@@ -67,12 +67,13 @@ public class ChangeObjects : MonoBehaviour
                 //Money.BuySomething(CostAux);
                 //GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
                 //Destroy(objToSwitch);
+
                 selectedObjs.Clear();
             }
         }
     }
 
-    public void SwitchObject(RaycastHit hit)
+    public void SwitchObject(GameObject obj)
     {
         //subButtonGameObject.SetActive(true);
 
@@ -96,20 +97,19 @@ public class ChangeObjects : MonoBehaviour
         // este foreach funciona para todos....
         foreach (Objects ScriptObj in ListObj)
         {
-            if (ScriptObj.GetTag() == hit.transform.tag)
+
+            if (ScriptObj.GetTag() == obj.transform.tag)
             {
                 // ESTE É O NOSSO OBJECTO, AGORA ACEDO A TUDO DELE;
-                objToSwitch = hit.transform.gameObject;
+                objToSwitch = obj.transform.gameObject;
                 newObjectPrefab = ScriptObj.GetGO();
                 CostAux = ScriptObj.GetCost();
 
-
-               
             }
         }
     }
 
-    void Update ()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -117,16 +117,15 @@ public class ChangeObjects : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
-                SwitchObject(hit);
 
 
                 //highlight objects
-                childCount = hit.collider.transform.childCount;
 
                 saveObj = hit.transform.gameObject;
 
+                childCount = saveObj.transform.childCount;
 
-                selectedObjs.Add(saveObj);
+                AddSelectedList(saveObj);
 
 
                 for (int i = 0; i < selectedObjs.Count; i++)
@@ -141,30 +140,48 @@ public class ChangeObjects : MonoBehaviour
                 }
 
             }
-          
 
         }
 
         //unhighligh objects
         if (Input.GetMouseButtonDown(1))
         {
-            
-            for (int i = 0; i < selectedObjs.Count; i++)
-            {
-                for (int u = 0; u < childCount; u++)
-                {
-                    MeshRenderer originalMesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
-                    originalMesh.material = ListMaterials[u];
-                }
-            }
+            UnhighlighObj();
+        }
+    }
 
-            selectedObjs.Clear();
-            ListMaterials.Clear();
+    void UnhighlighObj()
+    {
+        for (int i = 0; i < selectedObjs.Count; i++)
+        {
+            for (int u = 0; u < childCount; u++)
+            {
+                MeshRenderer originalMesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+                originalMesh.material = ListMaterials[u];
+            }
         }
 
-        Debug.Log("list: " + selectedObjs.Count);
-       
+        selectedObjs.Clear();
+        ListMaterials.Clear();
     }
+
+
+    void AddSelectedList(GameObject Selobj)
+    {
+        if (selectedObjs.Count == 0)
+        {
+            selectedObjs.Add(Selobj);
+            SwitchObject(Selobj);
+
+        }
+        else if (selectedObjs[0].tag == Selobj.tag)
+        {
+            selectedObjs.Add(Selobj);
+            SwitchObject(Selobj);
+        }
+
+    }
+
 
     void AddList()
     {
@@ -179,6 +196,6 @@ public class ChangeObjects : MonoBehaviour
         objScript.SetGO(Resources.Load("WindowMetal") as GameObject);
         objScript.SetTag("Window");
         ListObj.Add(objScript);
-        
+
     }
 }

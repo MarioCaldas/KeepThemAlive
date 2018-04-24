@@ -63,11 +63,11 @@ public class ChangeObjects : MonoBehaviour
                     Money.BuySomething(CostAux);
                     GameObject newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
                     newObj.transform.localScale = selectedObjs[i].transform.localScale;
+
+                    SceneData.ChangedObjList.Add(newObjectPrefab);
+
                     Destroy(selectedObjs[i]);
                 }
-                //Money.BuySomething(CostAux);
-                //GameObject newObject = Instantiate(newObjectPrefab, objToSwitch.transform.position, objToSwitch.transform.rotation);
-                //Destroy(objToSwitch);
 
                 selectedObjs.Clear();
                 ListMaterials.Clear();
@@ -78,26 +78,6 @@ public class ChangeObjects : MonoBehaviour
 
     public void SwitchObject(GameObject obj)
     {
-        //subButtonGameObject.SetActive(true);
-
-        //switch (hit.transform.tag)
-        //{
-        //    case "Desk":
-        //        objToSwitch = hit.transform.gameObject;
-        //        newObjectPrefab = Resources.Load("DeskMetal") as GameObject;
-        //        break;
-
-        //    case "Window": Debug.Log("windooooh");
-        //        objToSwitch = hit.transform.gameObject;
-
-        //        break;
-        //    default:
-        //        break;
-        //}
-
-
-        // Numa lista com todos os elementos pre-colocados procura-se o que tem a tag x
-        // este foreach funciona para todos....
         foreach (Objects ScriptObj in ListObj)
         {
 
@@ -169,18 +149,18 @@ public class ChangeObjects : MonoBehaviour
     }
 
 
-    void AddSelectedList(GameObject Selobj)
+    void AddSelectedList(GameObject SelObj)
     {
         if (selectedObjs.Count == 0)
         {
-            selectedObjs.Add(Selobj);
-            SwitchObject(Selobj);
+            selectedObjs.Add(SelObj);
+            SwitchObject(SelObj);
 
         }
-        else if (selectedObjs[0].tag == Selobj.tag)
+        else if (selectedObjs[0].tag == SelObj.tag)
         {
-            selectedObjs.Add(Selobj);
-            SwitchObject(Selobj);
+            selectedObjs.Add(SelObj);
+            SwitchObject(SelObj);
         }
 
     }

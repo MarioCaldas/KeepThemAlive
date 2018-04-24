@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class ChangeView : MonoBehaviour {
-
-    public Button buttonIntView;
-    public Button buttonExtView;
-    public Button resetViewButton;
-    
+   
     public GameObject roof;
     public GameObject Cam;
     Vector3 ResetedCamPos;
@@ -18,6 +16,7 @@ public class ChangeView : MonoBehaviour {
 
     Color cor;
 
+
     void Start ()
     {
         ResetedCamPos = Cam.transform.position;
@@ -26,19 +25,18 @@ public class ChangeView : MonoBehaviour {
 
         cor = roof.GetComponent<Renderer>().material.color;
 
-        Button intButton = buttonIntView.GetComponent<Button>();
-        Button extButton = buttonExtView.GetComponent<Button>();
-        Button resetButton = resetViewButton.GetComponent<Button>();
-
-        intButton.onClick.AddListener(ChangeIntView);
-        extButton.onClick.AddListener(ChangeExtView);
-        resetButton.onClick.AddListener(ResetIntCamera);
 
         CameraRotation = Cam.GetComponent<CameraRotation>();
 
     }
+
+    public void ChangeScene()
+    {
+
+        SceneManager.LoadScene("2nd_Scene");
+    }
 	
-    void ChangeIntView()
+    public void ChangeIntView()
     {
         //CameraRotation.setTargetAngleY(-91.5f);
         StartCoroutine(SetMaterialTransparent());
@@ -46,7 +44,7 @@ public class ChangeView : MonoBehaviour {
         CameraRotation.IntView = true;
     }
 
-    void ChangeExtView()
+    public void ChangeExtView()
     {
         //CameraRotation.setTargetAngleY(91.5f);
         roof.SetActive(true);
@@ -56,7 +54,7 @@ public class ChangeView : MonoBehaviour {
     }
 
 
-    void ResetIntCamera()
+    public void ResetIntCamera()
     {
         Cam.transform.position = ResetedCamPos;
         Cam.transform.rotation = ResetedCamRot;

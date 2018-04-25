@@ -33,7 +33,7 @@ public class ChangeView : MonoBehaviour {
     public void ChangeScene()
     {
 
-        SceneManager.LoadScene("2nd_Scene");
+        Application.LoadLevel(1);
     }
 	
     public void ChangeIntView()

@@ -11,6 +11,7 @@ TagManager:
   - Window
   - MetalDesk
   - wall
+  - wreckedWall
   layers:
   - Default
   - TransparentFX

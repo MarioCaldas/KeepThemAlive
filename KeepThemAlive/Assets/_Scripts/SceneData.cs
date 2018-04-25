@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SceneData
+public class SceneData : MonoBehaviour
 {
-    public static List<GameObject> ChangedObjList = new List<GameObject>();
+    public static List<string> ChangedObjList = new List<string>();
 
+   
 
 }

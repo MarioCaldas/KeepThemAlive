@@ -30,7 +30,7 @@ public class ChangeObjects : MonoBehaviour
 
     public List<GameObject> selectedObjs = new List<GameObject>();
 
-    public GameObject saveObj;
+    public GameObject saveObj, newObj;
 
     public int childCount;
 
@@ -61,10 +61,14 @@ public class ChangeObjects : MonoBehaviour
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
                     Money.BuySomething(CostAux);
-                    GameObject newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                    newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
                     newObj.transform.localScale = selectedObjs[i].transform.localScale;
 
-                    SceneData.ChangedObjList.Add(newObjectPrefab);
+                    DontDestroyOnLoad(newObj);
+
+                    SceneData.ChangedObjList.Add(selectedObjs[i].name);
+
+                    Debug.Log("obj: " + SceneData.ChangedObjList[i]);
 
                     Destroy(selectedObjs[i]);
                 }

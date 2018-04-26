@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 753570766}
-  m_IndirectSpecularColor: {r: 0.18347281, g: 0.22904414, b: 0.30583698, a: 1}
+  m_IndirectSpecularColor: {r: 0.18347235, g: 0.22904335, b: 0.305836, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -352,12 +352,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   School: {fileID: 533516160}
-  substituteButton: {fileID: 935349144}
   mainCamera: {fileID: 1917374041}
   greenMaterial: {fileID: 2100000, guid: b4fecf47d4f08d54c992123ae38a3693, type: 2}
   ListMaterials: []
   selectedObjs: []
-  saveObj: {fileID: 0}
   newObj: {fileID: 0}
   childCount: 0
 --- !u!4 &182697524
@@ -529,7 +527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &468270247
 GameObject:
@@ -1153,12 +1151,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182697522}
-        m_MethodName: 
+      - m_Target: {fileID: 182697523}
+        m_MethodName: InstantiateNewObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1595,7 +1593,7 @@ RectTransform:
   - {fileID: 468270248}
   - {fileID: 1789716442}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1614,48 +1612,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roof: {fileID: 2000741592}
+  SchoolGO: {fileID: 533516160}
   Cam: {fileID: 1917374037}
---- !u!1 &1833673315
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1833673316}
-  - component: {fileID: 1833673317}
-  m_Layer: 0
-  m_Name: InteractableObjManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1833673316
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833673315}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.35, y: 0.5, z: 20.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1833673317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833673315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e76fbd8c468c5e429f0e395b5d0aeab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
 --- !u!1 &1917374037
 GameObject:
   m_ObjectHideFlags: 0

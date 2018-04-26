@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class ChangeView : MonoBehaviour {
    
     public GameObject roof;
+    public GameObject SchoolGO;
     public GameObject Cam;
     Vector3 ResetedCamPos;
     Quaternion ResetedCamRot;
@@ -22,17 +23,14 @@ public class ChangeView : MonoBehaviour {
         ResetedCamPos = Cam.transform.position;
         ResetedCamRot = Cam.transform.rotation;
         
-
         cor = roof.GetComponent<Renderer>().material.color;
-
-
+        
         CameraRotation = Cam.GetComponent<CameraRotation>();
-
     }
 
     public void ChangeScene()
     {
-
+        DontDestroyOnLoad(SchoolGO);
         Application.LoadLevel(1);
     }
 	

@@ -5,13 +5,12 @@ using UnityEngine;
 public class LoadData : MonoBehaviour {
 
     public Transform school;
-
     private GameObject wreckedWall;
 
 
 	void Awake ()
     {
-        wreckedWall = Resources.Load("wreckedWallParent") as GameObject;
+        //wreckedWall = Resources.Load("wreckedWallParent") as GameObject;
 
         for (int i = 0; i < SceneData.ChangedObjList.Count; i++)
         {
@@ -21,11 +20,7 @@ public class LoadData : MonoBehaviour {
                 {
                     Destroy(school.transform.GetChild(u).gameObject);
                 }
-
-               
             }
-
-            
         }
 
         //for (int u = 0; u < school.childCount; u++)
@@ -38,6 +33,4 @@ public class LoadData : MonoBehaviour {
         //    }
         //}
     }
-	
-	
 }

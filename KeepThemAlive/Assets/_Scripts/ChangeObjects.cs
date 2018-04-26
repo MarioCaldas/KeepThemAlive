@@ -9,28 +9,20 @@ public class ChangeObjects : MonoBehaviour
     List<Objects> ListObj;
     MoneyManager Money;
     int CostAux = 0;
-
-    public Button substituteButton;
-    GameObject subButtonGameObject;
+    
     GameObject objToSwitch, newObjectPrefab;
-
-    string objectTag = "Object";
-    string deskTag = "Desk";
-    string windowTag = "Window";
-    string metalDeskTag = "MetalDesk";
-
+    
     public Camera mainCamera;
     public RaycastHit hit;
-
-    bool canSwitch = false;
-
+    
     public Material greenMaterial;
 
     public List<Material> ListMaterials = new List<Material>();
 
     public List<GameObject> selectedObjs = new List<GameObject>();
-
-    public GameObject saveObj, newObj;
+    
+    // PQ PUBLICO?? é preciso?
+    public GameObject newObj;
 
     public int childCount;
 
@@ -40,19 +32,12 @@ public class ChangeObjects : MonoBehaviour
         ListObj = new List<Objects>();
         AddList();
 
-        Button subButton = substituteButton.GetComponent<Button>();
-        subButton.onClick.AddListener(InstantiateNewObject);
-
-        subButtonGameObject = subButton.gameObject;
-        //subButtonGameObject.SetActive(false);
-
         mainCamera = Camera.main;
 
-        saveObj = null;
-
+        newObjectPrefab = null;
     }
 
-    void InstantiateNewObject()
+    public void InstantiateNewObject()
     {
         if (objToSwitch != null)
         {
@@ -61,15 +46,11 @@ public class ChangeObjects : MonoBehaviour
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
                     Money.BuySomething(CostAux);
-                    newObj = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
-                    newObj.transform.localScale = selectedObjs[i].transform.localScale;
+                    newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                    newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
 
-                    DontDestroyOnLoad(newObj);
-
-                    SceneData.ChangedObjList.Add(selectedObjs[i].name);
-
-                    Debug.Log("obj: " + SceneData.ChangedObjList[i]);
-
+                    DontDestroyOnLoad(newObjectPrefab);
+                    
                     Destroy(selectedObjs[i]);
                 }
 
@@ -80,18 +61,16 @@ public class ChangeObjects : MonoBehaviour
         }
     }
 
-    public void SwitchObject(GameObject obj)
+    void SwitchObject(GameObject obj)
     {
         foreach (Objects ScriptObj in ListObj)
         {
-
             if (ScriptObj.GetTag() == obj.transform.tag)
             {
                 // ESTE É O NOSSO OBJECTO, AGORA ACEDO A TUDO DELE;
                 objToSwitch = obj.transform.gameObject;
                 newObjectPrefab = ScriptObj.GetGO();
                 CostAux = ScriptObj.GetCost();
-
             }
         }
     }
@@ -104,17 +83,14 @@ public class ChangeObjects : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
-
-
                 //highlight objects
 
-                saveObj = hit.transform.gameObject;
+                newObjectPrefab = hit.transform.gameObject;
 
-                childCount = saveObj.transform.childCount;
+                childCount = newObjectPrefab.transform.childCount;
 
-                AddSelectedList(saveObj);
-
-
+                AddSelectedList(newObjectPrefab);
+                
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
                     for (int u = 0; u < childCount; u++)
@@ -125,9 +101,7 @@ public class ChangeObjects : MonoBehaviour
                         mesh.material = greenMaterial;
                     }
                 }
-
             }
-
         }
 
         //unhighligh objects

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepThemAlive", "KeepThemAlive.csproj", "{D7F7CC02-A42C-6D2B-7B86-EA470E536221}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepThemAlive.Editor", "KeepThemAlive.Editor.csproj", "{7804B935-F131-4059-70DD-DB5D12EBE53B}"

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SceneData : MonoBehaviour
 {
-    public static List<string> ChangedObjList = new List<string>();
+    //public static List<Objects> UnchangedObjList = new List<Objects>();
 
-    public static Dictionary<int ,string> ChangedObjList1 = new Dictionary<int, string>();
 
 }

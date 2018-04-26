@@ -4,33 +4,52 @@ using UnityEngine;
 
 public class LoadData : MonoBehaviour {
 
-    public Transform school;
-    private GameObject wreckedWall;
+    private GameObject school;
 
+    public GameObject wreckedWall;
 
-	void Awake ()
+	void Start ()
     {
-        //wreckedWall = Resources.Load("wreckedWallParent") as GameObject;
+        school = GameObject.Find("SchoolBuilding");
 
-        for (int i = 0; i < SceneData.ChangedObjList.Count; i++)
+        for (int i = 0; i < school.transform.childCount; i++)
         {
-            for (int u = 0; u < school.childCount; u++)
+
+            if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
             {
-                if (SceneData.ChangedObjList[i] == school.transform.GetChild(u).name)
+
+                if (school.transform.GetChild(i).tag == "Desk")
                 {
-                    Destroy(school.transform.GetChild(u).gameObject);
+                    if (GetRandom() < 10)
+                    {
+                        
+                        school.transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+
+                else if (school.transform.GetChild(i).tag == "wall")
+                {
+                    if (GetRandom() < 8)
+                    {
+                       //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+                       
+                        //school.transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+
+                else if (school.transform.GetChild(i).tag == "Window")
+                {
+                    school.transform.GetChild(i).gameObject.SetActive(false);
+
                 }
             }
-        }
 
-        //for (int u = 0; u < school.childCount; u++)
-        //{
-        //    if (school.transform.GetChild(u).tag == "wall")
-        //    {
-                
-        //        GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(u).position, school.transform.GetChild(u).rotation) as GameObject;
-        //        wWall.transform.localScale = school.transform.GetChild(u).localScale;
-        //    }
-        //}
+        }
+    }
+
+    int GetRandom()
+    {
+        int r = Random.Range(1, 11);
+        return r;
     }
 }

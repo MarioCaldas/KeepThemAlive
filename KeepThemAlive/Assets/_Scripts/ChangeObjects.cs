@@ -50,7 +50,7 @@ public class ChangeObjects : MonoBehaviour
                     newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
 
                     DontDestroyOnLoad(newObjectPrefab);
-                    
+
                     Destroy(selectedObjs[i]);
                 }
 

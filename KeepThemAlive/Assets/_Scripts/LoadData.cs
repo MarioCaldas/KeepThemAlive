@@ -6,12 +6,12 @@ public class LoadData : MonoBehaviour {
 
     private GameObject school;
 
-    public GameObject wreckedWall;
+    public GameObject WreckedWall;
+    public GameObject WreckeDesk;
 
 	void Start ()
     {
         school = GameObject.Find("SchoolBuilding");
-
         for (int i = 0; i < school.transform.childCount; i++)
         {
 
@@ -22,18 +22,19 @@ public class LoadData : MonoBehaviour {
                 {
                     if (GetRandom() < 10)
                     {
-                        
                         school.transform.GetChild(i).gameObject.SetActive(false);
+                        GameObject obj =  Instantiate(WreckeDesk, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+                        obj.transform.position += new Vector3(0, -3.46f, 0);
                     }
                 }
 
                 else if (school.transform.GetChild(i).tag == "wall")
                 {
-                    if (GetRandom() < 8)
+                    if (GetRandom() < 3)
                     {
                        //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
                        
-                        //school.transform.GetChild(i).gameObject.SetActive(false);
+                        school.transform.GetChild(i).gameObject.SetActive(false);
                     }
                 }
 

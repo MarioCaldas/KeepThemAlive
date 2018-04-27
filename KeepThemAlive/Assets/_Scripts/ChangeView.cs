@@ -30,6 +30,8 @@ public class ChangeView : MonoBehaviour {
 
     public void ChangeScene()
     {
+        GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
+        roof.SetActive(false);
         DontDestroyOnLoad(SchoolGO);
         Application.LoadLevel(1);
     }

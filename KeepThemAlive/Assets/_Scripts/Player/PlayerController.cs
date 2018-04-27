@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     void MoveToPoint(Vector3 destinationPoint)
     {
         navMeshAgent.SetDestination(destinationPoint);
+        navMeshAgent.speed = 10;
     }
 
     void SetActiveObject(InteractableObjManager newActiveObject)

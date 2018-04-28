@@ -12,6 +12,7 @@ TagManager:
   - MetalDesk
   - wall
   - wreckedWall
+  - Pillar
   layers:
   - Default
   - TransparentFX

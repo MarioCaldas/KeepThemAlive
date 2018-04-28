@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class ChangeObjects : MonoBehaviour
 {
     public GameObject School;
-    List<Objects> ListObj;
+    public List<GameObject> ListAllObj;
     MoneyManager Money;
     int CostAux = 0;
+
+    //bool CanPickObj = true;
     
     GameObject objToSwitch, newObjectPrefab;
     
@@ -29,8 +31,6 @@ public class ChangeObjects : MonoBehaviour
     void Start()
     {
         Money = transform.GetComponent<MoneyManager>();
-        ListObj = new List<Objects>();
-        AddList();
 
         mainCamera = Camera.main;
 
@@ -58,26 +58,27 @@ public class ChangeObjects : MonoBehaviour
                 ListMaterials.Clear();
                 objToSwitch = null;
             }
+            SourceDescription.Clear();
+            //CanPickObj = true;
         }
     }
 
     void SwitchObject(GameObject obj)
     {
-        foreach (Objects ScriptObj in ListObj)
+        for (int i = 0; i < ListAllObj.Count; i++)
         {
-            if (ScriptObj.GetTag() == obj.transform.tag)
+            if (ListAllObj[i].GetComponent<Objects>().tag == obj.transform.tag)
             {
-                // ESTE É O NOSSO OBJECTO, AGORA ACEDO A TUDO DELE;
                 objToSwitch = obj.transform.gameObject;
-                newObjectPrefab = ScriptObj.GetGO();
-                CostAux = ScriptObj.GetCost();
+                newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
+                CostAux = ListAllObj[i].GetComponent<Objects>().cost;
             }
         }
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) /*&& CanPickObj*/)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -86,6 +87,9 @@ public class ChangeObjects : MonoBehaviour
                 //highlight objects
 
                 newObjectPrefab = hit.transform.gameObject;
+                Debug.Log(hit.transform.gameObject.tag);
+
+                SourceDescription.ChangeDescription(hit.collider.tag);
 
                 childCount = newObjectPrefab.transform.childCount;
 
@@ -101,6 +105,7 @@ public class ChangeObjects : MonoBehaviour
                         mesh.material = greenMaterial;
                     }
                 }
+                //CanPickObj = false;
             }
         }
 
@@ -108,6 +113,8 @@ public class ChangeObjects : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             UnhighlighObj();
+            SourceDescription.Clear();
+            //CanPickObj = true;
         }
     }
 
@@ -140,30 +147,6 @@ public class ChangeObjects : MonoBehaviour
             selectedObjs.Add(SelObj);
             SwitchObject(SelObj);
         }
-
-    }
-
-
-    void AddList()
-    {
-        Objects objScript = new Objects();
-        objScript.SetCost(100);
-        objScript.SetGO(Resources.Load("DeskMetal") as GameObject);
-        objScript.SetTag("Desk");
-        ListObj.Add(objScript);
-
-        objScript = new Objects();
-        objScript.SetCost(35);
-        objScript.SetGO(Resources.Load("WindowMetal") as GameObject);
-        objScript.SetTag("Window");
-        ListObj.Add(objScript);
-
-
-        objScript = new Objects();
-        objScript.SetCost(200);
-        objScript.SetGO(Resources.Load("Wall") as GameObject);
-        objScript.SetTag("wall");
-        ListObj.Add(objScript);
 
     }
 }

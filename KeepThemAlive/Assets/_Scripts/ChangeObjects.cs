@@ -10,7 +10,7 @@ public class ChangeObjects : MonoBehaviour
     MoneyManager Money;
     int CostAux = 0;
 
-    //bool CanPickObj = true;
+    bool CanPickObj = true;
     
     GameObject objToSwitch, newObjectPrefab;
     
@@ -59,7 +59,7 @@ public class ChangeObjects : MonoBehaviour
                 objToSwitch = null;
             }
             SourceDescription.Clear();
-            //CanPickObj = true;
+            CanPickObj = true;
         }
     }
 
@@ -84,28 +84,31 @@ public class ChangeObjects : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
-                //highlight objects
-
-                newObjectPrefab = hit.transform.gameObject;
-                Debug.Log(hit.transform.gameObject.tag);
-
-                SourceDescription.ChangeDescription(hit.collider.tag);
-
-                childCount = newObjectPrefab.transform.childCount;
-
-                AddSelectedList(newObjectPrefab);
-                
-                for (int i = 0; i < selectedObjs.Count; i++)
+                Debug.Log("hit: " + hit.transform.gameObject.tag);
+                if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
                 {
-                    for (int u = 0; u < childCount; u++)
-                    {
-                        ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
+                    //highlight objects
 
-                        MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
-                        mesh.material = greenMaterial;
+                    newObjectPrefab = hit.transform.gameObject;
+
+                    SourceDescription.ChangeDescription(hit.collider.tag);
+
+                    childCount = newObjectPrefab.transform.childCount;
+
+                    AddSelectedList(newObjectPrefab);
+                
+                    for (int i = 0; i < selectedObjs.Count; i++)
+                    {
+                        for (int u = 0; u < childCount; u++)
+                        {
+                            ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
+
+                            MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+                            mesh.material = greenMaterial;
+                        }
                     }
+                    CanPickObj = false;
                 }
-                //CanPickObj = false;
             }
         }
 
@@ -114,7 +117,7 @@ public class ChangeObjects : MonoBehaviour
         {
             UnhighlighObj();
             SourceDescription.Clear();
-            //CanPickObj = true;
+            CanPickObj = true;
         }
     }
 

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadData : MonoBehaviour {
-
+public class LoadData : MonoBehaviour
+{
     private GameObject school;
 
     public GameObject WreckedWall;
@@ -11,41 +11,45 @@ public class LoadData : MonoBehaviour {
 
 	void Start ()
     {
-        school = GameObject.Find("SchoolBuilding");
-        for (int i = 0; i < school.transform.childCount; i++)
+        if(school != null)
         {
-
-            if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
+            school = GameObject.Find("SchoolBuilding");
+            for (int i = 0; i < school.transform.childCount; i++)
             {
 
-                if (school.transform.GetChild(i).tag == "Desk")
+                if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
                 {
-                    if (GetRandom() < 10)
+
+                    if (school.transform.GetChild(i).tag == "Desk")
+                    {
+                        if (GetRandom() < 10)
+                        {
+                            school.transform.GetChild(i).gameObject.SetActive(false);
+                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+                            obj.transform.position += new Vector3(0, -3.46f, 0);
+                        }
+                    }
+
+                    else if (school.transform.GetChild(i).tag == "wall")
+                    {
+                        if (GetRandom() < 3)
+                        {
+                            //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+
+                            school.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+
+                    else if (school.transform.GetChild(i).tag == "Window")
                     {
                         school.transform.GetChild(i).gameObject.SetActive(false);
-                        GameObject obj =  Instantiate(WreckeDesk, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
-                        obj.transform.position += new Vector3(0, -3.46f, 0);
+
                     }
                 }
 
-                else if (school.transform.GetChild(i).tag == "wall")
-                {
-                    if (GetRandom() < 3)
-                    {
-                       //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
-                       
-                        school.transform.GetChild(i).gameObject.SetActive(false);
-                    }
-                }
-
-                else if (school.transform.GetChild(i).tag == "Window")
-                {
-                    school.transform.GetChild(i).gameObject.SetActive(false);
-
-                }
             }
-
         }
+        
     }
 
     int GetRandom()

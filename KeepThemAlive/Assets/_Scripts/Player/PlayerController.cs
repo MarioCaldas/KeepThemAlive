@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     bool IsGrabed;
     Rigidbody rb;
     public Camera mainCamera;
+    public GameObject parentTarget;
 
     void Start()
     {
@@ -27,15 +28,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Is Grabed " + IsGrabed);
         if (canMove)
         {
-            PointClickMovement();
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //PushBoxes();
+                //SurvivalFollow();
+                RemoveParent();
+            }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PushBoxes();
-            SurvivalFollow();
+            PointClickMovement();
         }
     }
 
@@ -61,13 +64,14 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100, layerMask))
             {
                 InteractableObjManager interactableObject = hit.collider.GetComponent<InteractableObjManager>();
-                
+                MoveToPoint(hit.point);
+                RemoveActiveObject();
+
                 if (interactableObject != null)
                 {
                     SetActiveObject(interactableObject);
-                    GiveOrder(interactableObject);
-
-                    Debug.Log("Position to move " + hit.transform.position);
+                    //PushBoxes(interactableObject);
+                    //GiveOrder(interactableObject);
                 }
             }
         }
@@ -76,7 +80,8 @@ public class PlayerController : MonoBehaviour
     void MoveToPoint(Vector3 destinationPoint)
     {
         navMeshAgent.SetDestination(destinationPoint);
-        navMeshAgent.speed = 10;
+        //navMeshAgent.stoppingDistance = 3f;
+        navMeshAgent.speed = 15f;
     }
 
     void SetActiveObject(InteractableObjManager newActiveObject)
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
             activeObject = newActiveObject;
 
             //MoveToPoint(newActiveObject.transform.position);
-            //navMeshAgent.stoppingDistance = newActiveObject.radius * 0.5f;
+            navMeshAgent.stoppingDistance = newActiveObject.radius * 0.5f;
         }
 
         newActiveObject.SetActive(transform);   
@@ -131,74 +136,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PushBoxes()
+    void PushBoxes(InteractableObjManager interactableObj)
     {
-        float distance;
-        GameObject activeBox = null;
-        GameObject[] boxes = InteractableObjManager.Boxes;
+        float speed = 2f;
+        float smoothTurn = speed * Time.deltaTime;
+
+        SetActiveObject(interactableObj);
+        GameObject activeBox = interactableObj.gameObject;
 
         if (!IsGrabed)
         {
-            foreach (GameObject box in boxes)
-            {
-                distance = Vector3.Distance(transform.position, box.transform.position);
+            Vector3 targetDirection = activeBox.transform.position - transform.position;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, smoothTurn, 0.0f);
 
-                if(distance <= 2f)
-                {
-                    activeBox = box;
-                    IsGrabed = true;
-                }
+            transform.rotation = Quaternion.LookRotation(newDirection);
 
-                if (activeBox != null)
-                {
-                    activeBox.transform.parent = this.transform;
-                }
-            }
+            //activeBox.GetComponent<Rigidbody>().isKinematic = true;
+            activeBox.transform.parent = this.transform;
+            IsGrabed = true;
+            Debug.Log("tou aqui");
         }
 
         else
         {
-            transform.GetChild(0).parent = null;
-            IsGrabed = false;
+            //activeBox.GetComponent<Rigidbody>().isKinematic = false;
+
+            //IsGrabed = false;
+            Debug.Log("Is grabed = true, seu ffffffilho da puta");
         }
+
+        RemoveActiveObject();
     }
 
+    void RemoveParent()
+    {
+        transform.GetChild(1).SetParent(parentTarget.transform);
+        IsGrabed = false;
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        InteractableObjManager interactableObject = collision.collider.GetComponent<InteractableObjManager>();
 
-    //void PushBoxes()
-    //{
-    //    float distance;
-    //    GameObject BoxGO = null;
-    //    GameObject[] box = InteractableObjManager.Boxes;
-
-    //    if (!IsGrabed)
-    //    {
-    //        // vê se tem alguma caixa perto
-    //        foreach (GameObject caixa in box)
-    //        {
-    //            distance = Vector3.Distance(transform.position, caixa.transform.position);
-
-    //            if (distance < 2.5f)
-    //            {
-    //                BoxGO = caixa;
-    //                IsGrabed = true;
-    //                break;
-    //            }
-    //            else
-    //                distance = 0.0f;
-
-    //        }
-
-    //        //if (BoxGO != null)
-    //            //BoxGO.transform.parent = this.transform;
-    //    }
-    //    else
-    //    {
-    //        //transform.GetChild(0).parent = null;
-    //        IsGrabed = false;
-    //    }
-
-    //}
-
-
+        if (collision.gameObject.tag == "Boxes")
+        {
+            Debug.Log("Collided with " + collision.gameObject.name);
+            PushBoxes(interactableObject);
+        }
+    }
 }

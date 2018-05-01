@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             activeObject = newActiveObject;
 
             //MoveToPoint(newActiveObject.transform.position);
-            navMeshAgent.stoppingDistance = newActiveObject.radius * 0.5f;
+            //navMeshAgent.stoppingDistance = newActiveObject.radius * 0.5f;
         }
 
         newActiveObject.SetActive(transform);   

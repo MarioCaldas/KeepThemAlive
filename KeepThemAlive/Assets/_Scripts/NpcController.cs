@@ -11,6 +11,7 @@ public class NpcController : MonoBehaviour
     float rotationSpeed = 2f;
     public bool canFollow = false;
     string npcTag = "NPC";
+    public static float hp = 100f;
 	
 	void Update ()
     {
@@ -27,7 +28,7 @@ public class NpcController : MonoBehaviour
     {
         if(collision.transform.tag == npcTag)
         {
-            Debug.Log("É para parares cão");
+
             canFollow = false;
         }
     }

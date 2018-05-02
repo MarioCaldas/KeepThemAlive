@@ -84,7 +84,7 @@ public class ChangeObjects : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
-                Debug.Log("hit: " + hit.transform.gameObject.tag);
+
                 if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
                 {
                     //highlight objects

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class NewPlayerController : MonoBehaviour {
-
-    public Transform Hands;
+    
     public Camera mainCamera;
     public LayerMask GroundLayer;
     public LayerMask ObjLayer;
@@ -17,7 +16,6 @@ public class NewPlayerController : MonoBehaviour {
 
     private void Start()
     {
-        Hands = transform.GetChild(1);
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -52,16 +50,24 @@ public class NewPlayerController : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, 100, ObjLayer))
         {
-            //hit.collider.transform.position = Hands.localPosition;
-
             hit.collider.transform.SetParent(transform.GetChild(1));
+            
             transform.GetChild(1).GetChild(0).position = transform.GetChild(1).position;
         }
     }
     void LeaveBox()
     {
         Debug.Log("Largar!");
+
+        Transform aux = transform.GetChild(1).GetChild(0);
+
         transform.GetChild(1).GetChild(0).SetParent(null);
+
+       
+        aux.gameObject.AddComponent<Rigidbody>();
+        aux.gameObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        
+
         isPickedObj = false;
     }
 

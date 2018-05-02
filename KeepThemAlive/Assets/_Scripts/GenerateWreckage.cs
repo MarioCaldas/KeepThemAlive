@@ -2,8 +2,9 @@
 
 public class GenerateWreckage : MonoBehaviour
 {
-    public GameObject cube;
-    public GameObject capsule;
+    public GameObject rock;
+    public GameObject brick;
+    public GameObject damagedPlank;
 
     public float minCubeSize;
     public float maxCubeSize;
@@ -24,9 +25,9 @@ public class GenerateWreckage : MonoBehaviour
 
     public void Generate()
     {
-        for (int y = -250; y < zoneSize; y++)
+        for (int y = 0; y < zoneSize; y++)
         {
-            for (int x = -250; x < zoneSize; x++)
+            for (int x = 0; x < zoneSize; x++)
             {
                 float probability = noiseImage.GetPixel(x, y).r / (baseDensity / objsDensity);
 
@@ -36,13 +37,17 @@ public class GenerateWreckage : MonoBehaviour
 
                     float capSize = Random.Range(minCapSize, maxCapSize);
 
-                    RandomObject(Random.Range(1, 3));
+                    RandomObject(Random.Range(1, 4));
 
                     //if (newGameObj.tag != "Stone")
                     //{
                         newGameObj.transform.localScale = Vector3.one * cubeSize;
-                        newGameObj.transform.position = new Vector3(x, 0, y);
+                        newGameObj.transform.position = new Vector3(x + 180, 40, y + 155);
+                        newGameObj.transform.rotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180)) ;
+
                         newGameObj.transform.parent = transform;
+
+
                     //}
                     //else
                     //{
@@ -59,11 +64,15 @@ public class GenerateWreckage : MonoBehaviour
     {
         if (random == 1)
         {
-            newGameObj = Instantiate(cube);
+            newGameObj = Instantiate(rock);
         }
         if (random == 2)
         {
-            newGameObj = Instantiate(cube);
+            newGameObj = Instantiate(brick);
+        }
+        if (random == 3)
+        {
+            newGameObj = Instantiate(damagedPlank);
         }
 
     }

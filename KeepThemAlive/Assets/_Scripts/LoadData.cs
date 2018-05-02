@@ -8,14 +8,18 @@ public class LoadData : MonoBehaviour
 
     public GameObject WreckedWall;
     public GameObject WreckeDesk;
+    private GameObject wreckedWindow;
 
 	void Start ()
     {
-        if(school != null)
+        wreckedWindow = Resources.Load("GlassPieces") as GameObject;
+        school = GameObject.Find("SchoolBuilding");
+
+        if (school != null)
         {
-            school = GameObject.Find("SchoolBuilding");
             for (int i = 0; i < school.transform.childCount; i++)
             {
+                Debug.Log("sdasdasdasd");
 
                 if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
                 {
@@ -25,14 +29,14 @@ public class LoadData : MonoBehaviour
                         if (GetRandom() < 10)
                         {
                             school.transform.GetChild(i).gameObject.SetActive(false);
-                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position, Quaternion.Euler(0, Random.Range(0, 180), 0));
                             obj.transform.position += new Vector3(0, -3.46f, 0);
                         }
                     }
 
                     else if (school.transform.GetChild(i).tag == "wall")
                     {
-                        if (GetRandom() < 3)
+                        if (GetRandom() < 1)
                         {
                             //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
 
@@ -42,7 +46,14 @@ public class LoadData : MonoBehaviour
 
                     else if (school.transform.GetChild(i).tag == "Window")
                     {
-                        school.transform.GetChild(i).gameObject.SetActive(false);
+                        school.transform.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+
+                        GameObject glass = school.transform.GetChild(i).Find("Glass").gameObject;
+
+                        GameObject brokeWindow = Instantiate(wreckedWindow, glass.transform.position, glass.transform.rotation);
+
+                        glass.SetActive(false);
+
 
                     }
                 }

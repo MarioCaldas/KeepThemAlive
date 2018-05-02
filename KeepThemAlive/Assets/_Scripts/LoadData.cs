@@ -13,6 +13,7 @@ public class LoadData : MonoBehaviour
 
 	void Start ()
     {
+        //Timer.TotalPess = 0;
         npc = Resources.Load("npc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
@@ -25,17 +26,16 @@ public class LoadData : MonoBehaviour
         {
             for (int i = 0; i < school.transform.childCount; i++)
             {
-
                 if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
                 {
-
                     if (school.transform.GetChild(i).tag == "Desk")
                     {
                         if(GetRandom() < 5)
                         {
                            GameObject objNpc = Instantiate(npc, school.transform.GetChild(i).position + new Vector3(0, 1.5f, 0), school.transform.GetChild(i).rotation);
                            Rigidbody rb = objNpc.GetComponent<Rigidbody>();
-                            rb.AddForce(new Vector3(0, Random.RandomRange(0, 180), 0), ForceMode.Impulse);
+                           rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
+                           Timer.TotalPess++;
                         }
 
                         if (GetRandom() < 10)
@@ -49,9 +49,6 @@ public class LoadData : MonoBehaviour
                             metalObj.Add(school.transform.GetChild(i).gameObject);
                         }
                     }
-
-
-
                     else if (school.transform.GetChild(i).tag == "wall")
                     {
                         if (GetRandom() < 1)
@@ -61,16 +58,11 @@ public class LoadData : MonoBehaviour
                             school.transform.GetChild(i).gameObject.SetActive(false);
                         }
                     }
-
-
                     else if(school.transform.GetChild(i).tag == "chair")
                     {
 
                         school.transform.GetChild(i).transform.rotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
                     }
-
-
-
                     else if (school.transform.GetChild(i).tag == "Window")
                     {
                         school.transform.GetChild(i).GetComponent<BoxCollider>().enabled = false;
@@ -101,20 +93,13 @@ public class LoadData : MonoBehaviour
 
         for (int i = 0; i < metalObj.Count; i++)
         {
-
             //SURVIVALS
             if (GetRandom() < 5)
             {
-
                 GameObject objNpc = Instantiate(npc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
-
-
+                Timer.TotalPess++;
             }
-
-
         }
-
-
     }
 
     int GetRandom()

@@ -30,7 +30,12 @@ public class ChangeView : MonoBehaviour {
 
     public void ChangeScene()
     {
-        GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
+        GameObject[] Doors = GameObject.FindGameObjectsWithTag("Door");
+        foreach (var door in Doors)
+        {
+            //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
+            door.transform.rotation = Quaternion.Euler(0, door.transform.rotation.y + 120, 0);
+        }
         roof.SetActive(false);
         DontDestroyOnLoad(SchoolGO);
         Application.LoadLevel(1);

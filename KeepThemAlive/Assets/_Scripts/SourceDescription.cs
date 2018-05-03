@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SourceDescription : MonoBehaviour {
-
+public class SourceDescription : MonoBehaviour
+{
     public static GameObject Painel;
     public static Text Description;
 
@@ -18,26 +18,26 @@ public class SourceDescription : MonoBehaviour {
     public static void ChangeDescription(string Source)
     {
         Painel.SetActive(true);
+
         if (Source == "Desk")
         {
-            Description.text = "Source: Desk \n\nOwned: Wood Table \nIt's a weak spot to hide when exist an earthquake" +
-                "\n\nBuy: Metal Desk \nCost: 100 \nDesk with high resistance, that block rocks that fall during an earthquake";
+            Description.text = "Object: Wood Desk \nIt's a weak spot to hide during an earthquake" +
+                "\n\nAdvice: Buy Metal Desk \nDescription: Desk with high resistance, the civilians will have 50hp left \n\nCost: 100";
         }
         else if (Source == "wall")
         {
-            Description.text = "Source: Wall \n\nOwned: Normal wall \nNormal walls could break when exist an earthquake" +
-                "\n\nBuy: Concrete Wall \nCost: 300 \nIt's a Wall with high resistance, that block vibrations and is hard to fall";
+            Description.text = "Object: Normal wall \nNormal walls could break easily during an earthquake" +
+                "\n\nAdvice: Buy Concrete Wall \n Descripiton: Wall with high endurance, the civilians will have 70hp left \n\nCost: 300";
         }
         else if (Source == "Window")
         {
-            Description.text = "Source: Window \n\nOwned: Wood Window \nIt's dangerous be close because of glass fragments when exist an earthquake" +
-                "\n\nBuy: Metal Window \nCost: 50 \nWindow that is prepared to vibrations, but take care to get away during an earthquake";
+            Description.text = "Object: Wood Window \nIt's not safe to be close to them because the glass can break during an earthquake" +
+                "\n\nAdvice: Buy Metal Window \n Description: Reinforced window that is prepared to vibrations, the civilians will have 30hp left \n\nCost: 50";
         }
         else if (Source == "Pillar")
         {
-            Debug.Log("Entrei!!!");
-            Description.text = "Source: Pillar \n\nOwned: Wood Pillar \nWood always could break when exist an earthquake" +
-                "\n\nBuy: Concrete Pillar \nCost: 125 \nPillar that is prepared to don't collapse the roof during an earthquake";
+            Description.text = "Object: Wood Pillar \nAlthough it can support the ceiling, this pillar definitely cannot prevent it from falling" +
+                "\n\nAdvice: Buy Concrete Pillar \n Description: Pillar that is prepared to support the ceiling, the civilians will have 80hp left \n\nCost: 125";
         }
     }
 

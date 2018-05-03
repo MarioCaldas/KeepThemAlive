@@ -11,6 +11,8 @@ public class LoadData : MonoBehaviour
     private GameObject wreckedWindow;
     private GameObject npc;
 
+    public static bool isDamaged = false;
+
 	void Start ()
     {
         //Timer.TotalPess = 0;
@@ -19,8 +21,6 @@ public class LoadData : MonoBehaviour
         school = GameObject.Find("SchoolBuilding");
 
         List<GameObject> metalObj = new List<GameObject>();
-        
-
 
         if (school != null)
         {
@@ -43,6 +43,7 @@ public class LoadData : MonoBehaviour
                             school.transform.GetChild(i).gameObject.SetActive(false);
                             GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0,15,0), Quaternion.Euler(0, Random.Range(0, 180), 0));
                             obj.transform.position += new Vector3(0, -3.46f, 0);
+                            isDamaged = true;
                         }
                         else
                         {
@@ -84,7 +85,6 @@ public class LoadData : MonoBehaviour
 
         foreach (GameObject item in MetalDesk)
         {
-
             if (item.transform.parent == null)
             {
                 metalObj.Add(item);
@@ -98,6 +98,8 @@ public class LoadData : MonoBehaviour
             {
                 GameObject objNpc = Instantiate(npc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
                 Timer.TotalPess++;
+
+                isDamaged = false;
             }
         }
     }

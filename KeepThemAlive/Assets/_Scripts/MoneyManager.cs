@@ -10,13 +10,12 @@ public class MoneyManager : MonoBehaviour {
 
 	void Start ()
     {
-        Money = 5000;
+        Money = 1000;
 	}
 
 	void Update ()
     {
-
-        MoneyText.text = "" + Money + "/5000";
+        MoneyText.text = "" + Money + "/1000";
 	}
 
     public void BuySomething(int cost)

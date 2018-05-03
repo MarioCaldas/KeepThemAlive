@@ -48,7 +48,6 @@ public class NewPlayerController : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, ObjLayer))
         {
-            Debug.Log("Dis: " + Vector3.Distance(transform.position, hit.transform.position));
             if (Vector3.Distance(transform.position, hit.transform.position) < 10)
             {
                 isPickedObj = true;

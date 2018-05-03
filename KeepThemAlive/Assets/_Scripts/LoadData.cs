@@ -15,7 +15,6 @@ public class LoadData : MonoBehaviour
 
 	void Start ()
     {
-        //Timer.TotalPess = 0;
         npc = Resources.Load("npc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
@@ -35,7 +34,7 @@ public class LoadData : MonoBehaviour
                            GameObject objNpc = Instantiate(npc, school.transform.GetChild(i).position + new Vector3(0, 1.5f, 0), school.transform.GetChild(i).rotation);
                            Rigidbody rb = objNpc.GetComponent<Rigidbody>();
                            rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
-                           Timer.TotalPess++;
+                            CanvasScript.TotalPess++;
                         }
 
                         if (GetRandom() < 10)
@@ -97,7 +96,7 @@ public class LoadData : MonoBehaviour
             if (GetRandom() < 5)
             {
                 GameObject objNpc = Instantiate(npc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
-                Timer.TotalPess++;
+                CanvasScript.TotalPess++;
 
                 isDamaged = false;
             }

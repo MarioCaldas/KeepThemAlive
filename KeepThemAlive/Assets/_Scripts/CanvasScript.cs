@@ -18,14 +18,12 @@ public class CanvasScript : MonoBehaviour {
 
     void Start()
     {
-        PessSalvas = 0;
         Min = 0;
         Sec = StartTimer;
     }
 
     void Update()
     {
-        Debug.Log("Peps: " + TotalPess);
         TimeCount();
         PessText.text = "Pessoas Salvas: " + PessSalvas + "/" + TotalPess;
     }
@@ -42,7 +40,7 @@ public class CanvasScript : MonoBehaviour {
 
             if (StartTimer <= 30)
             {
-                // piscapisca
+                // pisca pisca
                 if ((int)Sec % 2 == 0)
                 {
                     BClock.SetActive(false);

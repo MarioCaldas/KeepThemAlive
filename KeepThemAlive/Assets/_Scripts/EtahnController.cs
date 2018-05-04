@@ -11,6 +11,7 @@ public class EtahnController : MonoBehaviour {
     public LayerMask ObjLayer;
     NavMeshAgent navMeshAgent;
     bool move;
+    bool GoToObj;
 
     private void Start()
     {
@@ -63,6 +64,7 @@ public class EtahnController : MonoBehaviour {
                 }   
             }
         }
+        anim.SetBool("Run", move);
         if (navMeshAgent.remainingDistance <= 1)
         {
             move = false;
@@ -71,8 +73,6 @@ public class EtahnController : MonoBehaviour {
         {
             move = true;
         }
-        anim.SetBool("Run", move);
-        Debug.Log("Correr: " + anim.GetBool("Run"));
     }
 
     void MoveToPoint()

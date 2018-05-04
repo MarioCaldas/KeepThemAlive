@@ -8,18 +8,7 @@ public class NpcHurted : MonoBehaviour {
     public Material Transparent;
     public Material GreenTransparent;
     public GameObject Canvas;
-
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-
-    }
-
+    
     public void GoMeta()
     {
         MetaSpot.GetComponent<Renderer>().material = GreenTransparent;
@@ -29,4 +18,22 @@ public class NpcHurted : MonoBehaviour {
     {
         MetaSpot.GetComponent<Renderer>().material = Transparent;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name == "WeakSpot")
+        {
+            Debug.Log("Uma pessoa foi salva");
+            CanvasScript.PessSalvas++;
+        }
+    }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.name == "WeakSpot")
+    //    {
+    //        Debug.Log("Uma pessoa foi salva");
+    //        CanvasScript.PessSalvas++;
+    //    }
+    //}
 }

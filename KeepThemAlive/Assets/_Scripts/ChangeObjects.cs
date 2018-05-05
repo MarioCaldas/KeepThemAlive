@@ -45,13 +45,21 @@ public class ChangeObjects : MonoBehaviour
             {
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
-                    Money.BuySomething(CostAux);
-                    newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
-                    newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
+                    if (selectedObjs[i].gameObject.tag == "wall")
+                    {
+                        ChangeWallMaterial(selectedObjs[i].gameObject);
+                    }
+                    else
+                    {
+                        newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                        newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
+                        Destroy(selectedObjs[i]);
+
+                    }
+                    Money.BuySomething(CostAux);              
 
                     DontDestroyOnLoad(newObjectPrefab);
 
-                    Destroy(selectedObjs[i]);
                 }
 
                 selectedObjs.Clear();
@@ -69,6 +77,7 @@ public class ChangeObjects : MonoBehaviour
         {
             if (ListAllObj[i].GetComponent<Objects>().tag == obj.transform.tag)
             {
+               
                 objToSwitch = obj.transform.gameObject;
                 newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
                 CostAux = ListAllObj[i].GetComponent<Objects>().cost;
@@ -91,22 +100,15 @@ public class ChangeObjects : MonoBehaviour
 
                     newObjectPrefab = hit.transform.gameObject;
 
+
                     SourceDescription.ChangeDescription(hit.collider.tag);
 
                     childCount = newObjectPrefab.transform.childCount;
 
                     AddSelectedList(newObjectPrefab);
-                
-                    for (int i = 0; i < selectedObjs.Count; i++)
-                    {
-                        for (int u = 0; u < childCount; u++)
-                        {
-                            ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
 
-                            MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
-                            mesh.material = greenMaterial;
-                        }
-                    }
+                    HighlightObj();
+
                     CanPickObj = false;
                 }
             }
@@ -119,6 +121,33 @@ public class ChangeObjects : MonoBehaviour
             SourceDescription.Clear();
             CanPickObj = true;
         }
+    }
+
+    void ChangeWallMaterial(GameObject wall)
+    {
+        Debug.Log("ola");
+
+
+        Material concreteMat = Resources.Load<Material>("Concrete");
+
+        wall.transform.GetChild(0).GetComponent<MeshRenderer>().material = concreteMat;
+
+    }
+
+    void HighlightObj()
+    {
+
+        for (int i = 0; i < selectedObjs.Count; i++)
+        {
+            for (int u = 0; u < childCount; u++)
+            {
+                ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
+
+                MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+                mesh.material = greenMaterial;
+            }
+        }
+
     }
 
     void UnhighlighObj()

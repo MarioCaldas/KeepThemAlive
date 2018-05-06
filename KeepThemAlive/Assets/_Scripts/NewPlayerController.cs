@@ -51,8 +51,12 @@ public class NewPlayerController : MonoBehaviour {
             if (Vector3.Distance(transform.position, hit.transform.position) < 10)
             {
                 isPickedObj = true;
-                hit.collider.transform.SetParent(transform.GetChild(1));
+
+                hit.collider.transform.SetParent(transform.GetChild(1));               
+
                 transform.GetChild(1).GetChild(0).position = transform.GetChild(1).position;
+
+                transform.GetChild(1).GetChild(0).rotation = transform.GetChild(1).rotation;
             }
             else
             {
@@ -102,17 +106,17 @@ public class NewPlayerController : MonoBehaviour {
         }  
     }
 
-    void PlayerLookTo()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+    //void PlayerLookTo()
+    //{
+    //    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+    //    RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 1000))
-        {
-            LookPos = hit.point;
-        }
-        LookPos.y = 7.4f;
-        transform.LookAt(LookPos, Vector3.up);
-    }
+    //    if (Physics.Raycast(ray, out hit, 1000))
+    //    {
+    //        LookPos = hit.point;
+    //    }
+    //    LookPos.y = 7.4f;
+    //    transform.LookAt(LookPos, Vector3.up);
+    //}
 
 }

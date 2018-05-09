@@ -786,8 +786,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4109610482303582}
   - component: {fileID: 95580741665634534}
-  - component: {fileID: 64687280747565810}
   - component: {fileID: 114632689837691802}
+  - component: {fileID: 65383352368459536}
+  - component: {fileID: 54213033943035040}
   m_Layer: 10
   m_Name: NPC
   m_TagString: NPC
@@ -1353,7 +1354,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602554924012532}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 288.85, y: 0, z: 270.02832}
+  m_LocalPosition: {x: 233.69, y: 0.69, z: 310.82}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4949267753546766}
@@ -2210,7 +2211,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133113227493740}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2451,8 +2452,23 @@ Transform:
   m_Father: {fileID: 4942488529644820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &64687280747565810
-MeshCollider:
+--- !u!54 &54213033943035040
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602554924012532}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &65383352368459536
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -2461,10 +2477,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 1a7782f97a2c4d34182e665f4dba1c1c, type: 3}
+  m_Size: {x: 0.7940894, y: 0.7181679, z: 1.1130573}
+  m_Center: {x: 0.002770821, y: 0.36908394, z: 0.25864598}
 --- !u!95 &95580741665634534
 Animator:
   serializedVersion: 3
@@ -2494,8 +2508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MetaSpot: {fileID: 0}
-  Transparent: {fileID: 0}
-  GreenTransparent: {fileID: 0}
+  Transparent: {fileID: 2100000, guid: f1ff71a37ff97db46a44c5ea8f2b65d7, type: 2}
+  GreenTransparent: {fileID: 2100000, guid: b4fecf47d4f08d54c992123ae38a3693, type: 2}
   Canvas: {fileID: 0}
 --- !u!137 &137216405968872168
 SkinnedMeshRenderer:

@@ -46,14 +46,15 @@ public class NpcController : MonoBehaviour
 
     void HealthControl()
     {
+        Debug.Log("damaged: " + LoadData.isDamaged);
         if(LoadData.isDamaged == true)
         {
-            health = 100f;
+            health = 70f;
         }
 
         else if(LoadData.isDamaged == false)
         {
-            health = 70f;
+            health = 100f;
         }
 
         healthBar.fillAmount = health / startHealth;

@@ -91,8 +91,11 @@ public class ChangeObjects : MonoBehaviour
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
+
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
+                Debug.Log(hit.collider.name);
+
 
                 if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
                 {
@@ -107,12 +110,19 @@ public class ChangeObjects : MonoBehaviour
 
                     AddSelectedList(newObjectPrefab);
 
+              
+                
+                    Debug.Log("listaObjs: " + selectedObjs.Count );
+
+
                     HighlightObj();
 
                     CanPickObj = false;
                 }
             }
         }
+
+       
 
         //unhighligh objects
         if (Input.GetMouseButtonDown(1))
@@ -141,12 +151,19 @@ public class ChangeObjects : MonoBehaviour
         {
             for (int u = 0; u < childCount; u++)
             {
+                Debug.Log("bom dia");
                 ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
 
-                MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).gameObject.GetComponent<MeshRenderer>();
+
+
+                MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>();
                 mesh.material = greenMaterial;
+
+                Debug.Log("material: " + selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material.name);
+
             }
         }
+
 
     }
 

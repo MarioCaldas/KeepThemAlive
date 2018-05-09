@@ -31,10 +31,11 @@ public class LoadData : MonoBehaviour
                     {
                         if(GetRandom() < 5)
                         {
-                           GameObject objNpc = Instantiate(npc, school.transform.GetChild(i).position + new Vector3(0, 1.5f, 0), school.transform.GetChild(i).rotation);
+                            isDamaged = true;
+                            GameObject objNpc = Instantiate(npc, school.transform.GetChild(i).position + new Vector3(0, 1.5f, 0), school.transform.GetChild(i).rotation);
                            Rigidbody rb = objNpc.GetComponent<Rigidbody>();
                            rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
-                            CanvasScript.TotalPess++;
+                           CanvasScript.TotalPess++;
                         }
 
                         if (GetRandom() < 10)
@@ -42,7 +43,6 @@ public class LoadData : MonoBehaviour
                             school.transform.GetChild(i).gameObject.SetActive(false);
                             GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0,15,0), Quaternion.Euler(0, Random.Range(0, 180), 0));
                             obj.transform.position += new Vector3(0, -3.46f, 0);
-                            isDamaged = true;
                         }
                         else
                         {

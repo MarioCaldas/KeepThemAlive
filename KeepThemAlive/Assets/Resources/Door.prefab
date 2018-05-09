@@ -522,4 +522,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 25
   Tag: Door
-  Object: {fileID: 1367064829566176, guid: 0009ca7b7f83bb543a0b23e11abeb966, type: 2}
+  Object: {fileID: 1491948119890704, guid: 96730b52c8774c247997a2b3713d5ea7, type: 2}

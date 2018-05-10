@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ChangeObjects : MonoBehaviour
 {
-    public GameObject School;
     public List<GameObject> ListAllObj;
     MoneyManager Money;
     int CostAux = 0;
@@ -15,7 +14,7 @@ public class ChangeObjects : MonoBehaviour
     bool CanPickObj = true;
 
     //rego
-    string sourceToTranfer = "";
+    //string sourceToTranfer = "";
     
     GameObject objToSwitch, newObjectPrefab;
     
@@ -56,6 +55,7 @@ public class ChangeObjects : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Entrei!");
                         newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
                         newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
                         Destroy(selectedObjs[i]);
@@ -83,7 +83,7 @@ public class ChangeObjects : MonoBehaviour
         {
             if (ListAllObj[i].GetComponent<Objects>().tag == obj.transform.tag)
             {              
-                objToSwitch = obj.transform.gameObject;
+                objToSwitch = obj;
                 newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
                 CostAux = ListAllObj[i].GetComponent<Objects>().cost;
                 Cost = CostAux;
@@ -96,16 +96,14 @@ public class ChangeObjects : MonoBehaviour
         if (Input.GetMouseButtonDown(0) /*&& CanPickObj*/)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-
+            
             if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
             {
-                Debug.Log(hit.collider.name);
-
+                Debug.Log("Tag: " + hit.transform.gameObject.tag);
                 if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
                 {
                     //rego
-                    sourceToTranfer = hit.collider.tag;
+                    //sourceToTranfer = hit.collider.tag;
 
                     //highlight objects
 
@@ -128,8 +126,6 @@ public class ChangeObjects : MonoBehaviour
             }
         }
 
-       
-
         //unhighligh objects
         if (Input.GetMouseButtonDown(1))
         {
@@ -139,11 +135,11 @@ public class ChangeObjects : MonoBehaviour
         }
     }
 
-    public void ActivateQuestion()
+    /*public void ActivateQuestion()
     {
         Debug.Log("Source: " + sourceToTranfer);
         SourceDescription.SetQuestion(sourceToTranfer);
-    }
+    }*/
 
     void ChangeWallMaterial(GameObject wall)
     {
@@ -163,11 +159,10 @@ public class ChangeObjects : MonoBehaviour
         {
             for (int u = 0; u < childCount; u++)
             {
-                Debug.Log("bom dia");
+                //Debug.Log("bom dia");
+                
                 ListMaterials.Add(selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material);
-
-
-
+                
                 MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>();
                 mesh.material = greenMaterial;
 
@@ -175,8 +170,6 @@ public class ChangeObjects : MonoBehaviour
 
             }
         }
-
-
     }
 
     void UnhighlighObj()
@@ -208,6 +201,5 @@ public class ChangeObjects : MonoBehaviour
             selectedObjs.Add(SelObj);
             SwitchObject(SelObj);
         }
-
     }
 }

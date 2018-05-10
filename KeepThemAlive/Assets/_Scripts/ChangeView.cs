@@ -17,9 +17,9 @@ public class ChangeView : MonoBehaviour {
 
     Color cor;
 
-
     void Start ()
     {
+
         ResetedCamPos = Cam.transform.position;
         ResetedCamRot = Cam.transform.rotation;
         
@@ -30,12 +30,15 @@ public class ChangeView : MonoBehaviour {
 
     public void ChangeScene()
     {
-        GameObject[] Doors = GameObject.FindGameObjectsWithTag("Door");
-        foreach (var door in Doors)
-        {
-            //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
-            door.transform.GetChild(0).rotation = Quaternion.Euler(0, 80, 0);
-        }
+        //isto nao se faz assim
+        //GameObject[] Doors = GameObject.FindGameObjectsWithTag("Door");
+
+
+        //foreach (var door in Doors)
+        //{
+        //    //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
+        //    door.transform.GetChild(0).rotation = Quaternion.Euler(0, 80, 0);
+        //}
         //GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
         roof.SetActive(false);
         DontDestroyOnLoad(SchoolGO);
@@ -73,7 +76,7 @@ public class ChangeView : MonoBehaviour {
 
     void Update ()
     {
-
+        
     }
 
     #region Transparecy

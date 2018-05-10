@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ChangeObjects : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class ChangeObjects : MonoBehaviour
     bool CanPickObj = true;
 
     //rego
-    //string sourceToTranfer = "";
+    string sourceToTranfer = "";
     
     GameObject objToSwitch, newObjectPrefab;
     
@@ -34,6 +34,7 @@ public class ChangeObjects : MonoBehaviour
 
     void Start()
     {
+
         Money = transform.GetComponent<MoneyManager>();
 
         mainCamera = Camera.main;
@@ -93,34 +94,36 @@ public class ChangeObjects : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) /*&& CanPickObj*/)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            
-            if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
+
+            if (Input.GetMouseButtonDown(0) /*&& CanPickObj*/)
             {
-                Debug.Log("Tag: " + hit.transform.gameObject.tag);
-                if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
                 {
+
+
                     //rego
-                    //sourceToTranfer = hit.collider.tag;
+                    sourceToTranfer = hit.collider.tag;
 
                     //highlight objects
 
                     newObjectPrefab = hit.transform.gameObject;
 
-                    SourceDescription.ChangeDescription(hit.collider.tag);
 
-                    childCount = newObjectPrefab.transform.childCount;
 
                     AddSelectedList(newObjectPrefab);
-             
-                    Debug.Log("listaObjs: " + selectedObjs.Count );
 
 
                     HighlightObj();
 
                     CanPickObj = false;
+
+                    Debug.Log("childs: " + childCount);
+
+
 
                 }
             }
@@ -135,11 +138,11 @@ public class ChangeObjects : MonoBehaviour
         }
     }
 
-    /*public void ActivateQuestion()
+    public void ActivateQuestion()
     {
         Debug.Log("Source: " + sourceToTranfer);
         SourceDescription.SetQuestion(sourceToTranfer);
-    }*/
+    }
 
     void ChangeWallMaterial(GameObject wall)
     {
@@ -166,7 +169,7 @@ public class ChangeObjects : MonoBehaviour
                 MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>();
                 mesh.material = greenMaterial;
 
-                Debug.Log("material: " + selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>().material.name);
+
 
             }
         }
@@ -174,6 +177,8 @@ public class ChangeObjects : MonoBehaviour
 
     void UnhighlighObj()
     {
+        
+
         for (int i = 0; i < selectedObjs.Count; i++)
         {
             for (int u = 0; u < childCount; u++)
@@ -192,12 +197,18 @@ public class ChangeObjects : MonoBehaviour
     {
         if (selectedObjs.Count == 0)
         {
+            childCount = newObjectPrefab.transform.childCount;
+            SourceDescription.ChangeDescription(newObjectPrefab.tag);
+
             selectedObjs.Add(SelObj);
             SwitchObject(SelObj);
 
         }
         else if (selectedObjs[0].tag == SelObj.tag)
         {
+            childCount = newObjectPrefab.transform.childCount;
+            SourceDescription.ChangeDescription(newObjectPrefab.tag);
+
             selectedObjs.Add(SelObj);
             SwitchObject(SelObj);
         }

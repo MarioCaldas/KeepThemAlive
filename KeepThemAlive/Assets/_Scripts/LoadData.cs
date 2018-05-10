@@ -6,7 +6,7 @@ public class LoadData : MonoBehaviour
 {
     private GameObject school;
 
-    public GameObject WreckedWall;
+    private GameObject WreckedWall;
     public GameObject WreckeDesk;
     private GameObject wreckedWindow;
     private GameObject healthyNpc;
@@ -16,6 +16,7 @@ public class LoadData : MonoBehaviour
 
 	void Start ()
     {
+        WreckedWall = Resources.Load("wWallParent") as GameObject;
         healthyNpc = Resources.Load("npc") as GameObject;
         hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
@@ -53,11 +54,13 @@ public class LoadData : MonoBehaviour
                     }
                     else if (school.transform.GetChild(i).tag == "wall")
                     {
-                        if (GetRandom() < 1)
+                        Debug.Log("bom dia");
+                        if (GetRandom() < 10)
                         {
-                            //GameObject wWall = Instantiate(wreckedWall, school.transform.GetChild(i).position, school.transform.GetChild(i).rotation);
+                            //GameObject wWall = Instantiate(WreckedWall, school.transform.GetChild(i).GetChild(0).position, school.transform.GetChild(i).GetChild(0).rotation);
+                            //wWall.transform.localScale = school.transform.GetChild(i).localScale;
 
-                            school.transform.GetChild(i).gameObject.SetActive(false);
+                            //school.transform.GetChild(i).gameObject.SetActive(false);
                         }
                     }
                     else if(school.transform.GetChild(i).tag == "chair")

@@ -72,6 +72,10 @@ public class SourceDescription : MonoBehaviour
                 Question.text = "Are you sure?";
                 Money.text = "" + ChangeObjects.Cost;
                 break;
+            case "Door":
+                Question.text = "Are you sure?";
+                Money.text = "" + ChangeObjects.Cost;
+                break;
         }
     }
 

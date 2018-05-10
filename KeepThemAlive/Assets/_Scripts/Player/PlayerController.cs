@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Is Grabed " + IsGrabed);
         if (canMove)
         {
             if (Input.GetKeyDown(KeyCode.E))

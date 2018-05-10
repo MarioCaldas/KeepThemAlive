@@ -9,13 +9,15 @@ public class LoadData : MonoBehaviour
     public GameObject WreckedWall;
     public GameObject WreckeDesk;
     private GameObject wreckedWindow;
-    private GameObject npc;
+    private GameObject healthyNpc;
+    private GameObject hurtedNpc;
 
     public static bool isDamaged = false;
 
 	void Start ()
     {
-        npc = Resources.Load("npc") as GameObject;
+        healthyNpc = Resources.Load("npc") as GameObject;
+        hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
 
@@ -30,9 +32,9 @@ public class LoadData : MonoBehaviour
                     if (school.transform.GetChild(i).tag == "Desk")
                     {
                         if(GetRandom() < 5)
-                        {
+                        {                          
                             isDamaged = true;
-                            GameObject objNpc = Instantiate(npc, school.transform.GetChild(i).position + new Vector3(0, 1.5f, 0), school.transform.GetChild(i).rotation);
+                            GameObject objNpc = Instantiate(hurtedNpc, school.transform.GetChild(i).position + new Vector3(0, -1f, 0), school.transform.GetChild(i).rotation);
                            Rigidbody rb = objNpc.GetComponent<Rigidbody>();
                            rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
                            CanvasScript.TotalPess++;
@@ -60,7 +62,6 @@ public class LoadData : MonoBehaviour
                     }
                     else if(school.transform.GetChild(i).tag == "chair")
                     {
-
                         school.transform.GetChild(i).transform.rotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
                     }
                     else if (school.transform.GetChild(i).tag == "Window")
@@ -72,8 +73,6 @@ public class LoadData : MonoBehaviour
                         GameObject brokeWindow = Instantiate(wreckedWindow, glass.transform.position, glass.transform.rotation);
 
                         glass.SetActive(false);
-
-
                     }
                 }
 
@@ -95,7 +94,7 @@ public class LoadData : MonoBehaviour
             //SURVIVALS
             if (GetRandom() < 5)
             {
-                GameObject objNpc = Instantiate(npc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
+                GameObject objNpc = Instantiate(healthyNpc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
                 CanvasScript.TotalPess++;
 
                 isDamaged = false;

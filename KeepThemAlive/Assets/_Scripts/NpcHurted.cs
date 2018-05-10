@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NpcHurted : MonoBehaviour {
-
+public class NpcHurted : MonoBehaviour
+{
     public GameObject MetaSpot;
     public Material Transparent;
     public Material GreenTransparent;
     public GameObject Canvas;
-    
+
+    public float health = 70f;
+    float damageAmount = 5f;
+
+    private void Update()
+    {
+        Debug.Log("Hurted Health: " + health);
+        //TakeDamageControl();
+    }
+
     public void GoMeta()
     {
         MetaSpot.GetComponent<Renderer>().material = GreenTransparent;
@@ -26,6 +35,21 @@ public class NpcHurted : MonoBehaviour {
             Debug.Log("Uma pessoa foi salva");
             CanvasScript.PessSalvas++;
         }
+    }
+
+    void TakeDamageControl()
+    {
+        health -= damageAmount * Time.deltaTime;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("I died");
     }
 
     //private void OnTriggerEnter(Collider other)

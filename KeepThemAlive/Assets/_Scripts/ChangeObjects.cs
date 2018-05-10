@@ -10,7 +10,12 @@ public class ChangeObjects : MonoBehaviour
     MoneyManager Money;
     int CostAux = 0;
 
+    public static int Cost;
+
     bool CanPickObj = true;
+
+    //rego
+    string sourceToTranfer = "";
     
     GameObject objToSwitch, newObjectPrefab;
     
@@ -56,7 +61,8 @@ public class ChangeObjects : MonoBehaviour
                         Destroy(selectedObjs[i]);
 
                     }
-                    Money.BuySomething(CostAux);              
+                    Money.BuySomething(CostAux);
+                    
 
                     DontDestroyOnLoad(newObjectPrefab);
 
@@ -76,11 +82,11 @@ public class ChangeObjects : MonoBehaviour
         for (int i = 0; i < ListAllObj.Count; i++)
         {
             if (ListAllObj[i].GetComponent<Objects>().tag == obj.transform.tag)
-            {
-               
+            {              
                 objToSwitch = obj.transform.gameObject;
                 newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
                 CostAux = ListAllObj[i].GetComponent<Objects>().cost;
+                Cost = CostAux;
             }
         }
     }
@@ -96,28 +102,28 @@ public class ChangeObjects : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
 
-
                 if (CanPickObj || hit.transform.gameObject.tag == newObjectPrefab.tag)
                 {
+                    //rego
+                    sourceToTranfer = hit.collider.tag;
+
                     //highlight objects
 
                     newObjectPrefab = hit.transform.gameObject;
-
 
                     SourceDescription.ChangeDescription(hit.collider.tag);
 
                     childCount = newObjectPrefab.transform.childCount;
 
                     AddSelectedList(newObjectPrefab);
-
-              
-                
+             
                     Debug.Log("listaObjs: " + selectedObjs.Count );
 
 
                     HighlightObj();
 
                     CanPickObj = false;
+
                 }
             }
         }
@@ -131,6 +137,12 @@ public class ChangeObjects : MonoBehaviour
             SourceDescription.Clear();
             CanPickObj = true;
         }
+    }
+
+    public void ActivateQuestion()
+    {
+        Debug.Log("Source: " + sourceToTranfer);
+        SourceDescription.SetQuestion(sourceToTranfer);
     }
 
     void ChangeWallMaterial(GameObject wall)

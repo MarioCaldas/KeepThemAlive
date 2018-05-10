@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyManager : MonoBehaviour {
-
+public class MoneyManager : MonoBehaviour
+{
     int Money;
     public Text MoneyText;
 

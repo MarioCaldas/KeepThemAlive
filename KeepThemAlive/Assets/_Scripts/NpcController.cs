@@ -13,7 +13,7 @@ public class NpcController : MonoBehaviour
     float rotationSpeed = 2f;
     float damageAmount = 0.5f;
     public bool canFollow = false;
-    string npcTag = "NPC";
+    string playerTag = "Player";
     float startHealth = 100f;
     float health;
 
@@ -32,34 +32,16 @@ public class NpcController : MonoBehaviour
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
 
-        HealthControl();
-        TakeDamageControl();
+        Debug.Log("Healthy health: " + health);
+        //TakeDamageControl();
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == npcTag)
+        if(collision.transform.tag == playerTag)
         {
             canFollow = false;
         }
-    }
-
-    void HealthControl()
-    {
-        Debug.Log("damaged: " + LoadData.isDamaged);
-        if(LoadData.isDamaged == true)
-        {
-            health = 70f;
-        }
-
-        else if(LoadData.isDamaged == false)
-        {
-            health = 100f;
-        }
-
-        healthBar.fillAmount = health / startHealth;
-
-        Debug.Log("Health: " + health);
     }
 
     void TakeDamageControl()

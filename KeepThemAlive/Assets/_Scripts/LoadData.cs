@@ -10,7 +10,7 @@ public class LoadData : MonoBehaviour
     public GameObject WreckeDesk;
     private GameObject wreckedWindow;
     private GameObject healthyNpc;
-    private GameObject hurtedNpc;
+    public GameObject hurtedNpc;
 
     public static bool isDamaged = false;
 
@@ -18,7 +18,7 @@ public class LoadData : MonoBehaviour
     {
         WreckedWall = Resources.Load("wWallParent") as GameObject;
         healthyNpc = Resources.Load("npc") as GameObject;
-        hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
+        //hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
 
@@ -35,17 +35,17 @@ public class LoadData : MonoBehaviour
                         if(GetRandom() < 5)
                         {                          
                             isDamaged = true;
-                            GameObject objNpc = Instantiate(hurtedNpc, school.transform.GetChild(i).position + new Vector3(0, -1f, 0), school.transform.GetChild(i).rotation);
-                           Rigidbody rb = objNpc.GetComponent<Rigidbody>();
-                           rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
-                           CanvasScript.TotalPess++;
+                            GameObject objNpc = Instantiate(hurtedNpc, school.transform.GetChild(i).position + new Vector3(0, -2.1f, 0), school.transform.GetChild(i).rotation);
+                            //Rigidbody rb = objNpc.GetComponent<Rigidbody>();
+                            //rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
+                            CanvasScript.TotalPess++;
                         }
 
                         if (GetRandom() < 10)
                         {
                             school.transform.GetChild(i).gameObject.SetActive(false);
-                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0,15,0), Quaternion.Euler(0, Random.Range(0, 180), 0));
-                            obj.transform.position += new Vector3(0, -3.46f, 0);
+                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0, 3, 0), Quaternion.Euler(0, Random.Range(0, 180), 0));
+                            //obj.transform.position += new Vector3(0, -3.46f, 0);
                         }
                         else
                         {
@@ -55,12 +55,12 @@ public class LoadData : MonoBehaviour
                     else if (school.transform.GetChild(i).tag == "wall")
                     {
                         Debug.Log("bom dia");
-                        if (GetRandom() < 10)
+                        if (GetRandom() > 10)
                         {
                             //GameObject wWall = Instantiate(WreckedWall, school.transform.GetChild(i).GetChild(0).position, school.transform.GetChild(i).GetChild(0).rotation);
                             //wWall.transform.localScale = school.transform.GetChild(i).localScale;
 
-                            //school.transform.GetChild(i).gameObject.SetActive(false);
+                            school.transform.GetChild(i).gameObject.SetActive(false);
                         }
                     }
                     else if(school.transform.GetChild(i).tag == "chair")

@@ -12,7 +12,6 @@ public class NewPlayerController : MonoBehaviour {
     Vector3 LookPos;
     Vector3 OldPos;
     bool isPickedObj = false;
-    Transform ObjectClicked;
 
     private void Start()
     {
@@ -65,6 +64,7 @@ public class NewPlayerController : MonoBehaviour {
             }
         }
     }
+
     void LeaveBox()
     {
         Debug.Log("Largar!");
@@ -90,7 +90,6 @@ public class NewPlayerController : MonoBehaviour {
         {
             // se o raycast passar um obj > StopDistance
             navMeshAgent.stoppingDistance = 10;
-            ObjectClicked = hit.transform;
         }
         else
         {

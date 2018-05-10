@@ -32,7 +32,7 @@ public class NpcController : MonoBehaviour
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
 
-        Debug.Log("Healthy health: " + health);
+        //Debug.Log("Healthy health: " + health);
         //TakeDamageControl();
 	}
 

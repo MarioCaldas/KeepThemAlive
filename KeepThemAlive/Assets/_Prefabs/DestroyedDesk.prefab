@@ -24,10 +24,10 @@ GameObject:
   - component: {fileID: 65968173569082594}
   m_Layer: 10
   m_Name: Cube_11
-  m_TagString: Untagged
+  m_TagString: Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1461009741185904
 GameObject:
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810617937216552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 139.74594, y: -1.5, z: 285.18503}
+  m_LocalPosition: {x: 263.912, y: 0, z: 312.58893}
   m_LocalScale: {x: 0.07932004, y: 0.07932004, z: 0.079320036}
   m_Children:
   - {fileID: 4696273079919680}

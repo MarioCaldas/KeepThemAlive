@@ -9,12 +9,12 @@ public class NpcHurted : MonoBehaviour
     public Material GreenTransparent;
     public GameObject Canvas;
 
-    public float health = 70f;
-    float damageAmount = 5f;
+    //public float health = 70f;
+    //float damageAmount = 5f;
 
     private void Update()
     {
-        Debug.Log("Hurted Health: " + health);
+        //Debug.Log("Hurted Health: " + health);
         //TakeDamageControl();
     }
 
@@ -32,12 +32,12 @@ public class NpcHurted : MonoBehaviour
     {
         if (collision.collider.name == "WeakSpot")
         {
-            Debug.Log("Uma pessoa foi salva");
+            Debug.Log("1 pessoa salva");
             CanvasScript.PessSalvas++;
         }
     }
 
-    void TakeDamageControl()
+    /*void TakeDamageControl()
     {
         health -= damageAmount * Time.deltaTime;
 
@@ -45,19 +45,10 @@ public class NpcHurted : MonoBehaviour
         {
             Die();
         }
-    }
+    }*/
 
     void Die()
     {
         Debug.Log("I died");
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.name == "WeakSpot")
-    //    {
-    //        Debug.Log("Uma pessoa foi salva");
-    //        CanvasScript.PessSalvas++;
-    //    }
-    //}
 }

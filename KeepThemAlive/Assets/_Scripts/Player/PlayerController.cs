@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             {
                 //PushBoxes();
                 //SurvivalFollow();
-                RemoveParent();
+                //RemoveParent();
             }
 
             PointClickMovement();

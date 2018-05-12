@@ -12,6 +12,10 @@ public class LoadData : MonoBehaviour
     private GameObject healthyNpc;
     public GameObject hurtedNpc;
 
+    // NPC stuffs
+    public GameObject TimeCanvas;
+    public GameObject WeakSpot;
+
     public static bool isDamaged = false;
 
 	void Start ()
@@ -32,12 +36,12 @@ public class LoadData : MonoBehaviour
                 {
                     if (school.transform.GetChild(i).tag == "Desk")
                     {
-                        if(GetRandom() < 5)
+                        if(GetRandom() < 4)
                         {                          
                             isDamaged = true;
                             GameObject objNpc = Instantiate(hurtedNpc, school.transform.GetChild(i).position + new Vector3(0, -2.1f, 0), school.transform.GetChild(i).rotation);
-                            //Rigidbody rb = objNpc.GetComponent<Rigidbody>();
-                            //rb.AddForce(new Vector3(0, Random.Range(0, 180), 0), ForceMode.Impulse);
+                            objNpc.GetComponent<NpcHurted>().MetaSpot = WeakSpot;
+                            objNpc.GetComponent<NpcHurted>().Canvas = TimeCanvas;
                             CanvasScript.TotalPess++;
                         }
 
@@ -54,7 +58,6 @@ public class LoadData : MonoBehaviour
                     }
                     else if (school.transform.GetChild(i).tag == "wall")
                     {
-                        Debug.Log("bom dia");
                         if (GetRandom() > 10)
                         {
                             //GameObject wWall = Instantiate(WreckedWall, school.transform.GetChild(i).GetChild(0).position, school.transform.GetChild(i).GetChild(0).rotation);

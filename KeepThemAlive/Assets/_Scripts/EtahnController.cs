@@ -12,17 +12,24 @@ public class EtahnController : MonoBehaviour {
     NavMeshAgent navMeshAgent;
     bool move;
     string WalkOrRun;
+    float walkSpeed = 0;
+
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         move = false;
-        WalkOrRun = "Run";
+
+
+        //WalkOrRun = "Run";
     }
 
     private void Update()
     {
+
+
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (anim.GetBool("PickShoulder"))
@@ -40,18 +47,53 @@ public class EtahnController : MonoBehaviour {
                 LeaveBox();
             }
 
-            anim.SetBool("Walk", false);
+            //anim.SetBool("Walk", false);
             navMeshAgent.speed = 15f;
-            WalkOrRun = "Run";
+            //WalkOrRun = "Run";
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            MoveToPoint();
+            anim.SetBool("Run", true);
+
+
+            MoveToPoint(true);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            Vector3 newDist, lastDis;
+
+            bool ou = false;
+
+            if (Physics.Raycast(ray, out hit, 1000, 1 << 11))
+            {
+                ou = true;
+
+                if(navMeshAgent.velocity.x > 0)
+                {
+                   
+                }
+
+                if (navMeshAgent.velocity.x == 0)
+                {
+                    Debug.Log("sdasdasdasdasdasdasdasd");
+
+                    //anim.SetBool("axeSwing", true);
+                }
+
+            }
+
+            if(ou)
+            {
+
+            }
+
+            //UseAxe();
         }
 
         if (Input.GetMouseButtonDown(0))
         {
+
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000, ObjLayer))
@@ -61,7 +103,7 @@ public class EtahnController : MonoBehaviour {
                     Debug.Log("Hit: " + hit.collider.name);
                     if (hit.collider.tag == "NPC")
                     {
-                        anim.SetBool(WalkOrRun, false);
+                        //anim.SetBool(WalkOrRun, false);
                         anim.SetBool("PickShoulder", true);
                         hit.transform.SetParent(transform.GetChild(0));
                         transform.GetChild(0).GetChild(0).position = transform.GetChild(0).position;
@@ -69,39 +111,69 @@ public class EtahnController : MonoBehaviour {
                         transform.GetChild(0).GetChild(0).GetComponent<NpcHurted>().GoMeta();
                         transform.GetChild(0).GetChild(0).GetComponent<NpcHurted>().animator.SetBool("Grab", true);
                         navMeshAgent.speed = 8f;
-                        WalkOrRun = "Walk";
+                        //WalkOrRun = "Walk";
                     }
                     else if (hit.collider.tag == "Desk")
                     {
-                        anim.SetBool(WalkOrRun, false);
+                        //anim.SetBool(WalkOrRun, false);
                         anim.SetBool("PickObj", true);
                         PickUpBoxes();
                     }
                 }
                 else
                 {
-                    MoveToPoint();
+                    MoveToPoint(false);
                 }   
             }
+
+           
         }
-        
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+
+        //Debug.Log(navMeshAgent.velocity);
+
+        if(navMeshAgent.velocity.x != 0)
         {
-            anim.SetBool(WalkOrRun, false);
+
+            walkSpeed = walkSpeed + 0.04f;
+
+
+
+            anim.SetBool("Run", true);
+
+            if(walkSpeed < 1)
+            anim.speed = walkSpeed;
+
+            //anim.SetFloat("speed", walkSpeed);
         }
         else
         {
-            anim.SetBool(WalkOrRun, true);
+
+            walkSpeed = 0;
+            anim.SetBool("Run", false);
         }
 
-        if (!anim.GetBool("Run") && !anim.GetBool("Walk"))
-            PlayerLookTo();
+     
+      
+
+
+
+        //if (!anim.GetBool("Run") && !anim.GetBool("Walk"))
+        //    PlayerLookTo();
     }
 
-    void MoveToPoint()
+    void UseAxe()
+    {
+        
+        
+      
+    }
+
+    void MoveToPoint(bool useAxe)
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+
+
 
         if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
         {
@@ -110,13 +182,17 @@ public class EtahnController : MonoBehaviour {
             //navMeshAgent.speed = 15f;
         }
 
-        if (Physics.Raycast(ray, out hit, 100, ObjLayer))
+        if (Physics.Raycast(ray, out hit, 100, ObjLayer) || Physics.Raycast(ray, out hit, 100, 1 << 11))
         {
             // se o raycast passar um obj > StopDistance
             Vector3 aux;
             aux = hit.transform.position - transform.position; 
             navMeshAgent.SetDestination(hit.point - transform.forward * 3);
+
+            
         }
+
+       
     }
 
     void PickUpBoxes()
@@ -139,7 +215,7 @@ public class EtahnController : MonoBehaviour {
             else
             {
                 Debug.Log("Entrei!");
-                MoveToPoint();
+                MoveToPoint(false);
             }
         }
     }

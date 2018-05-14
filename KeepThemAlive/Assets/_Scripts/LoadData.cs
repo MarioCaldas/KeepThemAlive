@@ -32,6 +32,7 @@ public class LoadData : MonoBehaviour
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
 
+        //rego
         doorController = school.GetComponentInChildren<DoorController>();
         doorController.enabled = true;
 

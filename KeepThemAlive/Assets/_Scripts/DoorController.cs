@@ -7,7 +7,9 @@ public class DoorController : MonoBehaviour
     private static GameObject player;
     private GameObject door;
 
-    bool collided = false;
+    public static bool collided = false;
+
+    public static GameObject doorCol;
 
 	void Start ()
     {
@@ -17,7 +19,7 @@ public class DoorController : MonoBehaviour
 	
 	void Update ()
     {
-        RotateDoor(collided);
+        //RotateDoor(collided);
 	}
 
     void RotateDoor(bool collided)
@@ -34,9 +36,11 @@ public class DoorController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.name == player.name)
+        doorCol = collision.gameObject;
+
+        if (collision.gameObject.name == player.name)
         {
             collided = true;
         }

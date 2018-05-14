@@ -9,10 +9,18 @@ public class EtahnController : MonoBehaviour {
     public Camera mainCamera;
     public LayerMask GroundLayer;
     public LayerMask ObjLayer;
+    public LayerMask DoorLayer;
+
     NavMeshAgent navMeshAgent;
     bool move;
     string WalkOrRun;
     float walkSpeed = 0;
+
+    NavMeshSurface surface;
+
+
+    bool useAxe = false;
+
 
 
     private void Start()
@@ -21,7 +29,7 @@ public class EtahnController : MonoBehaviour {
         navMeshAgent = GetComponent<NavMeshAgent>();
         move = false;
 
-
+        //Axe.SetActive(false);
         //WalkOrRun = "Run";
     }
 
@@ -57,36 +65,15 @@ public class EtahnController : MonoBehaviour {
             anim.SetBool("Run", true);
 
 
-            MoveToPoint(true);
+            MoveToPoint();
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             Vector3 newDist, lastDis;
 
-            bool ou = false;
 
-            if (Physics.Raycast(ray, out hit, 1000, 1 << 11))
-            {
-                ou = true;
+           
 
-                if(navMeshAgent.velocity.x > 0)
-                {
-                   
-                }
-
-                if (navMeshAgent.velocity.x == 0)
-                {
-                    Debug.Log("sdasdasdasdasdasdasdasd");
-
-                    //anim.SetBool("axeSwing", true);
-                }
-
-            }
-
-            if(ou)
-            {
-
-            }
 
             //UseAxe();
         }
@@ -107,7 +94,11 @@ public class EtahnController : MonoBehaviour {
                         anim.SetBool("PickShoulder", true);
                         hit.transform.SetParent(transform.GetChild(0));
                         transform.GetChild(0).GetChild(0).position = transform.GetChild(0).position;
+
+                        //o bug esta aqui
                         transform.GetChild(0).GetChild(0).rotation = transform.GetChild(0).rotation;
+
+
                         transform.GetChild(0).GetChild(0).GetComponent<NpcHurted>().GoMeta();
                         transform.GetChild(0).GetChild(0).GetComponent<NpcHurted>().animator.SetBool("Grab", true);
                         navMeshAgent.speed = 8f;
@@ -122,7 +113,7 @@ public class EtahnController : MonoBehaviour {
                 }
                 else
                 {
-                    MoveToPoint(false);
+                    MoveToPoint();
                 }   
             }
 
@@ -152,9 +143,8 @@ public class EtahnController : MonoBehaviour {
             anim.SetBool("Run", false);
         }
 
-     
-      
 
+        UseAxe();
 
 
         //if (!anim.GetBool("Run") && !anim.GetBool("Walk"))
@@ -163,12 +153,32 @@ public class EtahnController : MonoBehaviour {
 
     void UseAxe()
     {
+
+        if(DoorController.collided)
+        {
+
+            useAxe = true;
+        }
         
+
+        if(useAxe)
+        {
+            //Axe.SetActive(true);
+
+            this.transform.LookAt(DoorController.doorCol.transform);
+
+
+
+
+            navMeshAgent.velocity = Vector3.zero;
+
+            anim.SetBool("axeSwing", true);
+
+        }
         
-      
     }
 
-    void MoveToPoint(bool useAxe)
+    void MoveToPoint()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -215,7 +225,7 @@ public class EtahnController : MonoBehaviour {
             else
             {
                 Debug.Log("Entrei!");
-                MoveToPoint(false);
+                MoveToPoint();
             }
         }
     }

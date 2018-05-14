@@ -13,7 +13,7 @@ public class NpcHurted : MonoBehaviour
     public float health = 100f;
     //float damageAmount = 5f;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
 

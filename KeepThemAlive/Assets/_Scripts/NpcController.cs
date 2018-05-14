@@ -19,12 +19,12 @@ public class NpcController : MonoBehaviour
 
     private void Start()
     {
-        health = startHealth;
+        health = startHealth - ReplaceImpact.totalheathImpact;
     }
 
     void Update ()
     {
-        if(canFollow)
+        if (canFollow)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation,
                         Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);

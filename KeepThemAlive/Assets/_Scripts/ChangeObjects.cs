@@ -34,7 +34,6 @@ public class ChangeObjects : MonoBehaviour
 
     void Start()
     {
-
         Money = transform.GetComponent<MoneyManager>();
 
         mainCamera = Camera.main;
@@ -64,18 +63,20 @@ public class ChangeObjects : MonoBehaviour
                     }
                     Money.BuySomething(CostAux);
                     
-
                     DontDestroyOnLoad(newObjectPrefab);
-
                 }
 
                 selectedObjs.Clear();
                 ListMaterials.Clear();
                 objToSwitch = null;
             }
+
             SourceDescription.Clear();
             CanPickObj = true;
         }
+
+        //rego
+        Cost = 0;
     }
 
     void SwitchObject(GameObject obj)
@@ -87,7 +88,7 @@ public class ChangeObjects : MonoBehaviour
                 objToSwitch = obj;
                 newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
                 CostAux = ListAllObj[i].GetComponent<Objects>().cost;
-                Cost = CostAux;
+                Cost += CostAux;
             }
         }
     }
@@ -103,28 +104,20 @@ public class ChangeObjects : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 1000, 1 << 9))
                 {
-
-
                     //rego
                     sourceToTranfer = hit.collider.tag;
 
                     //highlight objects
 
                     newObjectPrefab = hit.transform.gameObject;
-
-
-
+                    
                     AddSelectedList(newObjectPrefab);
-
 
                     HighlightObj();
 
                     CanPickObj = false;
 
                     Debug.Log("childs: " + childCount);
-
-
-
                 }
             }
         }
@@ -148,16 +141,13 @@ public class ChangeObjects : MonoBehaviour
     {
         Debug.Log("ola");
 
-
         Material concreteMat = Resources.Load<Material>("Concrete");
 
         wall.transform.GetChild(0).GetComponent<MeshRenderer>().material = concreteMat;
-
     }
 
     void HighlightObj()
     {
-
         for (int i = 0; i < selectedObjs.Count; i++)
         {
             for (int u = 0; u < childCount; u++)
@@ -168,17 +158,12 @@ public class ChangeObjects : MonoBehaviour
                 
                 MeshRenderer mesh = selectedObjs[i].transform.GetChild(u).GetComponent<MeshRenderer>();
                 mesh.material = greenMaterial;
-
-
-
             }
         }
     }
 
     void UnhighlighObj()
     {
-        
-
         for (int i = 0; i < selectedObjs.Count; i++)
         {
             for (int u = 0; u < childCount; u++)
@@ -192,7 +177,6 @@ public class ChangeObjects : MonoBehaviour
         ListMaterials.Clear();
     }
 
-
     void AddSelectedList(GameObject SelObj)
     {
         if (selectedObjs.Count == 0)
@@ -202,8 +186,8 @@ public class ChangeObjects : MonoBehaviour
 
             selectedObjs.Add(SelObj);
             SwitchObject(SelObj);
-
         }
+
         else if (selectedObjs[0].tag == SelObj.tag)
         {
             childCount = newObjectPrefab.transform.childCount;

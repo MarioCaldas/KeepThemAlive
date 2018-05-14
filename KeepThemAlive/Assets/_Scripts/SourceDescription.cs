@@ -52,7 +52,6 @@ public class SourceDescription : MonoBehaviour
     public static void SetQuestion(string source)
     {
         QuestionPanel.SetActive(true);
-        Debug.Log("Cost: " + ChangeObjects.Cost);
 
         switch (source)
         {

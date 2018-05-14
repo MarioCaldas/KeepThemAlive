@@ -8,7 +8,7 @@ public class MoneyManager : MonoBehaviour
     int Money;
     public Text MoneyText;
 
-	void Start ()
+    void Start ()
     {
         Money = 1000;
 	}

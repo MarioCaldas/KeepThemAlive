@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objects : MonoBehaviour {
-
+public class Objects : MonoBehaviour
+{
     public int cost;
     public string Tag;
     public GameObject Object;

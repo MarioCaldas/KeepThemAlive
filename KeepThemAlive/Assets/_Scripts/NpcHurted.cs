@@ -10,12 +10,15 @@ public class NpcHurted : MonoBehaviour
     public GameObject Canvas;
     public Animator animator;
 
-    //public float health = 70f;
+    public float health = 100f;
     //float damageAmount = 5f;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        health = 100f - ReplaceImpact.totalheathImpact;
+        Debug.Log("Total Health: " + health);
     }
 
     private void Update()

@@ -18,6 +18,12 @@ public class LoadData : MonoBehaviour
 
     public static bool isDamaged = false;
 
+    //rego
+    public static int metalWindows = 10;
+    public static int metalDesks = 20;
+
+    DoorController doorController;
+
 	void Start ()
     {
         WreckedWall = Resources.Load("wWallParent") as GameObject;
@@ -26,8 +32,12 @@ public class LoadData : MonoBehaviour
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
 
+        doorController = school.GetComponentInChildren<DoorController>();
+        doorController.enabled = true;
+
         List<GameObject> metalObj = new List<GameObject>();
 
+       
         if (school != null)
         {
             for (int i = 0; i < school.transform.childCount; i++)
@@ -50,6 +60,9 @@ public class LoadData : MonoBehaviour
                             school.transform.GetChild(i).gameObject.SetActive(false);
                             GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0, 3, 0), Quaternion.Euler(0, Random.Range(0, 180), 0));
                             //obj.transform.position += new Vector3(0, -3.46f, 0);
+
+                            //rego
+                            metalDesks--;
                         }
                         else
                         {
@@ -79,6 +92,9 @@ public class LoadData : MonoBehaviour
                         GameObject brokeWindow = Instantiate(wreckedWindow, glass.transform.position, glass.transform.rotation);
 
                         glass.SetActive(false);
+
+                        //rego
+                        metalWindows--;
                     }
                 }
 

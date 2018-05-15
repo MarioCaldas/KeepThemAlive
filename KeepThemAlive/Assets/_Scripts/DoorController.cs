@@ -13,7 +13,7 @@ public class DoorController : MonoBehaviour
 
 	void Start ()
     {
-        player = GameObject.Find("EthanPlayer");
+        player = GameObject.Find("FireMan");
         door = transform.GetChild(1).gameObject;
     }
 	

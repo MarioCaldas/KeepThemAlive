@@ -18,7 +18,7 @@ public class NpcHurted : MonoBehaviour
         animator = GetComponent<Animator>();
 
         health = 100f - ReplaceImpact.totalheathImpact;
-        Debug.Log("Total Health: " + health);
+        //Debug.Log("Total Health: " + health);
     }
 
     private void Update()

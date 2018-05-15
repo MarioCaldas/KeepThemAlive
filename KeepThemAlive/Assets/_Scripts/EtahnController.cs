@@ -189,7 +189,7 @@ public class EtahnController : MonoBehaviour {
         {
             // se o raycast tocar no chao anda...
             navMeshAgent.SetDestination(hit.point);
-            //navMeshAgent.speed = 15f;
+            navMeshAgent.speed = 15f;
         }
 
         if (Physics.Raycast(ray, out hit, 100, ObjLayer) || Physics.Raycast(ray, out hit, 100, 1 << 11))
@@ -198,8 +198,6 @@ public class EtahnController : MonoBehaviour {
             Vector3 aux;
             aux = hit.transform.position - transform.position; 
             navMeshAgent.SetDestination(hit.point - transform.forward * 3);
-
-            
         }
 
        

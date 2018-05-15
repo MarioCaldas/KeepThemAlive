@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4940019837053530}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RockParent
-  m_TagString: Untagged
+  m_TagString: wreckeg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 23775110395713020}
   - component: {fileID: 54937846110943444}
   - component: {fileID: 135733897610547054}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: wreckeg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

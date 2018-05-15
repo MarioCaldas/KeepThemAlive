@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4853642515409816}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BrickParent
-  m_TagString: Untagged
+  m_TagString: wreckeg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 23093693588776360}
   - component: {fileID: 54858704249743688}
   - component: {fileID: 65461031259975668}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Brick
-  m_TagString: Untagged
+  m_TagString: wreckeg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

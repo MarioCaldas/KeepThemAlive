@@ -23,9 +23,17 @@ public class FiremanController : MonoBehaviour {
     float runAnimSpeed = 0f;
 
 
-    bool isRun = false;
+    bool doubleClick = false;
 
     GameObject raycastedObj;
+
+    public GameObject objPos;
+
+    public GameObject npcPos;
+
+    GameObject inHandsObj;
+
+    bool canRun = true;
 
 
     void Start ()
@@ -33,6 +41,7 @@ public class FiremanController : MonoBehaviour {
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
+        inHandsObj = null;
         raycastedObj = null;
     }
 
@@ -40,13 +49,19 @@ public class FiremanController : MonoBehaviour {
     {
         CheckRaycast();
 
+        Debug.Log("isRun: " + doubleClick);
 
-        if (isRun)
+        Debug.Log("CanRun: " + canRun);
+
+
+        if (doubleClick && canRun)
         {
             runAnimSpeed += Time.deltaTime * 2;
 
             navMeshAgent.speed = 22;
+
             runAnimSpeed = Mathf.Clamp(runAnimSpeed, 0.5f, 1f);
+
             Animations(runAnimSpeed);
 
 
@@ -57,6 +72,38 @@ public class FiremanController : MonoBehaviour {
 
             navMeshAgent.speed = 10;
 
+        }
+
+
+        Debug.Log(inHandsObj);
+
+    }
+
+    void Detach(GameObject obj)
+    {
+        canRun = true;
+
+
+        if (!obj.GetComponent<Rigidbody>())
+        {
+            
+        }
+
+        if (obj.tag == "NPC")
+        {
+            anim.SetBool("PickNpc", false);
+
+            npcPos.transform.DetachChildren();
+        
+        }
+        else
+        {
+            anim.SetBool("PickObj", false);
+
+            objPos.transform.DetachChildren();
+
+            //obj.transform.GetChild(1).DetachChildren();
+            
         }
 
     }
@@ -72,34 +119,75 @@ public class FiremanController : MonoBehaviour {
             if(Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
                 MoveToPoint(hit);
-            }
-
-            if (Physics.Raycast(ray, out hit, 1000, ObjLayer))
-            {
-                raycastedObj = hit.transform.gameObject;
-
-            }
+            }         
 
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            Pick(raycastedObj);
+            if (Physics.Raycast(ray, out hit, 1000, ObjLayer))
+            {
+                raycastedObj = hit.transform.gameObject;
+                //raycastedObj.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 3, transform.position.z);
+                Pick(raycastedObj);
+            }
+            else
+            {
+                Debug.Log("pooasdas");
+            }           
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Detach(inHandsObj);
+        }
 
     }
 
+    void PlayerLookTo()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
+        {
+            transform.LookAt(hit.point, Vector3.up);
+        }
+    }
+
+    
 
     void Pick(GameObject hitObj)
     {
+        inHandsObj = hit.transform.gameObject;
 
-        if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
+        canRun = false;
+
+        if (hitObj.tag == "NPC")
         {
-            hit.collider.transform.SetParent(transform.GetChild(1));
 
-            anim.SetTrigger("pick");
+
+            hit.collider.transform.SetParent(npcPos.transform);
+            hit.collider.transform.position = npcPos.transform.position;
+            hit.collider.transform.rotation = npcPos.transform.rotation;
+
+            hitObj.GetComponent<Animator>().SetTrigger("Grab");
+
+            anim.SetBool("PickNpc", true);
+
         }
+        
+        else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
+        {
+
+            hit.collider.transform.SetParent(objPos.transform);
+
+            hit.collider.transform.position = objPos.transform.position;
+            hit.collider.transform.rotation = objPos.transform.rotation;
+
+
+            anim.SetBool("PickObj", true);
+        }
+   
 
     }
 
@@ -111,17 +199,20 @@ public class FiremanController : MonoBehaviour {
         //if double click
         if (Event.current.isMouse && Event.current.button == 1 && Event.current.clickCount > 1)
         {
-            isRun = true;
+            doubleClick = true;
         }
 
         if (navMeshAgent.velocity != Vector3.zero)
         {
+            Debug.Log("mexeu");
             walkAnimSpeed += Time.deltaTime;
+
         }
         else
         {
+            PlayerLookTo();
             walkAnimSpeed -= Time.deltaTime;
-            isRun = false;
+            doubleClick = false;
         }
 
         walkAnimSpeed = Mathf.Clamp(walkAnimSpeed, 0f, .5f);

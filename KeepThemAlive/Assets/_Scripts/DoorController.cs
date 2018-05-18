@@ -13,12 +13,9 @@ public class DoorController : MonoBehaviour
 
     Rigidbody rb;
 
-    float rotateDoorTime;
 
     void Start ()
     {
-        rotateDoorTime = .5f;
-
         player = GameObject.Find("FireMan");
         door = transform.GetChild(1).gameObject;
     }
@@ -31,67 +28,80 @@ public class DoorController : MonoBehaviour
         {
             Open();
 
-            rotateDoorTime -= Time.deltaTime;
         }
 
 
 
 	}
 
-    void RotateDoor(bool collided)
-    {
-        if (collided)
-        {
-            door.transform.Rotate(new Vector3(0f, -90f, 0f));
-        }
-
-        else
-        {
-            Debug.Log("Is not close");
-        }
-        
-    }
 
     void Open()
     {
-
+        Rigidbody rb;
 
         Debug.Log(transform.GetChild(0).gameObject.name);
-        transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
-        rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
+        rb = transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+        transform.gameObject.GetComponent<BoxCollider>().isTrigger = true;
 
-        rb.useGravity = false;
+        rb.mass = 20;
 
-        //rb.AddForce(-transform.forward * 100f);
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+        rb.AddForce(player.gameObject.transform.forward * 200, ForceMode.Impulse);
 
-        rb.AddForceAtPosition(player.transform.forward, transform.GetChild(0).transform.localPosition, ForceMode.Impulse);
+        //rb.AddForce(Physics.gravity * rb.mass, ForceMode.Acceleration);
 
+        transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
 
-        if (rotateDoorTime < 0.1f)
-        {
-            rb.isKinematic = true;
+        //Vector3 ola = Vector3.RotateTowards(transform.right, player.transform.forward, 2f);
 
-            Debug.Log("ouu");
+        //transform.GetChild(0).Rotate(10, 0, 0);
 
-            transform.GetComponent<BoxCollider>().isTrigger = true;
-
-            rotateDoorTime = .5f;
-
-            transform.GetComponent<BoxCollider>().isTrigger = true;
-
-            Destroy(rb);
-
-            player.GetComponent<Animator>().SetBool("Kick", false);
-
-            FiremanController.freeLook = true;
-
-            FiremanController.openDoor = false;
-
-            Destroy(transform.GetComponent<DoorController>());
+        player.GetComponent<Animator>().SetBool("Kick", false);
 
 
-        }
+
+        Physics.IgnoreCollision(transform.GetChild(0).gameObject.GetComponent<BoxCollider>(), player.transform.GetComponent<CapsuleCollider>());
+
+        transform.GetChild(0).parent = null;
+
+        Destroy(transform.GetComponent<DoorController>());
+
+        FiremanController.openDoor = false;
+
+        //rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
+
+        //rb.useGravity = false;
+
+        //rb.AddForce(player.transform.forward, ForceMode.Acceleration);
+
+        //rb.constraints = RigidbodyConstraints.FreezePositionX;
+
+        //rb.AddForceAtPosition(-player.transform.forward, transform.GetChild(0).transform.localPosition, ForceMode.Impulse);
+
+
+        //if (rotateDoorTime < 0.1f)
+        //{
+        //    //rb.isKinematic = true;
+
+        //    Debug.Log("ouu");
+
+        //    transform.GetComponent<BoxCollider>().isTrigger = true;
+
+        //    rotateDoorTime = .5f;
+
+        //    transform.GetComponent<BoxCollider>().isTrigger = true;
+
+        //    Destroy(rb);
+
+        //    player.GetComponent<Animator>().SetBool("Kick", false);
+
+        //    FiremanController.freeLook = true;
+
+        //    FiremanController.openDoor = false;
+
+        //    Destroy(transform.GetComponent<DoorController>());
+
+
+        //}
 
 
 

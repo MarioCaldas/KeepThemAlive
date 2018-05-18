@@ -39,10 +39,10 @@ public class FiremanController : MonoBehaviour {
 
     public static bool freeLook;
 
+    GameObject door;
+
     void Start ()
     {
-        freeLook = true;
-
         openDoor = false;
 
         anim = GetComponent<Animator>();
@@ -55,8 +55,6 @@ public class FiremanController : MonoBehaviour {
     void Update ()
     {
         CheckRaycast();
-
-
 
 
         if (doubleClick && canRun)
@@ -153,13 +151,19 @@ public class FiremanController : MonoBehaviour {
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        
-        if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
+        if(freeLook)
         {
-            
-            transform.LookAt(hit.point, Vector3.up);
-                 
+            if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
+            {
+                transform.LookAt(hit.point, Vector3.up);
+            }
+
         }
+        else
+        {
+            transform.LookAt(door.transform, Vector3.up);
+        }
+     
 
       
         
@@ -223,10 +227,8 @@ public class FiremanController : MonoBehaviour {
         }
         else
         {
-            if(freeLook)
-            {
-                PlayerLookTo();
-            }
+            PlayerLookTo();
+            
 
             walkAnimSpeed -= Time.deltaTime;
             doubleClick = false;
@@ -257,6 +259,7 @@ public class FiremanController : MonoBehaviour {
     void OpenDoor()
     {
         //AnimatorStateInfo currInfo = anim.GetCurrentAnimatorStateInfo(2);
+        door.AddComponent<DoorController>();
 
 
         openDoor = true;
@@ -270,12 +273,13 @@ public class FiremanController : MonoBehaviour {
 
         if(collision.transform.tag == "Door")
         {
+            door = collision.transform.gameObject;
+
             freeLook = false;
 
 
             transform.LookAt(collision.transform.position);
 
-            collision.transform.gameObject.AddComponent<DoorController>();
 
             anim.SetBool("Kick", true);
 

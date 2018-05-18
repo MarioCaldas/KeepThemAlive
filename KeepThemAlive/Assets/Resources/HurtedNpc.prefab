@@ -1353,7 +1353,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602554924012532}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 233.69, y: 0.69, z: 310.82}
+  m_LocalPosition: {x: 355.2, y: 0, z: 264.3}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4949267753546766}
@@ -2495,6 +2495,7 @@ MonoBehaviour:
   Transparent: {fileID: 2100000, guid: f1ff71a37ff97db46a44c5ea8f2b65d7, type: 2}
   GreenTransparent: {fileID: 2100000, guid: b4fecf47d4f08d54c992123ae38a3693, type: 2}
   Canvas: {fileID: 0}
+  animator: {fileID: 0}
   health: 100
 --- !u!137 &137216405968872168
 SkinnedMeshRenderer:

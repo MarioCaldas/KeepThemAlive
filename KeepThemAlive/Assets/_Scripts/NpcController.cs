@@ -17,13 +17,24 @@ public class NpcController : MonoBehaviour
     float startHealth = 100f;
     float health;
 
+    public bool isCrouch;
+
     private void Start()
     {
+
         health = startHealth - ReplaceImpact.totalheathImpact;
+
+        target = null;
+
+
     }
 
     void Update ()
     {
+
+       
+
+
         if (canFollow)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -34,7 +45,10 @@ public class NpcController : MonoBehaviour
 
         //Debug.Log("Healthy health: " + health);
         //TakeDamageControl();
-	}
+    }
+
+
+
 
     private void OnCollisionEnter(Collision collision)
     {

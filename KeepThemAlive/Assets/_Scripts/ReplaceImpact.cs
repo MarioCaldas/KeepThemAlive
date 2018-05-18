@@ -22,7 +22,7 @@ public class ReplaceImpact : MonoBehaviour
         MetalDesksImpact();
 
         totalheathImpact = MetalDesksImpact() + MetalWindowsImpact();
-        //Debug.Log("Total health impact: " + totalheathImpact);
+        Debug.Log("Total health impact: " + totalheathImpact);
 	}
 
     int MetalWindowsImpact()

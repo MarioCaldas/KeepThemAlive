@@ -35,9 +35,16 @@ public class FiremanController : MonoBehaviour {
 
     bool canRun = true;
 
+    public static bool openDoor;
+
+    public static bool freeLook;
 
     void Start ()
     {
+        freeLook = true;
+
+        openDoor = false;
+
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -49,9 +56,7 @@ public class FiremanController : MonoBehaviour {
     {
         CheckRaycast();
 
-        Debug.Log("isRun: " + doubleClick);
 
-        Debug.Log("CanRun: " + canRun);
 
 
         if (doubleClick && canRun)
@@ -75,7 +80,7 @@ public class FiremanController : MonoBehaviour {
         }
 
 
-        Debug.Log(inHandsObj);
+
 
     }
 
@@ -148,10 +153,16 @@ public class FiremanController : MonoBehaviour {
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
+        
         if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
         {
+            
             transform.LookAt(hit.point, Vector3.up);
+                 
         }
+
+      
+        
     }
 
     
@@ -173,13 +184,15 @@ public class FiremanController : MonoBehaviour {
             hitObj.GetComponent<Animator>().SetTrigger("Grab");
 
             anim.SetBool("PickNpc", true);
-
+            
         }
         
         else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
         {
 
-            hit.collider.transform.SetParent(objPos.transform);
+            hit.transform.SetParent(objPos.transform);
+
+            Destroy(hit.collider.transform.GetChild(0));
 
             hit.collider.transform.position = objPos.transform.position;
             hit.collider.transform.rotation = objPos.transform.rotation;
@@ -204,13 +217,17 @@ public class FiremanController : MonoBehaviour {
 
         if (navMeshAgent.velocity != Vector3.zero)
         {
-            Debug.Log("mexeu");
+
             walkAnimSpeed += Time.deltaTime;
 
         }
         else
         {
-            PlayerLookTo();
+            if(freeLook)
+            {
+                PlayerLookTo();
+            }
+
             walkAnimSpeed -= Time.deltaTime;
             doubleClick = false;
         }
@@ -237,16 +254,12 @@ public class FiremanController : MonoBehaviour {
         navMeshAgent.speed = 10f;
     }
 
-    void OpenDoor(GameObject door)
+    void OpenDoor()
     {
-        AnimatorStateInfo currInfo = anim.GetCurrentAnimatorStateInfo(2);
+        //AnimatorStateInfo currInfo = anim.GetCurrentAnimatorStateInfo(2);
 
 
-        transform.LookAt(door.transform.position);
-
-        transform.position = door.transform.position;
-
-        anim.SetTrigger("kick");
+        openDoor = true;
 
         print("pe na porta");
     }
@@ -257,7 +270,22 @@ public class FiremanController : MonoBehaviour {
 
         if(collision.transform.tag == "Door")
         {
-            OpenDoor(collision.transform.gameObject);
+            freeLook = false;
+
+
+            transform.LookAt(collision.transform.position);
+
+            collision.transform.gameObject.AddComponent<DoorController>();
+
+            anim.SetBool("Kick", true);
+
+
+            print("ola");
+            //OpenDoor(collision.transform.gameObject);
+        }
+        else
+        {
+
         }
 
         navMeshAgent.velocity = Vector3.zero;

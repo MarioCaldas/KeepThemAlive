@@ -9,8 +9,9 @@ public class LoadData : MonoBehaviour
     private GameObject WreckedWall;
     public GameObject WreckeDesk;
     private GameObject wreckedWindow;
-    private GameObject healthyNpc;
-    public GameObject hurtedNpc;
+    private GameObject proneNpc;
+    private GameObject hurtedNpc;
+
 
     // NPC stuffs
     public GameObject TimeCanvas;
@@ -19,18 +20,21 @@ public class LoadData : MonoBehaviour
     public static bool isDamaged = false;
 
     //rego
-    public static int metalWindows = 10;
-    public static int metalDesks = 20;
+    public static int metalWindows = 0;
+    public static int metalDesks = 0;
 
     DoorController doorController;
+
 
 	void Start ()
     {
         WreckedWall = Resources.Load("wWallParent") as GameObject;
-        healthyNpc = Resources.Load("npc") as GameObject;
+        proneNpc = Resources.Load("ProneNpc") as GameObject;
+        hurtedNpc = Resources.Load("") as GameObject;
         //hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
+
 
         //rego
         doorController = school.GetComponentInChildren<DoorController>();
@@ -38,7 +42,8 @@ public class LoadData : MonoBehaviour
 
         List<GameObject> metalObj = new List<GameObject>();
 
-       
+        Debug.Log(proneNpc);
+            
         if (school != null)
         {
             for (int i = 0; i < school.transform.childCount; i++)
@@ -47,23 +52,31 @@ public class LoadData : MonoBehaviour
                 {
                     if (school.transform.GetChild(i).tag == "Desk")
                     {
-                        if(GetRandom() < 4)
+
+                        if (GetRandom() < 4)
                         {                          
                             isDamaged = true;
-                            GameObject objNpc = Instantiate(hurtedNpc, school.transform.GetChild(i).position + new Vector3(0, -2.1f, 0), school.transform.GetChild(i).rotation);
-                            objNpc.GetComponent<NpcHurted>().MetaSpot = WeakSpot;
-                            objNpc.GetComponent<NpcHurted>().Canvas = TimeCanvas;
+                            Instantiate(proneNpc, school.transform.GetChild(i).position - new Vector3(0,2,0), school.transform.GetChild(i).rotation);
+                            proneNpc.GetComponent<NpcController>().isCrouch = false;
+
+                            //npc.GetComponent<NpcHurted>().MetaSpot = WeakSpot;
+                            //npc.GetComponent<NpcHurted>().Canvas = TimeCanvas;
                             CanvasScript.TotalPess++;
                         }
 
                         if (GetRandom() < 10)
                         {
                             school.transform.GetChild(i).gameObject.SetActive(false);
-                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0, 3, 0), Quaternion.Euler(0, Random.Range(0, 180), 0));
+                            GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0, 10, 0), Quaternion.Euler(0, Random.Range(0, 180), 0));
+
+                            //obj.transform.GetChild(0).DetachChildren();
+                            //obj.transform.GetChild(1).DetachChildren();
+
+
+
                             //obj.transform.position += new Vector3(0, -3.46f, 0);
 
-                            //rego
-                            metalDesks--;
+                       
                         }
                         else
                         {
@@ -95,7 +108,7 @@ public class LoadData : MonoBehaviour
                         glass.SetActive(false);
 
                         //rego
-                        metalWindows--;
+                        //metalWindows++;
                     }
                 }
 
@@ -114,10 +127,17 @@ public class LoadData : MonoBehaviour
 
         for (int i = 0; i < metalObj.Count; i++)
         {
+            //rego
+            metalDesks++;
             //SURVIVALS
-            if (GetRandom() < 5)
+            if (GetRandom() > 0)
             {
-                GameObject objNpc = Instantiate(healthyNpc, metalObj[i].transform.position - new Vector3(0, 4.5f, 0), metalObj[i].transform.rotation);
+                Debug.Log("vasddd");
+
+                Instantiate(proneNpc, metalObj[i].transform.position - new Vector3(0,2,0), metalObj[i].transform.rotation);
+
+                proneNpc.GetComponent<NpcController>().isCrouch = true;
+
                 CanvasScript.TotalPess++;
 
                 isDamaged = false;

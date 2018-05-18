@@ -49,10 +49,17 @@ public class ChangeObjects : MonoBehaviour
             {
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
+
+                    if (selectedObjs[i].gameObject.tag == "Window")
+                    {
+                        LoadData.metalWindows++;
+                    }
+
                     if (selectedObjs[i].gameObject.tag == "wall")
                     {
                         ChangeWallMaterial(selectedObjs[i].gameObject);
                     }
+
                     else
                     {
                         Debug.Log("Entrei!");

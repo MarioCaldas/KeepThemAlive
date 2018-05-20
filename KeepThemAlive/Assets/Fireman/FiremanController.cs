@@ -8,7 +8,7 @@ public class FiremanController : MonoBehaviour {
 
     Animator anim;
 
-    public Camera mainCamera;
+    private Camera mainCamera;
     public LayerMask GroundLayer;
     public LayerMask ObjLayer;
     public LayerMask DoorLayer;
@@ -47,6 +47,8 @@ public class FiremanController : MonoBehaviour {
     void Start ()
     {
         openDoor = false;
+
+        mainCamera = Camera.main;
 
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();

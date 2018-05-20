@@ -25,6 +25,8 @@ public class LoadData : MonoBehaviour
 
     DoorController doorController;
 
+    public GameObject Player;
+
 
 	void Start ()
     {
@@ -144,6 +146,8 @@ public class LoadData : MonoBehaviour
             }
         }
     }
+
+    
 
     int GetRandom()
     {

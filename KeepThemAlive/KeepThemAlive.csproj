@@ -124,6 +124,7 @@
     <Compile Include="Assets\_Scripts\tentativa.cs" />
     <Compile Include="Assets\_Scripts\WeakSpot.cs" />
     <Compile Include="Assets\Fireman\FiremanController.cs" />
+    <Compile Include="Assets\InstantiatePlayer.cs" />
     <Compile Include="Assets\Mezanix\RealisticWoodTextures\0_Demo_Scene\Scripts\SimpleRotate.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />

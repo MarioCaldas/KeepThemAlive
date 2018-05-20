@@ -16,7 +16,7 @@ public class DoorController : MonoBehaviour
 
     void Start ()
     {
-        player = GameObject.Find("FireMan");
+        player = GameObject.FindGameObjectWithTag("Player");
         door = transform.GetChild(1).gameObject;
     }
 	

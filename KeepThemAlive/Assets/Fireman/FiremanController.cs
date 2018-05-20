@@ -41,6 +41,9 @@ public class FiremanController : MonoBehaviour {
 
     GameObject door;
 
+    bool isMoving = false;
+
+
     void Start ()
     {
         openDoor = false;
@@ -56,31 +59,13 @@ public class FiremanController : MonoBehaviour {
     {
         CheckRaycast();
 
-
-        if (doubleClick && canRun)
-        {
-            runAnimSpeed += Time.deltaTime * 2;
-
-            navMeshAgent.speed = 22;
-
-            runAnimSpeed = Mathf.Clamp(runAnimSpeed, 0.5f, 1f);
-
-            Animations(runAnimSpeed);
-
-
-        }
-        else
-        {
-            runAnimSpeed -= Time.deltaTime * 2;
-
-            navMeshAgent.speed = 10;
-
-        }
-
-
-
-
+        Animations();
     }
+
+
+
+
+
 
     void Detach(GameObject obj)
     {
@@ -92,8 +77,10 @@ public class FiremanController : MonoBehaviour {
             
         }
 
-        if (obj.tag == "NPC")
+        if (obj.tag == "NPC" || obj.tag == "HurtedNPC")
         {
+            NpcHurted.carried = false;
+
             anim.SetBool("PickNpc", false);
 
             npcPos.transform.DetachChildren();
@@ -115,12 +102,16 @@ public class FiremanController : MonoBehaviour {
     void CheckRaycast()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        
+
+        //??
+        //FireManAnimator.isMoving = true;
 
         if (Input.GetMouseButtonDown(1))
         {
-            if(Physics.Raycast(ray, out hit, 1000, GroundLayer))
+
+            if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
+
                 MoveToPoint(hit);
             }         
 
@@ -190,7 +181,7 @@ public class FiremanController : MonoBehaviour {
             hit.collider.transform.position = npcPos.transform.position;
             hit.collider.transform.rotation = npcPos.transform.rotation;
 
-            hitObj.GetComponent<Animator>().SetTrigger("Grab");
+            NpcHurted.carried = true;
 
             anim.SetBool("PickNpc", true);
             
@@ -224,33 +215,46 @@ public class FiremanController : MonoBehaviour {
         {
             doubleClick = true;
         }
-
-        if (navMeshAgent.velocity != Vector3.zero)
-        {
-
-            walkAnimSpeed += Time.deltaTime;
-
-        }
-        else
-        {
-            PlayerLookTo();
-            
-
-            walkAnimSpeed -= Time.deltaTime;
-            doubleClick = false;
-        }
-
-        walkAnimSpeed = Mathf.Clamp(walkAnimSpeed, 0f, .5f);
-
-        Animations(walkAnimSpeed);
+    
 
     }
 
 
 
-    void Animations(float animSpeed)
+    void Animations()
     {
-        anim.SetFloat("Speed", animSpeed);
+        if (isMoving)
+        {
+            if(doubleClick && canRun)
+            {
+                navMeshAgent.speed = 22;
+
+                anim.SetBool("run", true);
+            }
+            else
+            {
+                navMeshAgent.speed = 10;
+                anim.SetBool("walk", true);
+
+            }
+        }
+        else
+        {
+            anim.SetBool("walk", false);
+            anim.SetBool("run", false);
+
+        }
+
+        if (Vector3.Distance(transform.position, navMeshAgent.destination) <= 1f)
+        {
+            doubleClick = false;
+
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
 
     }
 
@@ -258,8 +262,12 @@ public class FiremanController : MonoBehaviour {
 
     void MoveToPoint(RaycastHit hit)
     {
+
         navMeshAgent.SetDestination(hit.point);
         navMeshAgent.speed = 10f;
+
+
+      
     }
 
     void OpenDoor()

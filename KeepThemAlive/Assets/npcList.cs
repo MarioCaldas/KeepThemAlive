@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class npcList : MonoBehaviour {
 
@@ -76,6 +78,12 @@ public class npcList : MonoBehaviour {
             GameObject npc = Instantiate(proneNpc[0], wreckedDeskList[i].transform.position - new Vector3(0,7,0) , wreckedDeskList[i].transform.rotation);
 
             npc.GetComponent<Animator>().SetBool("hurted", true);
+
+            Destroy(npc.GetComponent<NavMeshAgent>());
+
+            npc.GetComponent<BoxCollider>().center = new Vector3(0, 2.22f, 0);
+
+            npc.gameObject.tag = "HurtedNPC";
 
             npc.AddComponent<NpcHurted>();
 

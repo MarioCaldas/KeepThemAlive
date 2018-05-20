@@ -17,6 +17,7 @@ TagManager:
   - Door
   - wreckeg
   - wreckedDesk
+  - HurtedNPC
   layers:
   - Default
   - TransparentFX

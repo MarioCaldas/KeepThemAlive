@@ -51,6 +51,7 @@ public class NpcController : MonoBehaviour
 
     void Update ()
     {
+
         //resolver bug
         if (Vector3.Distance(transform.position, player.transform.position) < 8)
         {

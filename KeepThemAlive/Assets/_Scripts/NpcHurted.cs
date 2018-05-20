@@ -11,10 +11,15 @@ public class NpcHurted : MonoBehaviour
     public Animator animator;
 
     public float health = 100f;
+
+    public static bool carried;
+
     //float damageAmount = 5f;
 
     private void Awake()
     {
+        carried = false;
+
         animator = GetComponent<Animator>();
 
         health = 100f - ReplaceImpact.totalheathImpact;
@@ -25,6 +30,10 @@ public class NpcHurted : MonoBehaviour
     {
         //Debug.Log("Hurted Health: " + health);
         //TakeDamageControl();
+
+        Carried();
+        
+
     }
 
     public void GoMeta()
@@ -45,6 +54,24 @@ public class NpcHurted : MonoBehaviour
             CanvasScript.PessSalvas++;
         }
     }
+
+    void Carried()
+    {
+        if(carried)
+        {
+            transform.GetComponent<BoxCollider>().isTrigger = true;
+            animator.SetBool("isGrabed", true);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, -3.76f, transform.position.z);
+            transform.GetComponent<BoxCollider>().isTrigger = false;
+            animator.SetBool("isGrabed", false);
+
+        }
+
+    }
+
 
     /*void TakeDamageControl()
     {

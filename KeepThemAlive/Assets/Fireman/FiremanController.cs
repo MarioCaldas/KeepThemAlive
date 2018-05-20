@@ -159,10 +159,10 @@ public class FiremanController : MonoBehaviour {
             }
 
         }
-        else
-        {
-            transform.LookAt(door.transform, Vector3.up);
-        }
+        //else
+        //{
+        //    transform.LookAt(door.transform, Vector3.up);
+        //}
      
 
       
@@ -177,7 +177,12 @@ public class FiremanController : MonoBehaviour {
 
         canRun = false;
 
-        if (hitObj.tag == "NPC")
+        if(hitObj.tag == "NPC")
+        {
+            NpcController.evacuate = true;
+        }
+
+        else if (hitObj.tag == "HurtedNPC")
         {
 
 
@@ -191,6 +196,7 @@ public class FiremanController : MonoBehaviour {
             
         }
         
+        // mesas partidas
         else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
         {
 

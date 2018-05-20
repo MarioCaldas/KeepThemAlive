@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class NpcController : MonoBehaviour
@@ -19,36 +20,98 @@ public class NpcController : MonoBehaviour
 
     public bool isCrouch;
 
+    private GameObject player;
+
+    Vector3 playerDir;
+
+    float crawlTime;
+
+    bool crawlaLittle = false;
+
+    public static bool evacuate = false;
+
+    private NavMeshAgent agent;
+
+    public Vector3 outsideEvacPos;
+
     private void Start()
     {
+        outsideEvacPos = new Vector3(230, 0 , 280);
+
+        agent = GetComponent<NavMeshAgent>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
 
         health = startHealth - ReplaceImpact.totalheathImpact;
 
         target = null;
 
-
+        crawlTime = 4f;
     }
 
     void Update ()
     {
+        //resolver bug
+        if (Vector3.Distance(transform.position, player.transform.position) < 8)
+        {
+            crawlaLittle = true;
 
-       
+        }
+
+        CrawlALittle();
+
 
 
         if (canFollow)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                        Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation,
+            //            Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);
+
+            transform.LookAt(player.transform.position);
 
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
 
+
+        //rastejar um bocado para sair debaixo da mesa, se nao o player nao consegue ver o npc
+        if (crawlTime <= 1.1f)
+        {
+            crawlaLittle = false;
+        }
+
+        Debug.Log(evacuate);
+
+        if(evacuate)
+        {
+            Evacuate();
+        }
         //Debug.Log("Healthy health: " + health);
         //TakeDamageControl();
     }
 
+    void Evacuate()
+    {
+        transform.GetComponent<Animator>().SetBool("run", true);
+        agent.SetDestination(outsideEvacPos);
+    }
 
 
+    void CrawlALittle()
+    {
+        if (crawlaLittle)
+        {
+            crawlTime -= Time.deltaTime;
+
+            transform.GetComponent<Animator>().SetBool("crawlMove", true);
+            canFollow = true;
+        }
+        else
+        {
+            canFollow = false;
+            transform.GetComponent<Animator>().SetBool("crawlMove", false);
+        }
+
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

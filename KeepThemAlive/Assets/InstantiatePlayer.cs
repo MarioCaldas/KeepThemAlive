@@ -12,12 +12,14 @@ public class InstantiatePlayer : MonoBehaviour {
 
     CameraFollow camScript;
 
+    GameObject ambulanceSpot;
+
 	// Use this for initialization
 	void Start () {
 
         camScript = camera.GetComponent<CameraFollow>();
 
-        Player = Resources.Load("FireMan") as GameObject;
+        ambulanceSpot = transform.GetChild(4).gameObject;
 
         playerInstantied = false;
     }
@@ -25,15 +27,22 @@ public class InstantiatePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(playerInstantied);
+
 	}
 
     void Instantiate()
     {
+        if(Player == null)
+        {
 
-        Instantiate(Player, new Vector3(296, 0, 352), Quaternion.identity);
+           Player = Instantiate(Resources.Load("FireMan") as GameObject, new Vector3(296, 0, 352), Quaternion.identity);
 
+        }
+
+        ambulanceSpot.GetComponent<MeshRenderer>().enabled = true;
 
         playerInstantied = true;
+
+
     }
 }

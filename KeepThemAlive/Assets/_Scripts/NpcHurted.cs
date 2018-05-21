@@ -16,18 +16,31 @@ public class NpcHurted : MonoBehaviour
 
     GameObject maca;
 
+    private bool isOnSpot;
+
+    private GameObject AmbuSpot;
+
+    private GameObject bedPlayerPos;
+
     //float damageAmount = 5f;
 
     private void Awake()
     {
+        AmbuSpot = GameObject.Find("WeakSpot");
+
         carried = false;
+        isOnSpot = false;
 
         animator = GetComponent<Animator>();
 
         health = 100f - ReplaceImpact.totalheathImpact;
         //Debug.Log("Total Health: " + health);
 
+        Debug.Log(AmbuSpot);
+
         maca = GameObject.Find("Stretcher");
+
+        bedPlayerPos = maca.transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -36,8 +49,11 @@ public class NpcHurted : MonoBehaviour
         //TakeDamageControl();
 
         Carried();
-        
 
+
+
+
+        Debug.Log(bedPlayerPos);
     }
 
     public void GoMeta()
@@ -52,13 +68,11 @@ public class NpcHurted : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("1 pessoa salva");
 
-        AmbulanceTravelTime.Travel();
+        if (collision.gameObject == AmbuSpot)
+        { 
+            isOnSpot = true;
 
-        if (collision.name == "WeakSpot")
-        {
-            Debug.Log("1 pessoa salva");
             CanvasScript.PessSalvas++;
         }
     }
@@ -67,16 +81,39 @@ public class NpcHurted : MonoBehaviour
     {
         if(carried)
         {
-            transform.GetComponent<BoxCollider>().isTrigger = true;
-            animator.SetBool("isGrabed", true);
+            //transform.GetComponent<BoxCollider>().isTrigger = true;
+            //animator.SetBool("isGrabed", true);
+
+
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, -3.76f, transform.position.z);
-            transform.GetComponent<BoxCollider>().isTrigger = false;
-            animator.SetBool("isGrabed", false);
+
+
+            if (isOnSpot)
+            {
+                //AmbulanceTravelTime.Travel();
+
+                AmbulanceTravelTime.travel = true;
+
+                print("aqui");
+                transform.SetParent(bedPlayerPos.transform);
+                transform.position = new Vector3(bedPlayerPos.transform.position.x, bedPlayerPos.transform.position.y - 4.5f , bedPlayerPos.transform.position.z);
+                transform.localRotation = Quaternion.Euler(bedPlayerPos.transform.rotation.x, bedPlayerPos.transform.rotation.y, bedPlayerPos.transform.rotation.z);
+                animator.SetBool("isGrabed", false);
+
+                isOnSpot = false;
+
+            }
+            //else
+            //{
+            //    transform.position = new Vector3(transform.position.x, -3.76f, transform.position.z);
+            //    transform.GetComponent<BoxCollider>().isTrigger = false;
+            //    animator.SetBool("isGrabed", false);
+            //}
 
         }
+
 
     }
 

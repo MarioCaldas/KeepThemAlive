@@ -56,31 +56,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 297.8, y: 3.1, z: 340}
+        value: {x: 297.8, y: 1.08, z: 340}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.05
-        value: {x: 300.9, y: 3.1, z: 342.3}
+        value: {x: 300.9, y: 1.08, z: 342.3}
         inSlope: {x: 62.00012, y: 0, z: 45.999756}
         outSlope: {x: 62.00012, y: 0, z: 45.999756}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.2
-        value: {x: 333, y: 3.1, z: 382.6}
+        value: {x: 333, y: 1.08, z: 382.6}
         inSlope: {x: 0, y: 0, z: 377.62506}
         outSlope: {x: 0, y: 0, z: 377.62506}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 284.3, y: 3.3, z: 443}
+        value: {x: 284.3, y: 1.08, z: 443}
         inSlope: {x: -454.87503, y: 0, z: 332.62494}
         outSlope: {x: -454.87503, y: 0, z: 332.62494}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.46666667
-        value: {x: 211.7, y: 3.2, z: 471.3}
+        value: {x: 211.7, y: 1.08, z: 471.3}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -179,31 +179,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 3.1
+        value: 1.08
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.05
-        value: 3.1
+        value: 1.08
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.2
-        value: 3.1
+        value: 1.08
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.31666666
-        value: 3.3
+        value: 1.08
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.46666667
-        value: 3.2
+        value: 1.08
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -408,4 +408,11 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.46666667
+    functionName: travelFalse
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

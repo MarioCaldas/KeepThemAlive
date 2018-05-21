@@ -39,8 +39,8 @@ public class LoadData : MonoBehaviour
 
 
         //rego
-        doorController = school.GetComponentInChildren<DoorController>();
-        doorController.enabled = true;
+        //doorController = school.GetComponentInChildren<DoorController>();
+        //doorController.enabled = true;
 
         List<GameObject> metalObj = new List<GameObject>();
 

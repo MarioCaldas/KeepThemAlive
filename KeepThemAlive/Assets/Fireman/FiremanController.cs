@@ -55,10 +55,15 @@ public class FiremanController : MonoBehaviour {
 
         inHandsObj = null;
         raycastedObj = null;
+
+        freeLook = true;
     }
 
     void Update ()
     {
+        PlayerLookTo();
+
+
         CheckRaycast();
 
         Animations();
@@ -74,18 +79,13 @@ public class FiremanController : MonoBehaviour {
         canRun = true;
 
 
-        if (!obj.GetComponent<Rigidbody>())
-        {
-            
-        }
-
         if (obj.tag == "NPC" || obj.tag == "HurtedNPC")
         {
             NpcHurted.carried = false;
 
             anim.SetBool("PickNpc", false);
 
-            npcPos.transform.DetachChildren();
+            //npcPos.transform.DetachChildren();
         
         }
         else
@@ -113,7 +113,6 @@ public class FiremanController : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
-
                 MoveToPoint(hit);
             }         
 
@@ -129,7 +128,7 @@ public class FiremanController : MonoBehaviour {
             }
             else
             {
-                Debug.Log("pooasdas");
+
             }           
         }
 
@@ -175,13 +174,18 @@ public class FiremanController : MonoBehaviour {
             NpcController.evacuate = true;
         }
 
-        else if (hitObj.tag == "HurtedNPC")
+        if (hitObj.tag == "HurtedNPC")
         {
 
 
             hit.collider.transform.SetParent(npcPos.transform);
             hit.collider.transform.position = npcPos.transform.position;
             hit.collider.transform.rotation = npcPos.transform.rotation;
+
+            hit.collider.gameObject.GetComponent<Animator>().SetBool("isGrabed", true);
+
+            hit.collider.gameObject.GetComponent<BoxCollider>().isTrigger = true;
+
 
             NpcHurted.carried = true;
 
@@ -195,7 +199,7 @@ public class FiremanController : MonoBehaviour {
 
             hit.transform.SetParent(objPos.transform);
 
-            Destroy(hit.collider.transform.GetChild(0));
+            //Destroy(hit.collider.transform.GetChild(0));
 
             hit.collider.transform.position = objPos.transform.position;
             hit.collider.transform.rotation = objPos.transform.rotation;
@@ -264,6 +268,7 @@ public class FiremanController : MonoBehaviour {
 
     void MoveToPoint(RaycastHit hit)
     {
+        freeLook = false;
 
         navMeshAgent.SetDestination(hit.point);
         navMeshAgent.speed = 10f;

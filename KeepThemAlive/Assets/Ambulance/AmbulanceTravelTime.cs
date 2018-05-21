@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmbulanceTravelTime : MonoBehaviour {
 
-    public static Animator anim;
+    Animator anim;
 
     public static bool travel, isTraveling;
 
@@ -14,8 +14,11 @@ public class AmbulanceTravelTime : MonoBehaviour {
 
     private Material greenMat;
 
+    
+
 	void Start ()
     {
+        AmbulanceSpot = transform.GetChild(4).gameObject;
 
         greenMat = Resources.Load("GreenTransparent") as Material;
         timeTravel = 5f;
@@ -26,36 +29,48 @@ public class AmbulanceTravelTime : MonoBehaviour {
 	
 	void Update ()
     {
-       if(isTraveling && timeTravel > 0)
+
+        Debug.Log("travel: " + travel);
+        
+        if(travel)
         {
-            timeTravel -= Time.deltaTime;
+
+            AmbulanceSpot.GetComponent<MeshRenderer>().enabled = false;
+
+            anim.SetBool("bed", false);
+
+            anim.SetBool("bedBack", true);
+            anim.SetBool("travel", true);
         }
-       else
+        else
         {
-            Return();
+
+            anim.SetBool("travel", false);
+            anim.SetBool("bedBack", false);
         }
+
+
+    }
+
+
+
+    void travelFalse()
+    {
+        if(transform.GetChild(3).GetChild(0).GetChild(0) != null)
+        {
+            Destroy(transform.GetChild(3).GetChild(0).GetChild(0).gameObject);
+        }
+
+        print("ai ai");
+        travel = false;
     }
 
     void Bed()
-    {
+    {    
+
         anim.SetBool("bed", true);
     }
 
-    void Return()
-    {
-        anim.SetBool("travel", false);
-
-        AmbulanceSpot = GameObject.Find("WeakSpot");
-
-    }
-
-    public static void Travel()
-    {
-        isTraveling = true;
 
 
-        print("boi");
-
-        anim.SetBool("travel", true);
-    }
 }

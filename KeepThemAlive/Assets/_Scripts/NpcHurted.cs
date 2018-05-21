@@ -14,6 +14,8 @@ public class NpcHurted : MonoBehaviour
 
     public static bool carried;
 
+    GameObject maca;
+
     //float damageAmount = 5f;
 
     private void Awake()
@@ -24,6 +26,8 @@ public class NpcHurted : MonoBehaviour
 
         health = 100f - ReplaceImpact.totalheathImpact;
         //Debug.Log("Total Health: " + health);
+
+        maca = GameObject.Find("Stretcher");
     }
 
     private void Update()
@@ -46,9 +50,13 @@ public class NpcHurted : MonoBehaviour
         MetaSpot.GetComponent<Renderer>().material = Transparent;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.name == "WeakSpot")
+        Debug.Log("1 pessoa salva");
+
+        AmbulanceTravelTime.Travel();
+
+        if (collision.name == "WeakSpot")
         {
             Debug.Log("1 pessoa salva");
             CanvasScript.PessSalvas++;
@@ -71,6 +79,7 @@ public class NpcHurted : MonoBehaviour
         }
 
     }
+
 
 
     /*void TakeDamageControl()

@@ -303,10 +303,8 @@ public class FiremanController : MonoBehaviour {
             print("ola");
             //OpenDoor(collision.transform.gameObject);
         }
-        else
-        {
-
-        }
+        
+        
 
         navMeshAgent.velocity = Vector3.zero;
 

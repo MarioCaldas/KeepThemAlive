@@ -44,7 +44,7 @@ public class CameraFollow : MonoBehaviour
             if (player != null)
             {
                 cam.position = player.transform.position + new Vector3(0, camY, 0);
-                Debug.Log(player.transform.position);
+
             }
             else
             {

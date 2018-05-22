@@ -40,7 +40,6 @@ public class NpcController : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
 
         health = startHealth - ReplaceImpact.totalheathImpact;
 
@@ -51,16 +50,18 @@ public class NpcController : MonoBehaviour
 
     void Update ()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
 
         //resolver bug
         if (Vector3.Distance(transform.position, player.transform.position) < 8)
         {
             crawlaLittle = true;
-
         }
 
         CrawlALittle();
-
 
 
         if (canFollow)
@@ -92,6 +93,7 @@ public class NpcController : MonoBehaviour
 
     void Evacuate()
     {
+        
         transform.GetComponent<Animator>().SetBool("run", true);
         agent.SetDestination(outsideEvacPos);
     }

@@ -194,19 +194,19 @@ public class FiremanController : MonoBehaviour {
         }
         
         // mesas partidas
-        else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
-        {
+        //else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
+        //{
 
-            hit.transform.SetParent(objPos.transform);
+        //    hit.transform.SetParent(objPos.transform);
 
-            //Destroy(hit.collider.transform.GetChild(0));
+        //    //Destroy(hit.collider.transform.GetChild(0));
 
-            hit.collider.transform.position = objPos.transform.position;
-            hit.collider.transform.rotation = objPos.transform.rotation;
+        //    hit.collider.transform.position = objPos.transform.position;
+        //    hit.collider.transform.rotation = objPos.transform.rotation;
 
 
-            anim.SetBool("PickObj", true);
-        }
+        //    anim.SetBool("PickObj", true);
+        //}
    
 
     }

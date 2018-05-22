@@ -223,6 +223,7 @@
     <None Include="Assets\_Prefabs\Chair\archibase.net.txt" />
     <None Include="Assets\_Prefabs\Planta\archibase.net.txt" />
     <None Include="Assets\_Prefabs\Sofa\archibase.net.txt" />
+    <None Include="Assets\ambulance 1\archibase.net.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

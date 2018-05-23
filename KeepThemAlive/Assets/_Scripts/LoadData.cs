@@ -27,8 +27,9 @@ public class LoadData : MonoBehaviour
 
     public GameObject Player;
 
+    GameObject[] MetalDesk;
 
-	void Start ()
+	void Awake ()
     {
         WreckedWall = Resources.Load("wWallParent") as GameObject;
         proneNpc = Resources.Load("ProneNpc") as GameObject;
@@ -37,39 +38,46 @@ public class LoadData : MonoBehaviour
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
 
-
+        print(proneNpc);
         //rego
         //doorController = school.GetComponentInChildren<DoorController>();
         //doorController.enabled = true;
 
         List<GameObject> metalObj = new List<GameObject>();
 
-        Debug.Log(proneNpc);
-            
+        MetalDesk = GameObject.FindGameObjectsWithTag("MetalDesk");
+
+
         if (school != null)
         {
+
             for (int i = 0; i < school.transform.childCount; i++)
             {
+
                 if (school.transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer("Objects"))
                 {
+
                     if (school.transform.GetChild(i).tag == "Desk")
                     {
 
-                        if (GetRandom() < 4)
-                        {                          
-                            isDamaged = true;
-                            Instantiate(proneNpc, school.transform.GetChild(i).position - new Vector3(0,2,0), school.transform.GetChild(i).rotation);
-                            proneNpc.GetComponent<NpcController>().isCrouch = false;
+                        //if (GetRandom() < 4)
+                        //{                          
+                        //    isDamaged = true;
+                        //    Instantiate(proneNpc, school.transform.GetChild(i).position - new Vector3(0,2,0), school.transform.GetChild(i).rotation);
+                        //    proneNpc.GetComponent<NpcController>().isCrouch = false;
 
-                            //npc.GetComponent<NpcHurted>().MetaSpot = WeakSpot;
-                            //npc.GetComponent<NpcHurted>().Canvas = TimeCanvas;
-                            CanvasScript.TotalPess++;
-                        }
+                        //    //npc.GetComponent<NpcHurted>().MetaSpot = WeakSpot;
+                        //    //npc.GetComponent<NpcHurted>().Canvas = TimeCanvas;
+                        //    CanvasScript.TotalPess++;
+                        //}
 
-                        if (GetRandom() < 10)
+                        if (GetRandom() < 11)
                         {
-                            school.transform.GetChild(i).gameObject.SetActive(false);
+                            Debug.Log("oupa");
+
                             GameObject obj = Instantiate(WreckeDesk, school.transform.GetChild(i).position + new Vector3(0, 10, 0), Quaternion.Euler(0, Random.Range(0, 180), 0));
+
+                            school.transform.GetChild(i).gameObject.SetActive(false);
 
                             //obj.transform.GetChild(0).DetachChildren();
                             //obj.transform.GetChild(1).DetachChildren();
@@ -95,10 +103,6 @@ public class LoadData : MonoBehaviour
                             school.transform.GetChild(i).gameObject.SetActive(false);
                         }
                     }
-                    else if(school.transform.GetChild(i).tag == "chair")
-                    {
-                        school.transform.GetChild(i).transform.rotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
-                    }
                     else if (school.transform.GetChild(i).tag == "Window")
                     {
                         school.transform.GetChild(i).GetComponent<BoxCollider>().enabled = false;
@@ -113,22 +117,33 @@ public class LoadData : MonoBehaviour
                         //metalWindows++;
                     }
                 }
+                else
+                {
+                    if (school.transform.GetChild(i).tag == "chair")
+                    {
+                        school.transform.GetChild(i).transform.rotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
+                    }
+
+                }
 
             }
         }
 
-        GameObject[] MetalDesk = GameObject.FindGameObjectsWithTag("Desk");
+        //??????????????????????
 
         foreach (GameObject item in MetalDesk)
         {
+
             if (item.transform.parent == null)
             {
                 metalObj.Add(item);
             }
         }
-
         for (int i = 0; i < metalObj.Count; i++)
         {
+            print(i);
+
+
             //rego
             metalDesks++;
             //SURVIVALS
@@ -136,9 +151,9 @@ public class LoadData : MonoBehaviour
             {
                 Debug.Log("vasddd");
 
-                Instantiate(proneNpc, metalObj[i].transform.position - new Vector3(0,2,0), metalObj[i].transform.rotation);
+                Instantiate(proneNpc, metalObj[i].transform.position /*- new Vector3(0,2,0)*/, metalObj[i].transform.rotation);
 
-                proneNpc.GetComponent<NpcController>().isCrouch = true;
+                //proneNpc.GetComponent<NpcController>().isCrouch = true;
 
                 CanvasScript.TotalPess++;
 
@@ -147,7 +162,12 @@ public class LoadData : MonoBehaviour
         }
     }
 
-    
+    void Update()
+    {
+
+        Debug.Log("asdasd"+ MetalDesk);
+
+    }
 
     int GetRandom()
     {

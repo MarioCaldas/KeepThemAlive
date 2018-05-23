@@ -53,7 +53,7 @@ public class NpcHurted : MonoBehaviour
 
 
 
-        Debug.Log(bedPlayerPos);
+
     }
 
     public void GoMeta()

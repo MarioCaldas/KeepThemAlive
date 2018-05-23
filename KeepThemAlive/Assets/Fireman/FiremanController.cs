@@ -43,6 +43,8 @@ public class FiremanController : MonoBehaviour {
 
     bool isMoving = false;
 
+    public GameObject head;
+
 
     void Start ()
     {
@@ -85,17 +87,27 @@ public class FiremanController : MonoBehaviour {
 
             anim.SetBool("PickNpc", false);
 
-            //npcPos.transform.DetachChildren();
+            npcPos.transform.DetachChildren();
         
         }
         else
         {
             anim.SetBool("PickObj", false);
+            objPos.transform.GetChild(0).gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+
+            objPos.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+
+            objPos.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().mass = 60;
+
+            objPos.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(head.transform.forward * 150, ForceMode.Impulse);
 
             objPos.transform.DetachChildren();
 
+
+
             //obj.transform.GetChild(1).DetachChildren();
-            
+
         }
 
     }
@@ -192,22 +204,28 @@ public class FiremanController : MonoBehaviour {
             anim.SetBool("PickNpc", true);
             
         }
-        
+
         // mesas partidas
-        //else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
-        //{
+        else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
+        {
 
-        //    hit.transform.SetParent(objPos.transform);
+            hit.transform.SetParent(objPos.transform);
 
-        //    //Destroy(hit.collider.transform.GetChild(0));
+            Destroy(hit.collider.GetComponent<Rigidbody>());
 
-        //    hit.collider.transform.position = objPos.transform.position;
-        //    hit.collider.transform.rotation = objPos.transform.rotation;
+            //legs
+            hit.collider.transform.GetChild(0).gameObject.SetActive(false);
+            hit.collider.transform.GetChild(1).gameObject.SetActive(false);
+
+            hit.collider.transform.GetComponent<BoxCollider>().isTrigger = true;
+
+            hit.collider.transform.position = objPos.transform.position;
+            hit.collider.transform.rotation = objPos.transform.rotation;
 
 
-        //    anim.SetBool("PickObj", true);
-        //}
-   
+            anim.SetBool("PickObj", true);
+        }
+
 
     }
 

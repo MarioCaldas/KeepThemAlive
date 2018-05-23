@@ -18,9 +18,9 @@ public class npcList : MonoBehaviour {
     public List<GameObject> wreckedDeskList = new List<GameObject>();
 
 
-    void Start ()
+    void Awake ()
     {
-       MetalDesk = GameObject.FindGameObjectsWithTag("Desk");
+       MetalDesk = GameObject.FindGameObjectsWithTag("MetalDesk");
 
        WreckedDesk = GameObject.FindGameObjectsWithTag("wreckedDesk");
 
@@ -75,7 +75,7 @@ public class npcList : MonoBehaviour {
             /*int random = Random.Range(0, proneNpc.Count)*/
             
 
-            GameObject npc = Instantiate(proneNpc[0], wreckedDeskList[i].transform.position - new Vector3(0,7,0) , wreckedDeskList[i].transform.rotation);
+            GameObject npc = Instantiate(proneNpc[0], wreckedDeskList[i].transform.position - new Vector3(0,15.5f,0) , wreckedDeskList[i].transform.rotation);
 
             npc.GetComponent<Animator>().SetBool("hurted", true);
 

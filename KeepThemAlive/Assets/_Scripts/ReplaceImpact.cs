@@ -12,8 +12,8 @@ public class ReplaceImpact : MonoBehaviour
     {
         metalWindowsNumber = LoadData.metalWindows;
         metalDesksNumber = LoadData.metalDesks;
-        Debug.Log("Windows: " + metalWindowsNumber);
-        Debug.Log("Metal Desks: " + metalDesksNumber);
+        //Debug.Log("Windows: " + metalWindowsNumber);
+        //Debug.Log("Metal Desks: " + metalDesksNumber);
 	}
 	
 	void Update ()

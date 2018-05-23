@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4206867919411704}
   - component: {fileID: 33025560789361630}
   - component: {fileID: 23617750949102042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_3_Extrude1_Cap_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4587664263091508}
   - component: {fileID: 33419092657710414}
   - component: {fileID: 23209817103961942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_2_Extrude_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4956565585794982}
   - component: {fileID: 33906279507410540}
   - component: {fileID: 23506074474404736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_2_Extrude
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4113996772221634}
   - component: {fileID: 33459711790879244}
   - component: {fileID: 23749864385123448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_2_Extrude_Cap_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4845525950224602}
   - component: {fileID: 33518140695409270}
   - component: {fileID: 23609806744151832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_3_Extrude_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4704493443944448}
   - component: {fileID: 33014581311555634}
   - component: {fileID: 23022066675904242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_2_Extrude_Cap_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4114103468480152}
-  m_Layer: 0
+  - component: {fileID: 65457237831190806}
+  m_Layer: 9
   m_Name: DeskMetal
   m_TagString: MetalDesk
   m_Icon: {fileID: 0}
@@ -138,7 +139,7 @@ GameObject:
   - component: {fileID: 4704422299553972}
   - component: {fileID: 33509680937083228}
   - component: {fileID: 23225833046324788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_3_Extrude1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +156,7 @@ GameObject:
   - component: {fileID: 4200912541224420}
   - component: {fileID: 33845431790638024}
   - component: {fileID: 23036779792415976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boole_3_Extrude1_Cap_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +173,7 @@ GameObject:
   - component: {fileID: 4513650415074040}
   - component: {fileID: 33534055549302002}
   - component: {fileID: 23808941558201782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1705318437058744}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 305.83334, y: 6.3, z: 235.46928}
+  m_LocalPosition: {x: 252.06187, y: 2, z: 322.91245}
   m_LocalScale: {x: 0.07932004, y: 0.079320036, z: 0.079320036}
   m_Children:
   - {fileID: 4956565585794982}
@@ -669,3 +670,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084346947080798}
   m_Mesh: {fileID: 4300004, guid: 78a7b1e77b951104ca9c339dbbb85766, type: 3}
+--- !u!65 &65457237831190806
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705318437058744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160.00002, y: 3, z: 80}
+  m_Center: {x: 0, y: 28, z: 0}

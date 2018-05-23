@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
@@ -124,6 +125,8 @@
     <Compile Include="Assets\_Scripts\tentativa.cs" />
     <Compile Include="Assets\_Scripts\WeakSpot.cs" />
     <Compile Include="Assets\Ambulance\AmbulanceTravelTime.cs" />
+    <Compile Include="Assets\Fire\FireGrid.cs" />
+    <Compile Include="Assets\Fire\Node.cs" />
     <Compile Include="Assets\Fireman\FiremanController.cs" />
     <Compile Include="Assets\InstantiatePlayer.cs" />
     <Compile Include="Assets\Mezanix\RealisticWoodTextures\0_Demo_Scene\Scripts\SimpleRotate.cs" />

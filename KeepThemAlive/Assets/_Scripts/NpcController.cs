@@ -13,7 +13,7 @@ public class NpcController : MonoBehaviour
     float moveSpeed = 2f;
     float rotationSpeed = 2f;
     float damageAmount = 0.5f;
-    public bool canFollow = false;
+    public static bool canFollow = false;
     string playerTag = "Player";
     float startHealth = 100f;
     float health;
@@ -61,41 +61,36 @@ public class NpcController : MonoBehaviour
             crawlaLittle = true;
         }
 
-        CrawlALittle();
+        //CrawlALittle();
 
 
-        if (canFollow)
-        {
-            //transform.rotation = Quaternion.Slerp(transform.rotation,
-            //            Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);
+        //if (canFollow)
+        //{
+        //    //transform.rotation = Quaternion.Slerp(transform.rotation,
+        //    //            Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);
 
-            transform.LookAt(player.transform.position);
+        //    transform.LookAt(player.transform.position);
 
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        }
+        //    transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        //}
 
 
         //rastejar um bocado para sair debaixo da mesa, se nao o player nao consegue ver o npc
+
         if (crawlTime <= 1.1f)
         {
             crawlaLittle = false;
         }
 
-        Debug.Log(evacuate);
-
-        if(evacuate)
+        if(crawlaLittle)
         {
-            Evacuate();
+
+            transform.GetComponent<Animator>().SetBool("crawlMove", true);
         }
+
+
         //Debug.Log("Healthy health: " + health);
         //TakeDamageControl();
-    }
-
-    void Evacuate()
-    {
-        
-        transform.GetComponent<Animator>().SetBool("run", true);
-        agent.SetDestination(outsideEvacPos);
     }
 
 

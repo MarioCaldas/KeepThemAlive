@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
             if (distance < 1.5f)
             {
                 activeNpc = NPC;               
-                activeNpc.GetComponent<NpcController>().canFollow = true;
+                //activeNpc.GetComponent<NpcController>().canFollow = true;
                 Debug.Log("Npc to follow: " + activeNpc.name);
             }
             else

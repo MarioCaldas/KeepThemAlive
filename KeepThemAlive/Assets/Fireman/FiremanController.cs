@@ -45,6 +45,7 @@ public class FiremanController : MonoBehaviour {
 
     public GameObject head;
 
+    public Vector3 outsideEvacPos;
 
     void Start ()
     {
@@ -59,6 +60,9 @@ public class FiremanController : MonoBehaviour {
         raycastedObj = null;
 
         freeLook = true;
+
+        outsideEvacPos = new Vector3(230, 0, 280);
+
     }
 
     void Update ()
@@ -183,20 +187,27 @@ public class FiremanController : MonoBehaviour {
 
         if(hitObj.tag == "NPC")
         {
-            NpcController.evacuate = true;
+            inHandsObj.transform.GetComponent<Animator>().SetBool("run", true);
+            inHandsObj.transform.GetComponent<NavMeshAgent>().SetDestination(outsideEvacPos);
+
+            //NpcController.canFollow = false;
+
+            inHandsObj.transform.LookAt(inHandsObj.GetComponent<NavMeshAgent>().steeringTarget);
+
+            //NpcController.evacuate = true;
         }
 
-        if (hitObj.tag == "HurtedNPC")
+        else if (hitObj.tag == "HurtedNPC")
         {
 
 
-            hit.collider.transform.SetParent(npcPos.transform);
-            hit.collider.transform.position = npcPos.transform.position;
-            hit.collider.transform.rotation = npcPos.transform.rotation;
+            inHandsObj.transform.SetParent(npcPos.transform);
+            inHandsObj.transform.position = npcPos.transform.position;
+            inHandsObj.transform.rotation = npcPos.transform.rotation;
 
-            hit.collider.gameObject.GetComponent<Animator>().SetBool("isGrabed", true);
+            inHandsObj.gameObject.GetComponent<Animator>().SetBool("isGrabed", true);
 
-            hit.collider.gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            inHandsObj.gameObject.GetComponent<BoxCollider>().isTrigger = true;
 
 
             NpcHurted.carried = true;
@@ -214,13 +225,13 @@ public class FiremanController : MonoBehaviour {
             Destroy(hit.collider.GetComponent<Rigidbody>());
 
             //legs
-            hit.collider.transform.GetChild(0).gameObject.SetActive(false);
-            hit.collider.transform.GetChild(1).gameObject.SetActive(false);
+            inHandsObj.transform.GetChild(0).gameObject.SetActive(false);
+            inHandsObj.transform.GetChild(1).gameObject.SetActive(false);
 
-            hit.collider.transform.GetComponent<BoxCollider>().isTrigger = true;
+            inHandsObj.transform.GetComponent<BoxCollider>().isTrigger = true;
 
-            hit.collider.transform.position = objPos.transform.position;
-            hit.collider.transform.rotation = objPos.transform.rotation;
+            inHandsObj.transform.position = objPos.transform.position;
+            inHandsObj.transform.rotation = objPos.transform.rotation;
 
 
             anim.SetBool("PickObj", true);

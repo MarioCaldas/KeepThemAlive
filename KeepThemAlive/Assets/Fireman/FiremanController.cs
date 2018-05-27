@@ -12,6 +12,8 @@ public class FiremanController : MonoBehaviour {
     public LayerMask GroundLayer;
     public LayerMask ObjLayer;
     public LayerMask DoorLayer;
+    public LayerMask FlamesLayer;
+
 
     NavMeshAgent navMeshAgent;
 
@@ -30,6 +32,8 @@ public class FiremanController : MonoBehaviour {
     public GameObject objPos;
 
     public GameObject npcPos;
+
+    public GameObject ExtintPos;
 
     GameObject inHandsObj;
 
@@ -67,7 +71,7 @@ public class FiremanController : MonoBehaviour {
 
     void Update ()
     {
-        PlayerLookTo();
+
 
 
         CheckRaycast();
@@ -77,6 +81,18 @@ public class FiremanController : MonoBehaviour {
 
 
 
+    void DropWater()
+    {
+        if (inHandsObj != null)
+            ExtintPos.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+    }
+
+
+    void CloseWater()
+    {
+        if (inHandsObj.name == "Extintor")
+            ExtintPos.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+    }
 
 
 
@@ -84,6 +100,7 @@ public class FiremanController : MonoBehaviour {
     {
         canRun = true;
 
+       
 
         if (obj.tag == "NPC" || obj.tag == "HurtedNPC")
         {
@@ -94,9 +111,20 @@ public class FiremanController : MonoBehaviour {
             npcPos.transform.DetachChildren();
         
         }
+        else if(obj.tag == "extintor")
+        {
+            obj.transform.gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
+            obj.transform.gameObject.AddComponent<Rigidbody>();
+            obj.transform.gameObject.GetComponent<Rigidbody>().mass = 60;
+
+            ExtintPos.transform.DetachChildren();
+
+        }
+
         else
         {
             anim.SetBool("PickObj", false);
+
             objPos.transform.GetChild(0).gameObject.GetComponent<BoxCollider>().isTrigger = false;
 
 
@@ -114,12 +142,14 @@ public class FiremanController : MonoBehaviour {
 
         }
 
+        inHandsObj = null;
     }
 
 
     void CheckRaycast()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        PlayerLookTo(ray);
 
         //??
         //FireManAnimator.isMoving = true;
@@ -130,7 +160,10 @@ public class FiremanController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
                 MoveToPoint(hit);
-            }         
+
+                Fire(false, null);
+
+            }
 
         }
 
@@ -140,11 +173,13 @@ public class FiremanController : MonoBehaviour {
             {
                 raycastedObj = hit.transform.gameObject;
                 //raycastedObj.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 3, transform.position.z);
+                if(inHandsObj == null)
                 Pick(raycastedObj);
             }
-            else
+            if (Physics.Raycast(ray, out hit, 1000, FlamesLayer))
             {
-
+                raycastedObj = hit.transform.gameObject;
+                Fire(true, raycastedObj);
             }           
         }
 
@@ -153,17 +188,46 @@ public class FiremanController : MonoBehaviour {
             Detach(inHandsObj);
         }
 
+
     }
 
-    void PlayerLookTo()
+    void Fire(bool fireBool, GameObject flame)
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (fireBool)
+        {
+            //if (Vector3.Distance(transform.position, flame.transform.position) < 10)
+            //{
+                if (inHandsObj.name == "Extintor")
+                {
 
-        if(freeLook)
+                    anim.SetBool("extFire", true);
+
+
+                }
+            //}
+            
+          
+        }
+        else
+        {
+            
+
+            anim.SetBool("extFire", false);
+
+            
+        }
+     
+    }
+
+
+
+    void PlayerLookTo(Ray ray)
+    {
+        if(navMeshAgent.velocity == Vector3.zero)
         {
             if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
-                transform.LookAt(hit.point, Vector3.up);
+                transform.LookAt(hit.point);
             }
 
         }
@@ -199,7 +263,7 @@ public class FiremanController : MonoBehaviour {
 
         else if (hitObj.tag == "HurtedNPC")
         {
-
+          
 
             inHandsObj.transform.SetParent(npcPos.transform);
             inHandsObj.transform.position = npcPos.transform.position;
@@ -219,22 +283,41 @@ public class FiremanController : MonoBehaviour {
         // mesas partidas
         else if (Vector3.Distance(transform.position, hitObj.transform.position) < 10)
         {
+            if (hitObj.tag == "extintor")
+            {
 
-            hit.transform.SetParent(objPos.transform);
+                if(inHandsObj.transform.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    Destroy(inHandsObj.transform.gameObject.GetComponent<Rigidbody>());
 
-            Destroy(hit.collider.GetComponent<Rigidbody>());
-
-            //legs
-            inHandsObj.transform.GetChild(0).gameObject.SetActive(false);
-            inHandsObj.transform.GetChild(1).gameObject.SetActive(false);
-
-            inHandsObj.transform.GetComponent<BoxCollider>().isTrigger = true;
-
-            inHandsObj.transform.position = objPos.transform.position;
-            inHandsObj.transform.rotation = objPos.transform.rotation;
+                }
 
 
-            anim.SetBool("PickObj", true);
+                inHandsObj.transform.SetParent(ExtintPos.transform);
+
+                inHandsObj.transform.position = ExtintPos.transform.position;
+                inHandsObj.transform.rotation = ExtintPos.transform.rotation;
+            }
+            else
+            {
+                hit.transform.SetParent(objPos.transform);
+
+                Destroy(hit.collider.GetComponent<Rigidbody>());
+
+                //legs
+                inHandsObj.transform.GetChild(0).gameObject.SetActive(false);
+                inHandsObj.transform.GetChild(1).gameObject.SetActive(false);
+
+                inHandsObj.transform.GetComponent<BoxCollider>().isTrigger = true;
+
+                inHandsObj.transform.position = objPos.transform.position;
+                inHandsObj.transform.rotation = objPos.transform.rotation;
+
+
+                anim.SetBool("PickObj", true);
+            }
+
+          
         }
 
 
@@ -334,7 +417,7 @@ public class FiremanController : MonoBehaviour {
             anim.SetBool("Kick", true);
 
 
-            print("ola");
+
             //OpenDoor(collision.transform.gameObject);
         }
         

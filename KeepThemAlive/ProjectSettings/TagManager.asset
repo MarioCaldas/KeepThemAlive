@@ -18,6 +18,8 @@ TagManager:
   - wreckeg
   - wreckedDesk
   - HurtedNPC
+  - Fire
+  - extintor
   layers:
   - Default
   - TransparentFX
@@ -35,8 +37,8 @@ TagManager:
   - Player
   - Chair
   - wreckedDeskLegs
-  - 
-  - 
+  - Flames
+  - Fire
   - 
   - 
   - 

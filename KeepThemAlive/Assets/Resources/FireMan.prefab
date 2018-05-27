@@ -236,6 +236,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1307758380361588
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4333578732995544}
+  m_Layer: 13
+  m_Name: ExtintorPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1333632156692974
 GameObject:
   m_ObjectHideFlags: 1
@@ -1236,7 +1251,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580655257569084}
   m_LocalRotation: {x: -0, y: 0.999779, z: -0, w: 0.021022515}
-  m_LocalPosition: {x: 257.49884, y: 0, z: 274.3014}
+  m_LocalPosition: {x: 250.50235, y: 1.0002716, z: 261.9175}
   m_LocalScale: {x: 5.191817, y: 5.1918178, z: 5.1918178}
   m_Children:
   - {fileID: 4618110485708498}
@@ -1522,9 +1537,23 @@ Transform:
   - {fileID: 4674403453200710}
   - {fileID: 4849108393881736}
   - {fileID: 4229524068116358}
+  - {fileID: 4333578732995544}
   m_Father: {fileID: 4038787444883450}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4333578732995544
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307758380361588}
+  m_LocalRotation: {x: 0.42715237, y: 0.35179567, z: -0.473113, w: 0.68552524}
+  m_LocalPosition: {x: 0.274, y: -0.255, z: -0.461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4328048761383902}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 113.289, y: 191.4, z: 118.296}
 --- !u!4 &4350627405776200
 Transform:
   m_ObjectHideFlags: 1
@@ -2242,7 +2271,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!95 &95415832729690434
 Animator:
@@ -2281,9 +2310,14 @@ MonoBehaviour:
   DoorLayer:
     serializedVersion: 2
     m_Bits: 2048
+  FlamesLayer:
+    serializedVersion: 2
+    m_Bits: 65536
   objPos: {fileID: 1062788897967966}
   npcPos: {fileID: 1254874546444016}
+  ExtintPos: {fileID: 1307758380361588}
   head: {fileID: 1380998228367092}
+  outsideEvacPos: {x: 0, y: 0, z: 0}
 --- !u!136 &136890210378207524
 CapsuleCollider:
   m_ObjectHideFlags: 1

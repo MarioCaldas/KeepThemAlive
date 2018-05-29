@@ -39,6 +39,10 @@ public class LoadData : MonoBehaviour
         //hurtedNpc = Resources.Load("HurtedNpc") as GameObject;
         wreckedWindow = Resources.Load("GlassPieces") as GameObject;
         school = GameObject.Find("SchoolBuilding");
+        GameObject mainDoor = GameObject.Find("Door");
+
+        mainDoor.transform.rotation = Quaternion.Euler(0, 120, 0);
+
 
         print(proneNpc);
         //rego
@@ -184,7 +188,7 @@ public class LoadData : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("asdasd"+ GenerateWreckage.objsDensity);
+
 
     }
 

@@ -73,7 +73,6 @@ public class NpcHurted : MonoBehaviour
         { 
             isOnSpot = true;
 
-            CanvasScript.PessSalvas++;
         }
         else
         {
@@ -109,6 +108,8 @@ public class NpcHurted : MonoBehaviour
                 transform.position = new Vector3(bedPlayerPos.transform.position.x, bedPlayerPos.transform.position.y - 4.5f , bedPlayerPos.transform.position.z);
                 transform.localRotation = Quaternion.Euler(bedPlayerPos.transform.rotation.x, bedPlayerPos.transform.rotation.y, bedPlayerPos.transform.rotation.z);
                 animator.SetBool("isGrabed", false);
+
+                CanvasScript.PessSalvas++;
 
                 isOnSpot = false;
 

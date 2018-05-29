@@ -30,7 +30,7 @@ public class AmbulanceTravelTime : MonoBehaviour {
 	void Update ()
     {
 
-        Debug.Log("travel: " + travel);
+
         
         if(travel)
         {

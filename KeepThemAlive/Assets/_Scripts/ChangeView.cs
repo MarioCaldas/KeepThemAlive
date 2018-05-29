@@ -31,16 +31,14 @@ public class ChangeView : MonoBehaviour {
     public void ChangeScene()
     {
         //isto nao se faz assim
-        //GameObject[] Doors = GameObject.FindGameObjectsWithTag("Door");
 
 
         //foreach (var door in Doors)
         //{
         //    //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
-        //    door.transform.GetChild(0).rotation = Quaternion.Euler(0, 80, 0);
         //}
         //GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
-        roof.SetActive(false);
+        //roof.SetActive(false);
         DontDestroyOnLoad(SchoolGO);
         Application.LoadLevel(1);
     }
@@ -82,7 +80,7 @@ public class ChangeView : MonoBehaviour {
     #region Transparecy
     IEnumerator SetMaterialTransparent()
     {
-        for (float f = 1f; f >= -0.1f; f -= 0.1f)
+        for (float f = 1f; f >= -0.1f; f -= 0.05f)
         {
             if (f <= 0)
             {
@@ -100,9 +98,10 @@ public class ChangeView : MonoBehaviour {
         // Desvanecer para aparecer
         for (float f = 0; f < 1.1f; f += 0.1f)
         {
-            if (f >= 1)
+            if (f > 1)
             {
                 StopCoroutine(SetMaterialOpaque());
+
             }
             cor.a = f;
             roof.transform.GetComponent<Renderer>().material.color = cor;

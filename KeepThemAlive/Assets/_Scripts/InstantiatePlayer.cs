@@ -14,8 +14,16 @@ public class InstantiatePlayer : MonoBehaviour {
 
     GameObject ambulanceSpot;
 
+    GameObject roof;
+
+    Color cor;
+
 	// Use this for initialization
 	void Start () {
+
+        roof = GameObject.Find("Roof");
+        cor = roof.GetComponent<Renderer>().material.color;
+
 
         camScript = camera.GetComponent<CameraFollow>();
 
@@ -27,8 +35,16 @@ public class InstantiatePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if(Player != null)
+        {
+            if (Vector3.Distance(Player.transform.position, roof.transform.position) < 85)
+            {
+                StartCoroutine(SetMaterialTransparent());
 
-	}
+            }
+        }
+      
+    }
 
     void Instantiate()
     {
@@ -36,6 +52,8 @@ public class InstantiatePlayer : MonoBehaviour {
         {
 
            Player = Instantiate(Resources.Load("FireMan") as GameObject, new Vector3(296, 0, 352), Quaternion.identity);
+            
+            
 
         }
 
@@ -44,5 +62,20 @@ public class InstantiatePlayer : MonoBehaviour {
         playerInstantied = true;
 
 
+    }
+
+    IEnumerator SetMaterialTransparent()
+    {
+        for (float f = 1f; f >= -0.1f; f -= 0.05f)
+        {
+            if (f <= 0)
+            {
+                roof.SetActive(false);
+                StopCoroutine(SetMaterialTransparent());
+            }
+            cor.a = f;
+            roof.transform.GetComponent<Renderer>().material.color = cor;
+            yield return null;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class CanvasScript : MonoBehaviour {
     public Text Rtext;
     public float StartTimer;
     private float Min, Sec;
-    public static int TotalPess = 0;
+    public static int TotalPess = 10;
     public static int PessSalvas = 0;
 
 
@@ -26,6 +26,16 @@ public class CanvasScript : MonoBehaviour {
     {
         TimeCount();
         PessText.text = "Pessoas Salvas: " + PessSalvas + "/" + TotalPess;
+        Win();
+    }
+
+    void Win()
+    {
+        if (PessSalvas == 2)
+        {
+            print("YOU WIN");
+        }
+
     }
 
     void TimeCount()

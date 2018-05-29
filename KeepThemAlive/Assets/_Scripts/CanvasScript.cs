@@ -29,6 +29,7 @@ public class CanvasScript : MonoBehaviour {
         Win();
     }
 
+
     void Win()
     {
         if (PessSalvas == 2)

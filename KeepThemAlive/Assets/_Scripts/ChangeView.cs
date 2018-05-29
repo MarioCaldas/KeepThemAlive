@@ -17,6 +17,8 @@ public class ChangeView : MonoBehaviour {
 
     Color cor;
 
+    public GameObject fadeSceneImage;
+
     void Start ()
     {
 
@@ -30,22 +32,18 @@ public class ChangeView : MonoBehaviour {
 
     public void ChangeScene()
     {
-        //isto nao se faz assim
 
-
-        //foreach (var door in Doors)
-        //{
-        //    //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
-        //}
-        //GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
+        fadeSceneImage.GetComponent<Animator>().SetTrigger("fadeOut");
+     
         roof.SetActive(true);
-        //StartCoroutine(SetMaterialOpaque());
         cor.a = 1;
         roof.transform.GetComponent<Renderer>().material.color = cor;
         DontDestroyOnLoad(SchoolGO);
-        Application.LoadLevel(1);
+
+
     }
-	
+
+
     public void ChangeIntView()
     {
         //CameraRotation.setTargetAngleY(-91.5f);
@@ -73,6 +71,12 @@ public class ChangeView : MonoBehaviour {
         CameraRotation.IntView = false;
         roof.SetActive(true);
         StartCoroutine(SetMaterialOpaque());
+    }
+
+
+    public void PlayCoinSound()
+    {
+        transform.GetComponent<AudioSource>().Play();
     }
 
     void Update ()

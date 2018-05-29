@@ -210,6 +210,8 @@
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
+    <Compile Include="Assets\Scenes\FadeScenes.cs" />
+    <Compile Include="Assets\Scenes\LoadingScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ADG_Textures\TangyTextures Free Materials\about.txt.txt" />

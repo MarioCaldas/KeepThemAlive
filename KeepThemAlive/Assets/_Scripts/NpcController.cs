@@ -34,9 +34,11 @@ public class NpcController : MonoBehaviour
 
     public Vector3 outsideEvacPos;
 
+    public bool isOnDoor = false;
+
     private void Start()
     {
-        outsideEvacPos = new Vector3(230, 0 , 280);
+        outsideEvacPos = new Vector3(233, 0 , 321);
 
         agent = GetComponent<NavMeshAgent>();
 
@@ -61,20 +63,15 @@ public class NpcController : MonoBehaviour
             crawlaLittle = true;
         }
 
-        //CrawlALittle();
-
-
-        //if (canFollow)
-        //{
-        //    //transform.rotation = Quaternion.Slerp(transform.rotation,
-        //    //            Quaternion.LookRotation(target.position - transform.position), rotationSpeed * Time.deltaTime);
-
-        //    transform.LookAt(player.transform.position);
-
-        //    transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        //}
-
-
+        if(isOnDoor)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) < 17)
+            {
+                transform.GetComponent<Animator>().SetBool("run", true);
+                this.agent.SetDestination(outsideEvacPos);
+            }
+        }
+        
         //rastejar um bocado para sair debaixo da mesa, se nao o player nao consegue ver o npc
 
         if (crawlTime <= 1.1f)

@@ -29,6 +29,8 @@ public class LoadData : MonoBehaviour
 
     GameObject[] MetalDesk;
 
+    public GameObject fireStart;
+
 	void Awake ()
     {
         WreckedWall = Resources.Load("wWallParent") as GameObject;
@@ -46,6 +48,7 @@ public class LoadData : MonoBehaviour
         List<GameObject> metalObj = new List<GameObject>();
 
         MetalDesk = GameObject.FindGameObjectsWithTag("MetalDesk");
+
 
 
         if (school != null)
@@ -116,6 +119,22 @@ public class LoadData : MonoBehaviour
                         //rego
                         //metalWindows++;
                     }
+
+
+                    //danos 
+                    else if (school.transform.GetChild(i).tag == "ReforcedWall")
+                    {
+                        GenerateWreckage.objsDensity -= 0.05f;
+                    }
+                    else if (school.transform.GetChild(i).tag == "strongPillar")
+                    {
+                        Debug.Log("faaaaaa");
+                        GenerateWreckage.objsDensity -= 0.05f;
+                    }
+
+              
+
+
                 }
                 else
                 {
@@ -165,7 +184,7 @@ public class LoadData : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("asdasd"+ MetalDesk);
+        Debug.Log("asdasd"+ GenerateWreckage.objsDensity);
 
     }
 

@@ -75,6 +75,10 @@ public class NpcHurted : MonoBehaviour
 
             CanvasScript.PessSalvas++;
         }
+        else
+        {
+            //isOnSpot = false;
+        }
     }
 
     void Carried()
@@ -84,6 +88,10 @@ public class NpcHurted : MonoBehaviour
             //transform.GetComponent<BoxCollider>().isTrigger = true;
             //animator.SetBool("isGrabed", true);
 
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+                
+            //}
 
         }
         else
@@ -105,12 +113,12 @@ public class NpcHurted : MonoBehaviour
                 isOnSpot = false;
 
             }
-            //else
-            //{
-            //    transform.position = new Vector3(transform.position.x, -3.76f, transform.position.z);
-            //    transform.GetComponent<BoxCollider>().isTrigger = false;
-            //    animator.SetBool("isGrabed", false);
-            //}
+            else
+            {
+                //transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
+                //transform.GetComponent<BoxCollider>().isTrigger = false;
+                //animator.SetBool("isGrabed", false);
+            }
 
         }
 

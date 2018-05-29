@@ -71,9 +71,6 @@ public class FiremanController : MonoBehaviour {
 
     void Update ()
     {
-
-
-
         CheckRaycast();
 
         Animations();
@@ -109,7 +106,11 @@ public class FiremanController : MonoBehaviour {
             anim.SetBool("PickNpc", false);
 
             npcPos.transform.DetachChildren();
-        
+
+            obj.transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
+            obj.transform.GetComponent<BoxCollider>().isTrigger = false;
+            obj.GetComponent<Animator>().SetBool("isGrabed", false);
+
         }
         else if(obj.tag == "extintor")
         {
@@ -227,7 +228,9 @@ public class FiremanController : MonoBehaviour {
         {
             if (Physics.Raycast(ray, out hit, 1000, GroundLayer))
             {
-                transform.LookAt(hit.point);
+                transform.LookAt(hit.point, Vector3.up);
+
+                //transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             }
 
         }

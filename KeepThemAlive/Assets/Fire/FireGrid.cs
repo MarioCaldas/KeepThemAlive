@@ -45,7 +45,7 @@ public class FireGrid : MonoBehaviour {
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
 
-        
+        //sphere = Resources.Load("FireStart") as Transform;
 
         CreateGrid();
 
@@ -56,8 +56,13 @@ public class FireGrid : MonoBehaviour {
 
         time = 3;
 
-       
+        Debug.Log(sphere);
 
+        sphere.transform.position = new Vector3(251, 0, 188);
+
+        sphere.transform.localScale = new Vector3(1, 1, 1);
+
+        Instantiate(sphere);
 
     }
 
@@ -74,7 +79,7 @@ public class FireGrid : MonoBehaviour {
 
         if(time <= 0)
         {
-            sphere.transform.localScale += new Vector3(5, 5, 5);
+            sphere.transform.localScale += new Vector3(10, 10, 10);
 
             InstantiateFire();
             //InstantiateFire();

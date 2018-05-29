@@ -32,6 +32,8 @@ public class ChangeObjects : MonoBehaviour
 
     public int childCount;
 
+    public GameObject school;
+
     void Start()
     {
         Money = transform.GetComponent<MoneyManager>();
@@ -58,12 +60,13 @@ public class ChangeObjects : MonoBehaviour
                     if (selectedObjs[i].gameObject.tag == "wall")
                     {
                         ChangeWallMaterial(selectedObjs[i].gameObject);
+                        selectedObjs[i].tag = "ReforcedWall";
                     }
 
                     else
                     {
                         Debug.Log("Entrei!");
-                        newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation);
+                        newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation, school.transform);
                         newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
                         Destroy(selectedObjs[i]);
 

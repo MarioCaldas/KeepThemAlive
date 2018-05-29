@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SceneData : MonoBehaviour
 {
-    //public static List<Objects> UnchangedObjList = new List<Objects>();
+    public GameObject envoriment;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(envoriment);
+    }
 
 }

@@ -134,6 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62654a8eb3b3fe44c84c63f5e03553a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 125
+  cost: 90
   Tag: Pillar
-  Object: {fileID: 1027017120600786, guid: cb78133473099fe4daadf965e707152f, type: 2}
+  Object: {fileID: 1666484514194874, guid: 39a459fdb852aa94ba9e1a10a165376e, type: 2}

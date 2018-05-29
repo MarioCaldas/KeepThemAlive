@@ -16,7 +16,7 @@ public class FireUp : MonoBehaviour {
     {
         y += 0.05f;
 
-        if(y < 6)
+        if(y < 3)
         {
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
 

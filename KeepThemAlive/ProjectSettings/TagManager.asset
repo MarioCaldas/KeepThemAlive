@@ -20,6 +20,9 @@ TagManager:
   - HurtedNPC
   - Fire
   - extintor
+  - ReforcedWall
+  - strongPillar
+  - metalDoor
   layers:
   - Default
   - TransparentFX
@@ -39,7 +42,7 @@ TagManager:
   - wreckedDeskLegs
   - Flames
   - Fire
-  - 
+  - Floor
   - 
   - 
   - 

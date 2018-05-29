@@ -133,6 +133,7 @@
     <Compile Include="Assets\Fire\Node.cs" />
     <Compile Include="Assets\Fire\WaterParticlesColl.cs" />
     <Compile Include="Assets\Fireman\FiremanController.cs" />
+    <Compile Include="Assets\Logic.cs" />
     <Compile Include="Assets\Mezanix\RealisticWoodTextures\0_Demo_Scene\Scripts\SimpleRotate.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />

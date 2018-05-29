@@ -12,7 +12,7 @@ public class GenerateWreckage : MonoBehaviour
     public float maxCapSize;
     public Texture2D noiseImage;
     public float zoneSize;
-    public float objsDensity;
+    public static float objsDensity = 0.7f;
     GameObject newGameObj;
 
     private float baseDensity = 5.0f;

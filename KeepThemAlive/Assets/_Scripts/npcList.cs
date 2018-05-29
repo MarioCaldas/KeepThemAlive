@@ -13,9 +13,13 @@ public class npcList : MonoBehaviour {
 
     GameObject[] WreckedDesk;
 
+    GameObject[] MetalDoor; 
+
 
     public List<GameObject> metalDeskList = new List<GameObject>();
     public List<GameObject> wreckedDeskList = new List<GameObject>();
+    public List<GameObject> metalDoorList = new List<GameObject>();
+
 
 
     void Awake ()
@@ -24,6 +28,7 @@ public class npcList : MonoBehaviour {
 
        WreckedDesk = GameObject.FindGameObjectsWithTag("wreckedDesk");
 
+       MetalDoor = GameObject.FindGameObjectsWithTag("metalDoor");
 
         foreach (GameObject item in MetalDesk)
         {
@@ -41,9 +46,19 @@ public class npcList : MonoBehaviour {
             }
         }
 
+        foreach (GameObject item in MetalDoor)
+        {
+            item.transform.GetChild(0).transform.Rotate(item.transform.GetChild(0).rotation.x, item.transform.GetChild(0).rotation.y, 130);
+
+            metalDoorList.Add(item);
+            
+        }
+
         InstantiateProneNpc();
 
         InstantiateNpcFodido();
+
+        InstantiateDoorNpc();
     }
 
     void Update ()
@@ -51,6 +66,18 @@ public class npcList : MonoBehaviour {
        
 
 
+    }
+
+    void InstantiateDoorNpc()
+    {
+        for (int i = 0; i < metalDoorList.Count; i++)
+        {
+            GameObject npc = Instantiate(proneNpc[0], metalDoorList[i].transform.position - new Vector3(0, 2, 0), metalDoorList[i].transform.rotation);
+
+            npc.AddComponent<NpcController>();
+
+            npc.GetComponent<NpcController>().isOnDoor = true;
+        }
     }
 
     void InstantiateProneNpc()

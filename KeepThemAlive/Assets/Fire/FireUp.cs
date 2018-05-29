@@ -8,7 +8,7 @@ public class FireUp : MonoBehaviour {
 
     void Start () {
 
-        y = -5f;
+        y = -3f;
     }
 
     // Update is called once per frame

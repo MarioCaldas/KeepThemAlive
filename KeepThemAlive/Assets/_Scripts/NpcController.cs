@@ -116,15 +116,15 @@ public class NpcController : MonoBehaviour
         }
     }
 
-    void TakeDamageControl()
-    {
-        health -= damageAmount * Time.deltaTime;
+    //void TakeDamageControl()
+    //{
+    //    health -= damageAmount * Time.deltaTime;
 
-        if(health <= 0)
-        {
-            Die();
-        }
-    }
+    //    if(health <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
 
     void Die()
     {

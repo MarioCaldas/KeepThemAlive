@@ -134,7 +134,7 @@ public class FireGrid : MonoBehaviour {
                         }
                         else
                         {
-                            GameObject obj = Instantiate(objFlames, worldPoint + Vector3.up * -5, Quaternion.identity);
+                            GameObject obj = Instantiate(objFlames, worldPoint + Vector3.up * -7, Quaternion.identity);
 
                            
 

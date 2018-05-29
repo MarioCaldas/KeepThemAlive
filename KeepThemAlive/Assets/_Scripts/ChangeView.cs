@@ -38,7 +38,10 @@ public class ChangeView : MonoBehaviour {
         //    //Debug.Log("Door: " + door.name + ", rotation: " + door.transform.rotation.y);
         //}
         //GameObject.Find("Door").transform.rotation = Quaternion.Euler(0, 120, 0);
-        //roof.SetActive(false);
+        roof.SetActive(true);
+        //StartCoroutine(SetMaterialOpaque());
+        cor.a = 1;
+        roof.transform.GetComponent<Renderer>().material.color = cor;
         DontDestroyOnLoad(SchoolGO);
         Application.LoadLevel(1);
     }
@@ -100,8 +103,10 @@ public class ChangeView : MonoBehaviour {
         {
             if (f > 1)
             {
-                StopCoroutine(SetMaterialOpaque());
+                roof.SetActive(true);
 
+                StopCoroutine(SetMaterialOpaque());
+                
             }
             cor.a = f;
             roof.transform.GetComponent<Renderer>().material.color = cor;

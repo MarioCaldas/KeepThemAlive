@@ -7,8 +7,9 @@ public class LoadingScene : MonoBehaviour {
     float time = 7f;
 
     void Start () {
-		
-	}
+        NextScene();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +18,7 @@ public class LoadingScene : MonoBehaviour {
         
         if(time <= 0)
         {
-            NextScene();
+            //NextScene();
         }
 
 	}

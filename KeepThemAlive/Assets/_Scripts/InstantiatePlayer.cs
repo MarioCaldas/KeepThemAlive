@@ -18,6 +18,8 @@ public class InstantiatePlayer : MonoBehaviour {
 
     Color cor;
 
+    public AudioListener camAudioListener;
+
 	// Use this for initialization
 	void Start () {
 
@@ -52,8 +54,8 @@ public class InstantiatePlayer : MonoBehaviour {
         {
 
            Player = Instantiate(Resources.Load("FireMan") as GameObject, new Vector3(296, 0, 352), Quaternion.identity);
-            
-            
+
+            Destroy(camAudioListener);
 
         }
 

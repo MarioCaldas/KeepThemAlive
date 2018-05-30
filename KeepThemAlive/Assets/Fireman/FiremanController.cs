@@ -51,6 +51,12 @@ public class FiremanController : MonoBehaviour {
 
     public Vector3 outsideEvacPos;
 
+    Ray rayFire;
+
+    RaycastHit hitedFire;
+
+    bool waterOn = false;
+
     void Start ()
     {
         openDoor = false;
@@ -67,6 +73,8 @@ public class FiremanController : MonoBehaviour {
 
         outsideEvacPos = new Vector3(230, 0, 280);
 
+        rayFire = new Ray(transform.position, transform.forward);
+      
     }
 
     void Update ()
@@ -74,6 +82,19 @@ public class FiremanController : MonoBehaviour {
         CheckRaycast();
 
         Animations();
+
+        if(waterOn)
+        {
+            DropWater();
+            rayFire = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(rayFire, out hitedFire, 50, FlamesLayer))
+            {
+                Debug.Log("OLAAAAAAA FIRE");
+                Destroy(hitedFire.transform.gameObject);
+            }
+        }
+
+        Debug.Log(waterOn);
     }
 
 
@@ -87,7 +108,7 @@ public class FiremanController : MonoBehaviour {
 
     void CloseWater()
     {
-        if (inHandsObj.name == "Extintor")
+        if (inHandsObj != null && inHandsObj.name == "Extintor")
             ExtintPos.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
     }
 
@@ -162,7 +183,8 @@ public class FiremanController : MonoBehaviour {
             {
                 MoveToPoint(hit);
 
-                Fire(false, null);
+                Fire(false);
+
 
             }
 
@@ -170,18 +192,27 @@ public class FiremanController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
+
             if (Physics.Raycast(ray, out hit, 1000, ObjLayer))
             {
                 raycastedObj = hit.transform.gameObject;
                 //raycastedObj.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 3, transform.position.z);
-                if(inHandsObj == null)
-                Pick(raycastedObj);
+                if (inHandsObj == null)
+                    Pick(raycastedObj);
             }
-            if (Physics.Raycast(ray, out hit, 1000, FlamesLayer))
+
+            if (inHandsObj.name == "Extintor")
             {
-                raycastedObj = hit.transform.gameObject;
-                Fire(true, raycastedObj);
-            }           
+                anim.SetBool("extFire", true);
+
+                Fire(true);
+            }
+
+            //if (Physics.Raycast(ray, out hit, 1000, FlamesLayer))
+            //{
+            //    raycastedObj = hit.transform.gameObject;
+            //    Fire(true, raycastedObj);
+            //}           
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -192,32 +223,38 @@ public class FiremanController : MonoBehaviour {
 
     }
 
-    void Fire(bool fireBool, GameObject flame)
+    void Fire(bool fireBool)
     {
+
         if (fireBool)
         {
-            //if (Vector3.Distance(transform.position, flame.transform.position) < 10)
-            //{
-                if (inHandsObj.name == "Extintor")
-                {
 
-                    anim.SetBool("extFire", true);
+            waterOn = true;
 
 
-                }
-            //}
-            
-          
+
         }
         else
         {
-            
+            CloseWater();
+
+            waterOn = false;
+
 
             anim.SetBool("extFire", false);
 
-            
         }
      
+    }
+
+    void CheckFireRay()
+    {
+
+        if (Physics.Raycast(rayFire, out hitedFire, 50, FlamesLayer))
+        {
+            Debug.Log("OLAAAAAAA FIRE");
+            Destroy(hitedFire.transform.gameObject);
+        }
     }
 
 

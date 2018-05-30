@@ -63,5 +63,5 @@ MonoBehaviour:
     m_Bits: 65536
   sphere: {fileID: 0}
   objFlames: {fileID: 1914901416599482, guid: f139baaaf3eee9e4692d64fc29ecc5c8, type: 2}
-  objFlamesBig: {fileID: 1257741282042370, guid: 5484c4c7af61a0b48a21d158ee149eaa,
+  objFlamesBig: {fileID: 1504950991625088, guid: d0b75bd4dc76322409238c92d0507e18,
     type: 2}

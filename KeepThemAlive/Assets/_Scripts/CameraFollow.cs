@@ -22,7 +22,6 @@ public class CameraFollow : MonoBehaviour
         //player = Resources.Load("FireMan") as GameObject;
         cam = GetComponent<Transform>();
         cam.rotation = Quaternion.Euler(90, 0,180);
-
         //player = ambulance.GetComponent<InstantiatePlayer>().Player;
 	}
 	
@@ -35,7 +34,8 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            if(camY > 70)
+
+            if (camY > 70)
             {
                 camY -= 0.5f;
 

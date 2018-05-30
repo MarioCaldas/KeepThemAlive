@@ -2481,7 +2481,7 @@ MonoBehaviour:
     m_Bits: 2048
   FlamesLayer:
     serializedVersion: 2
-    m_Bits: 65536
+    m_Bits: 131072
   objPos: {fileID: 1062788897967966}
   npcPos: {fileID: 1254874546444016}
   ExtintPos: {fileID: 1307758380361588}

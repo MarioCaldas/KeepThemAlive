@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 
 public class npcList : MonoBehaviour {
 
@@ -21,9 +21,15 @@ public class npcList : MonoBehaviour {
     public List<GameObject> metalDoorList = new List<GameObject>();
 
 
+    public Canvas Healthcanvas;
+
+    Image healthBar;
 
     void Awake ()
     {
+        
+
+
        MetalDesk = GameObject.FindGameObjectsWithTag("MetalDesk");
 
        WreckedDesk = GameObject.FindGameObjectsWithTag("wreckedDesk");
@@ -32,10 +38,13 @@ public class npcList : MonoBehaviour {
 
         foreach (GameObject item in MetalDesk)
         {
-            if (item.transform.parent == null)
-            {
+            Debug.Log("kkkkkk");
+
+            //if (item.transform.parent == null)
+            //{
+
                 metalDeskList.Add(item);
-            }
+            //}
         }
 
         foreach (GameObject item in WreckedDesk)
@@ -104,6 +113,12 @@ public class npcList : MonoBehaviour {
 
             GameObject npc = Instantiate(proneNpc[0], wreckedDeskList[i].transform.position - new Vector3(0,15.5f,0) , wreckedDeskList[i].transform.rotation);
 
+            Canvas canvas = Instantiate(Healthcanvas, null, true);
+
+            canvas.transform.position = wreckedDeskList[i].transform.position - Vector3.up * 2;
+
+            canvas.transform.SetParent(npc.transform);
+
             npc.GetComponent<Animator>().SetBool("hurted", true);
 
             Destroy(npc.GetComponent<NavMeshAgent>());
@@ -114,6 +129,7 @@ public class npcList : MonoBehaviour {
 
             npc.AddComponent<NpcHurted>();
 
+            //npc.GetComponent<NpcHurted>().SetHeath(Random.Range(0,100));
         }
 
     }

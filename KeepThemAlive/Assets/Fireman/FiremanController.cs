@@ -71,7 +71,7 @@ public class FiremanController : MonoBehaviour {
 
         freeLook = true;
 
-        outsideEvacPos = new Vector3(230, 0, 280);
+        outsideEvacPos = new Vector3(233, 0, 321);
 
         rayFire = new Ray(transform.position, transform.forward);
       
@@ -250,7 +250,7 @@ public class FiremanController : MonoBehaviour {
     void CheckFireRay()
     {
 
-        if (Physics.Raycast(rayFire, out hitedFire, 50, FlamesLayer))
+        if (Physics.Raycast(rayFire, out hitedFire, 40, FlamesLayer))
         {
             Debug.Log("OLAAAAAAA FIRE");
             Destroy(hitedFire.transform.gameObject);
@@ -298,6 +298,7 @@ public class FiremanController : MonoBehaviour {
 
             inHandsObj.transform.LookAt(inHandsObj.GetComponent<NavMeshAgent>().steeringTarget);
 
+            inHandsObj = null;
             //NpcController.evacuate = true;
         }
 
@@ -313,8 +314,11 @@ public class FiremanController : MonoBehaviour {
 
             inHandsObj.gameObject.GetComponent<BoxCollider>().isTrigger = true;
 
+            NpcHurted.Healthcanvas = inHandsObj.transform.GetChild(8).GetComponent<Canvas>();
 
             NpcHurted.carried = true;
+
+
 
             anim.SetBool("PickNpc", true);
             

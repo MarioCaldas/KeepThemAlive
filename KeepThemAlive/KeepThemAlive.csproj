@@ -139,6 +139,7 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\NPC\npcHealthBar.cs" />
     <Compile Include="Assets\ParticleSystems\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\DemoManager.cs" />
     <Compile Include="Assets\ParticleSystems\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FollowMouse.cs" />
     <Compile Include="Assets\ParticleSystems\Mirza Beig\Particle Systems\_Common\Scripts\_Demo\FPSDisplay.cs" />

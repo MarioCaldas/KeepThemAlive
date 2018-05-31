@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NpcHurted : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class NpcHurted : MonoBehaviour
     public GameObject Canvas;
     public Animator animator;
 
-    public float health = 100f;
+    private float health;
 
     public static bool carried;
 
@@ -22,10 +23,18 @@ public class NpcHurted : MonoBehaviour
 
     private GameObject bedPlayerPos;
 
-    //float damageAmount = 5f;
+    public static Canvas Healthcanvas;
+
+    Image image;
 
     private void Awake()
     {
+        health = 100;
+
+        //image = transform.GetChild(8).GetChild(0).GetComponent<Image>();
+
+        //image.fillAmount = 50;
+
         AmbuSpot = GameObject.Find("WeakSpot");
 
         carried = false;
@@ -33,7 +42,7 @@ public class NpcHurted : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        health = 100f - ReplaceImpact.totalheathImpact;
+        //health = 100f - ReplaceImpact.totalheathImpact;
         //Debug.Log("Total Health: " + health);
 
         Debug.Log(AmbuSpot);
@@ -48,12 +57,35 @@ public class NpcHurted : MonoBehaviour
         //Debug.Log("Hurted Health: " + health);
         //TakeDamageControl();
 
+        //if (Healthcanvas != null && image == null)
+        //{
+        //    image = Healthcanvas.transform.GetChild(0).GetComponent<Image>();
+        //}
+
         Carried();
 
 
+       
 
+        if (image != null)
+        {
+            //image.fillAmount -= 1.0f / health * Time.deltaTime; ;
+           
+            print("image not null");
+        }
 
+    }
 
+    //public void SetHeath(float h)
+    //{
+    //    health = h;
+
+    //    Debug.Log("health: " + health);
+    //}
+
+    public float Health()
+    {
+        return health;
     }
 
     public void GoMeta()
@@ -84,22 +116,30 @@ public class NpcHurted : MonoBehaviour
     {
         if(carried)
         {
+           if(Healthcanvas != null)
+            {
+                Healthcanvas.gameObject.SetActive(false);
+            }
+
             //transform.GetComponent<BoxCollider>().isTrigger = true;
             //animator.SetBool("isGrabed", true);
 
             //if (Input.GetKeyDown(KeyCode.E))
             //{
-                
+
             //}
 
         }
         else
         {
 
-
+            Healthcanvas.gameObject.SetActive(true);
             if (isOnSpot)
             {
                 //AmbulanceTravelTime.Travel();
+
+                Healthcanvas.gameObject.SetActive(false);
+
 
                 AmbulanceTravelTime.travel = true;
 
@@ -116,6 +156,8 @@ public class NpcHurted : MonoBehaviour
             }
             else
             {
+                //Healthcanvas.gameObject.SetActive(true);
+
                 //transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
                 //transform.GetComponent<BoxCollider>().isTrigger = false;
                 //animator.SetBool("isGrabed", false);

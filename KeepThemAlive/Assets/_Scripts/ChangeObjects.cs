@@ -47,7 +47,7 @@ public class ChangeObjects : MonoBehaviour
     {
         if (objToSwitch != null)
         {
-            if (Money.CanBuy(CostAux))
+            if (Money.CanBuy(Cost))
             {
                 for (int i = 0; i < selectedObjs.Count; i++)
                 {
@@ -55,12 +55,14 @@ public class ChangeObjects : MonoBehaviour
                     if (selectedObjs[i].gameObject.tag == "Window")
                     {
                         LoadData.metalWindows++;
+                        //Money.BuySomething(Cost);
                     }
 
                     if (selectedObjs[i].gameObject.tag == "wall")
                     {
                         ChangeWallMaterial(selectedObjs[i].gameObject);
                         selectedObjs[i].tag = "ReforcedWall";
+                        //Money.BuySomething(Cost);
                     }
 
                     else
@@ -69,12 +71,12 @@ public class ChangeObjects : MonoBehaviour
                         newObjectPrefab = Instantiate(newObjectPrefab, selectedObjs[i].transform.position, selectedObjs[i].transform.rotation, school.transform);
                         newObjectPrefab.transform.localScale = selectedObjs[i].transform.localScale;
                         Destroy(selectedObjs[i]);
-
                     }
-                    Money.BuySomething(CostAux);
+                    
                     
                     DontDestroyOnLoad(newObjectPrefab);
                 }
+                Money.BuySomething(Cost);
 
                 selectedObjs.Clear();
                 ListMaterials.Clear();
@@ -97,8 +99,8 @@ public class ChangeObjects : MonoBehaviour
             {              
                 objToSwitch = obj;
                 newObjectPrefab = ListAllObj[i].GetComponent<Objects>().Object;
-                CostAux = ListAllObj[i].GetComponent<Objects>().cost;
-                Cost += CostAux;
+                Cost += ListAllObj[i].GetComponent<Objects>().cost;
+                
             }
         }
     }

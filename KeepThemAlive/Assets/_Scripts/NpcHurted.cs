@@ -27,10 +27,17 @@ public class NpcHurted : MonoBehaviour
 
     Image image;
 
+    private bool thisGirlIsOnFire;
+
+    public bool faliceu;
+
     private void Awake()
     {
         health = 100;
 
+        faliceu = false;
+
+        thisGirlIsOnFire = false;
         //image = transform.GetChild(8).GetChild(0).GetComponent<Image>();
 
         //image.fillAmount = 50;
@@ -54,38 +61,27 @@ public class NpcHurted : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("Hurted Health: " + health);
-        //TakeDamageControl();
-
-        //if (Healthcanvas != null && image == null)
-        //{
-        //    image = Healthcanvas.transform.GetChild(0).GetComponent<Image>();
-        //}
-
+        
         Carried();
 
 
-       
-
-        if (image != null)
+        
+        if(faliceu)
         {
-            //image.fillAmount -= 1.0f / health * Time.deltaTime; ;
-           
-            print("image not null");
+            transform.gameObject.SetActive(false);
         }
 
     }
 
-    //public void SetHeath(float h)
-    //{
-    //    health = h;
-
-    //    Debug.Log("health: " + health);
-    //}
 
     public float Health()
     {
-        return health;
+        return Random.Range(50,100);
+    }
+
+    public bool IsOnFire()
+    {
+        return thisGirlIsOnFire;
     }
 
     public void GoMeta()
@@ -101,6 +97,11 @@ public class NpcHurted : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
 
+        if (collision.tag == "Fire")
+        {
+            thisGirlIsOnFire = true;
+        }
+
         if (collision.gameObject == AmbuSpot)
         { 
             isOnSpot = true;
@@ -110,6 +111,10 @@ public class NpcHurted : MonoBehaviour
         {
             //isOnSpot = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
     }
 
     void Carried()
@@ -133,7 +138,7 @@ public class NpcHurted : MonoBehaviour
         else
         {
 
-            Healthcanvas.gameObject.SetActive(true);
+
             if (isOnSpot)
             {
                 //AmbulanceTravelTime.Travel();
@@ -156,7 +161,8 @@ public class NpcHurted : MonoBehaviour
             }
             else
             {
-                //Healthcanvas.gameObject.SetActive(true);
+                if(Healthcanvas!= null)
+                Healthcanvas.gameObject.SetActive(true);
 
                 //transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
                 //transform.GetComponent<BoxCollider>().isTrigger = false;

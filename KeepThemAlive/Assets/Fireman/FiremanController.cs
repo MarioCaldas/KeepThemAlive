@@ -94,7 +94,7 @@ public class FiremanController : MonoBehaviour {
             }
         }
 
-        Debug.Log(waterOn);
+
     }
 
 
@@ -201,12 +201,17 @@ public class FiremanController : MonoBehaviour {
                     Pick(raycastedObj);
             }
 
-            if (inHandsObj.name == "Extintor")
+            if(inHandsObj != null)
             {
-                anim.SetBool("extFire", true);
+                if (inHandsObj.name == "Extintor")
+                {
+                    anim.SetBool("extFire", true);
 
-                Fire(true);
+                    Fire(true);
+                }
+
             }
+           
 
             //if (Physics.Raycast(ray, out hit, 1000, FlamesLayer))
             //{

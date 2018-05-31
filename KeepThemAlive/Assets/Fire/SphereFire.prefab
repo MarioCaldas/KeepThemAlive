@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 135885174473725724}
   - component: {fileID: 23840314337989062}
   - component: {fileID: 114650711975150834}
+  - component: {fileID: 54984525861583654}
   m_Layer: 17
   m_Name: SphereFire
   m_TagString: Fire
@@ -210,6 +211,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914901416599482}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54984525861583654
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914901416599482}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114261391564904476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,7 +291,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914901416599482}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.46

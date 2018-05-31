@@ -117,7 +117,6 @@ public class npcList : MonoBehaviour {
 
             canvas.transform.position = wreckedDeskList[i].transform.position - Vector3.up * 2;
 
-            canvas.transform.SetParent(npc.transform);
 
             npc.GetComponent<Animator>().SetBool("hurted", true);
 
@@ -128,6 +127,9 @@ public class npcList : MonoBehaviour {
             npc.gameObject.tag = "HurtedNPC";
 
             npc.AddComponent<NpcHurted>();
+
+            canvas.transform.SetParent(npc.transform);
+
 
             //npc.GetComponent<NpcHurted>().SetHeath(Random.Range(0,100));
         }

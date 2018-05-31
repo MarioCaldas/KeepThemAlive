@@ -54,7 +54,7 @@ public class FireGrid : MonoBehaviour {
 
 
 
-        time = 3;
+        time = 15;
 
         Debug.Log(sphere);
 
@@ -79,12 +79,12 @@ public class FireGrid : MonoBehaviour {
 
         if(time <= 0)
         {
-            sphere.transform.localScale += new Vector3(10, 10, 10);
+            sphere.transform.localScale += new Vector3(18, 18, 18);
 
             InstantiateFire();
             //InstantiateFire();
             //CreateGrid();
-            time = 10;
+            time = 25;
         }
 
     }
@@ -129,12 +129,12 @@ public class FireGrid : MonoBehaviour {
                     {
                         if(isObject = (Physics.CheckSphere(worldPoint, nodeRadius, objectsLayer)))
                         {
-                            Instantiate(objFlamesBig, worldPoint + Vector3.up * -5, Quaternion.identity);
+                            Instantiate(objFlamesBig, worldPoint + Vector3.up * -20, Quaternion.identity);
 
                         }
                         else
                         {
-                            GameObject obj = Instantiate(objFlames, worldPoint + Vector3.up * -7, Quaternion.identity);
+                            GameObject obj = Instantiate(objFlames, worldPoint + Vector3.up * -20, Quaternion.identity);
 
                            
 

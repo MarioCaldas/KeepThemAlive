@@ -85,15 +85,19 @@ public class FiremanController : MonoBehaviour {
 
         if(waterOn)
         {
+
             DropWater();
             rayFire = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(rayFire, out hitedFire, 50, FlamesLayer))
+            if (Physics.Raycast(rayFire, out hitedFire, 30, FlamesLayer))
             {
+                
+                Destroy(hitedFire.transform.gameObject, 5f);
+                
                 Debug.Log("OLAAAAAAA FIRE");
-                Destroy(hitedFire.transform.gameObject);
             }
         }
 
+        
 
     }
 

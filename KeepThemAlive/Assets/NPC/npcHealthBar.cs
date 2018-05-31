@@ -21,7 +21,7 @@ public class npcHealthBar : MonoBehaviour {
 
     Quaternion canvasInitRot, textInitRot;
 
-
+    GameObject deadSign;
 
     void Start () {
 
@@ -29,9 +29,13 @@ public class npcHealthBar : MonoBehaviour {
 
         timeText = transform.GetChild(0).GetComponent<Text>();
 
-        npcScript = transform.parent.parent.GetComponent<NpcHurted>();
+        if(transform.parent.parent != null)
+        {
+            npcScript = transform.parent.parent.GetComponent<NpcHurted>();
+            health = transform.parent.parent.GetComponent<NpcHurted>().Health();
 
-        health = transform.parent.parent.GetComponent<NpcHurted>().Health();
+        }
+
 
         timeText.text = "" + health;
 
@@ -43,6 +47,8 @@ public class npcHealthBar : MonoBehaviour {
         canvasInitRot = transform.rotation;
 
         textInitRot = transform.GetChild(0).rotation;
+
+        deadSign = transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -57,18 +63,21 @@ public class npcHealthBar : MonoBehaviour {
         {
             if(npcScript.IsOnFire() == true)
             {
-                print("fogo dam");
                 image.fillAmount -= 1.0f / health * Time.deltaTime * 4;
 
                 healthTimeAux = image.fillAmount;
 
+                timeText.color = Color.black;
+                image.color = Color.black;
+                deadSign.GetComponent<Image>().color = Color.black;
+
                 timeText.text = "" + Mathf.Round(healthTimeAux * initialHealth);
 
-                npcScript.faliceu = true;
+               
             }
             else
             {
-                image.fillAmount -= 1.0f / health * Time.deltaTime / 2;
+                image.fillAmount -= 1.0f / health * Time.deltaTime / 3;
 
                 healthTimeAux = image.fillAmount;
 
@@ -76,6 +85,16 @@ public class npcHealthBar : MonoBehaviour {
             }
             
 
+        }
+
+        if(healthTimeAux == 0 && npcScript != null)
+        {
+            npcScript.faliceu = true;
+            Debug.Log("é zero");
+
+            deadSign.SetActive(true);
+
+            timeText.text = "";
         }
     }
 }

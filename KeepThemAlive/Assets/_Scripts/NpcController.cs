@@ -58,32 +58,36 @@ public class NpcController : MonoBehaviour
         }
 
         //resolver bug
-        if (Vector3.Distance(transform.position, player.transform.position) < 8)
+        if(player != null)
         {
-            crawlaLittle = true;
-        }
-
-        if(isOnDoor)
-        {
-            if (Vector3.Distance(transform.position, player.transform.position) < 17)
+            if (Vector3.Distance(transform.position, player.transform.position) < 8)
             {
-                transform.GetComponent<Animator>().SetBool("run", true);
-                this.agent.SetDestination(outsideEvacPos);
+                crawlaLittle = true;
+            }
+
+            if (isOnDoor)
+            {
+                if (Vector3.Distance(transform.position, player.transform.position) < 17)
+                {
+                    transform.GetComponent<Animator>().SetBool("run", true);
+                    this.agent.SetDestination(outsideEvacPos);
+                }
+            }
+
+            //rastejar um bocado para sair debaixo da mesa, se nao o player nao consegue ver o npc
+
+            if (crawlTime <= 1.1f)
+            {
+                crawlaLittle = false;
+            }
+
+            if (crawlaLittle)
+            {
+
+                transform.GetComponent<Animator>().SetBool("crawlMove", true);
             }
         }
-        
-        //rastejar um bocado para sair debaixo da mesa, se nao o player nao consegue ver o npc
-
-        if (crawlTime <= 1.1f)
-        {
-            crawlaLittle = false;
-        }
-
-        if(crawlaLittle)
-        {
-
-            transform.GetComponent<Animator>().SetBool("crawlMove", true);
-        }
+    
 
 
         //Debug.Log("Healthy health: " + health);

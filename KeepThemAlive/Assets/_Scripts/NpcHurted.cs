@@ -68,7 +68,8 @@ public class NpcHurted : MonoBehaviour
         
         if(faliceu)
         {
-            transform.gameObject.SetActive(false);
+            Destroy(transform.GetComponent<BoxCollider>());
+            //transform.gameObject.SetActive(false);
         }
 
     }
@@ -76,7 +77,7 @@ public class NpcHurted : MonoBehaviour
 
     public float Health()
     {
-        return Random.Range(50,100);
+        return Random.RandomRange(50, 100) - (GenerateWreckage.objsDensity * 100) / 2;
     }
 
     public bool IsOnFire()
